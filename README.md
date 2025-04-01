@@ -14,6 +14,7 @@ A Java application for managing a library.
 
 - `src/main/java` - Java source code
   - `com.example.librarymanager` - Main application package
+    - `Database` - database manipulating classes
     - `Controllers` - MVC controller classes  
     - `Models` - Data model classes
     - `Views` - View classes
