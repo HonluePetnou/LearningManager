@@ -4,7 +4,7 @@ A Java application for managing a library.
 
 ## Requirements
 
-- Java 8+
+- Java 24
 - JavaFX
 - SQLite JDBC driver
 - Jens Deters' JavaFX Glyphs Fontawesome
