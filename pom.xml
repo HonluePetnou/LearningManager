@@ -15,22 +15,20 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-controls</artifactId>
-            <version>17.0.6</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-fxml</artifactId>
-            <version>17.0.6</version>
-        </dependency>
+
+       <!-- <dependency>
+           <groupId>org.openjfx</groupId>
+           <artifactId>javafx-controls</artifactId>
+           <version>17.0.6</version>
+       </dependency> -->
+
+
 <!--        <dependency>-->
 <!--            <groupId>de.jensd</groupId>-->
 <!--            <artifactId>fontawesomefx</artifactId>-->
 <!--            <version>8.9</version>-->
 <!--        </dependency>-->
-        <!-- https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc -->
+<!--         https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc-->
         <dependency>
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
