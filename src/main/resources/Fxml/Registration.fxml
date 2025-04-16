@@ -14,7 +14,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../Styles/Form.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.LoginController">
+`
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../Styles/Form.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.RegistrationController">
    <children>
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" styleClass="left-pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -35,25 +36,40 @@
             </Label>
          </children>
       </VBox>
-      <Pane layoutX="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" styleClass="right-pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" styleClass="right-pane" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox alignment="CENTER" layoutX="25.0" layoutY="150.0" prefHeight="300.0" prefWidth="350.0">
+            <VBox alignment="CENTER" layoutX="25.0" layoutY="50.0" prefHeight="500.0" prefWidth="350.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="29.0" prefWidth="354.0" styleClass="title-label" text="Welcome Back !">
+                  <Label alignment="CENTER" prefHeight="29.0" prefWidth="354.0" styleClass="title-label" text="Registration form">
                      <font>
                         <Font name="Impact" size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="351.0" styleClass="subtitle-label" text="Sign in to continue" textFill="#848484">
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="351.0" styleClass="subtitle-label" text="Please fill the form" textFill="#848484">
                      <font>
                         <Font name="Ebrima Bold" size="24.0" />
                      </font>
                   </Label>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="40.0">
+                           <children>
+                              <TextField fx:id="Username" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="300.0" promptText="Username">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                           <padding>
+                              <Insets left="20.0" right="20.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </HBox>
                         <HBox alignment="CENTER">
                            <children>
-                              <TextField fx:id="Identifier" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="300.0" promptText="Identifier" />
+                              <TextField fx:id="RegistrationIdentifier" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="300.0" promptText="Identifier" />
                            </children>
                            <VBox.margin>
                               <Insets bottom="20.0" />
@@ -64,7 +80,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefWidth="350.0">
                            <children>
-                              <PasswordField fx:id="Password" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="300.0" promptText="Password">
+                              <PasswordField fx:id="RegistrationPassword" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="300.0" promptText="Password">
                                  <cursor>
                                     <Cursor fx:constant="TEXT" />
                                  </cursor>
@@ -77,11 +93,23 @@
                               <Insets left="20.0" right="20.0" />
                            </padding>
                         </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="91.0" prefWidth="350.0">
+                           <children>
+                              <PasswordField fx:id="ConfirmedPassword" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="300.0" promptText="Confirm Password">
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor>
+                              </PasswordField>
+                           </children>
+                           <padding>
+                              <Insets left="20.0" right="20.0" />
+                           </padding>
+                        </HBox>
                         <HBox alignment="BASELINE_RIGHT">
                            <children>
-                              <Label fx:id="LostPassword" styleClass="forgot-password" text="Forgot password?">
+                              <Label fx:id="DoubleAuthentification" styleClass="forgot-password" text="What if i forgot my password ?">
                                  <font>
-                                    <Font name="Ebrima" size="14.0" />
+                                    <Font name="Ebrima" size="10.0" />
                                  </font>
                                  <HBox.margin>
                                     <Insets left="10.0" />
@@ -94,10 +122,13 @@
                            <padding>
                               <Insets left="20.0" right="20.0" />
                            </padding>
+                           <VBox.margin>
+                              <Insets bottom="4.0" top="10.0" />
+                           </VBox.margin>
                         </HBox>
                         <HBox alignment="CENTER">
                            <children>
-                              <Button fx:id="LoginButton" mnemonicParsing="false" prefHeight="36.0" prefWidth="340.0" styleClass="login-button" text="Login">
+                              <Button fx:id="RegisterButton" mnemonicParsing="false" prefHeight="36.0" prefWidth="340.0" styleClass="login-button" text="Register">
                                  <HBox.margin>
                                     <Insets bottom="10.0" top="10.0" />
                                  </HBox.margin>
@@ -109,8 +140,8 @@
                         </HBox>
                         <HBox alignment="CENTER">
                            <children>
-                              <Label text="New User?" />
-                              <Label fx:id="RegistrationRedirect" layoutX="156.0" layoutY="10.0" styleClass="signup-button" text="Signup">
+                              <Label text="Already have an account ?" />
+                              <Label fx:id="LogInRedirect" layoutX="156.0" layoutY="10.0" styleClass="signup-button" text="Log In">
                                  <HBox.margin>
                                     <Insets left="5.0" />
                                  </HBox.margin>
@@ -120,12 +151,17 @@
                               </Label>
                            </children>
                         </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="40.0">
+                           <padding>
+                              <Insets left="20.0" right="20.0" />
+                           </padding>
+                        </HBox>
                      </children>
                      <padding>
                         <Insets bottom="20.0" top="30.0" />
                      </padding>
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </VBox>
                </children>
