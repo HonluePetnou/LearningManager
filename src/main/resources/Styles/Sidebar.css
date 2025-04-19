@@ -1,0 +1,39 @@
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-background-color: #f5f7fa;
+}
+.sidebar-header{
+    -fx-background-color:  #4838d1;
+}
+.label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #bdc3c7;
+    -fx-font-size: 16px;
+    -fx-padding: 10px 20px;
+    -fx-alignment: center-left;
+    -fx-cursor: hand;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #8474fa;
+    -fx-text-fill: #ecf0f1;
+}
+.sidebar-button:focused {
+    -fx-background-color: #4838d1;
+    -fx-text-fill: white;
+}
+/* icons management */
+.sidebar-button FontAwesomeIconView{
+    -fx-fill: #4838d1;
+}
+.sidebar-button:hover FontAwesomeIconView{
+    -fx-fill: white;
+}
+.sidebar-button:focused FontAwesomeIconView{
+    -fx-fill: white;
+}
+
