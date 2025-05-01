@@ -2,6 +2,7 @@ module com.example.librarymanager {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires java.desktop;
 //    requires org.xerial.sqlitejdbc;
 //    requires de.jensd.fx.glyphs.Fontawesome;
 //    requires javafx.graphics;

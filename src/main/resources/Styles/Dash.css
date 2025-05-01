@@ -1,56 +1,166 @@
-.root {
-    -fx-font-family: "Arial";
-    -fx-background-color: #f5f5f5;
+.main{
+    -fx-background-color: #efefef;
 }
-
-.main-container {
-    -fx-padding: 20;
-    -fx-background-color: white;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
-    -fx-spacing: 20;
-}
-
-.header-label {
-    -fx-font-size: 24px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #333333;
-}
-
-.sections-container {
-    -fx-spacing: 20;
-}
-
-.section-box {
-    -fx-border-color: #e0e0e0;
-    -fx-border-width: 1px;
-    -fx-border-radius: 5px;
-    -fx-background-radius: 5px;
-    -fx-background-color: white;
+/* Statistics Cards */
+.stat-card {
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
     -fx-padding: 15;
-    -fx-spacing: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 2, 2);
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease;
 }
 
-.section-header {
+.stat-card:hover {
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 8, 0, 0, 3);
+}
+
+.stat-title {
     -fx-font-size: 18px;
     -fx-font-weight: bold;
-    -fx-text-fill: #444444;
+    /*-fx-text-fill: #ffffff;*/
 }
 
-.section-separator {
-    -fx-padding: 5 0 5 0;
+.stat-value {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    /*-fx-text-fill: #ffffff;*/
+}
+.stat-icon {
+    -fx-font-size: 48px;
+    -fx-fill: #4838d1;
 }
 
-.section-content {
-    -fx-spacing: 8;
+/* Main Container */
+.table-container {
+    -fx-background-color: #f5f7fa;
+    -fx-padding: 20px;
+    -fx-border-color: #d1d5db;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 1);
+}
+.table-header {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+.table-button {
+    -fx-background-color: #4838d1;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+/* Header row styling */
+.header-row {
+    -fx-background-color: #4838d1;
+    -fx-alignment: center-left;
+    -fx-padding: 5px;
 }
 
-.section-item {
+.header-cell {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 5px;
+}
+
+/* Data row styling */
+.data-row {
+    -fx-alignment: center-left;
+    -fx-padding: 5px;
+}
+
+.odd-row {
+    -fx-background-color: #f9fafb;
+}
+
+.even-row {
+    -fx-background-color: #ffffff;
+}
+
+.data-cell {
+    -fx-padding: 5px;
+}
+
+/* Status specific styling */
+.status-active {
+    -fx-text-fill: #10b981;
+    -fx-font-weight: bold;
+}
+
+.status-inactive {
+    -fx-text-fill: #ef4444;
+    -fx-font-weight: bold;
+}
+
+/* Hover effect */
+.data-row:hover {
+    -fx-background-color: #eff6ff;
+    -fx-cursor: hand;
+}
+/* Main HBox container */
+.books-hbox {
+    -fx-background-color: #f5f7fa;
+    -fx-padding: 15px;
+    -fx-alignment: center;
+}
+
+/* Book card styling */
+.book-card {
+    -fx-background-color: white;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+    /*-fx-padding: 15px;*/
+    -fx-spacing: 10px;
+    -fx-alignment: center;
+    /*-fx-min-width: 150px;*/
+}
+
+.book-card:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 8, 0, 0, 3);
+    -fx-cursor: hand;
+}
+
+/* Book image styling */
+.book-card ImageView {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 1);
+    -fx-pref-width: 200px;
+}
+
+/* Text styling */
+.book-title {
     -fx-font-size: 14px;
-    -fx-text-fill: #555555;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+    -fx-wrap-text: true;
+    -fx-max-width: 120px;
+    -fx-alignment: center;
 }
 
-.section-rating {
-    -fx-font-size: 14px;
-    -fx-text-fill: #666666;
-    -fx-font-style: italic;
+.book-author {
+    -fx-font-size: 12px;
+    -fx-text-fill: #7f8c8d;
+    -fx-wrap-text: true;
+    -fx-max-width: 120px;
+    -fx-alignment: center;
 }
+
+/* Button styling */
+.book-button {
+    -fx-background-color: #4838d1;
+    -fx-text-fill: white;
+    -fx-background-radius: 4px;
+    -fx-padding: 5px 15px;
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+}
+
+/*.book-button:hover {*/
+/*    -fx-background-color: #2980b9;*/
+/*}*/

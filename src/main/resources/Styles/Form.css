@@ -21,7 +21,7 @@
 }
 .right-pane {
     -fx-background-color: white;
-    -fx-padding: 400px;
+    /*-fx-padding: 400px;*/
 }
 .title-label {
     -fx-font-size: 30px;

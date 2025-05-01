@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<SplitPane cacheShape="false" dividerPositions="1.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.example.librarymanager.Controllers.DashboardController">
+<items>
+    <AnchorPane maxWidth="200.0" prefWidth="200.0" style="-fx-background-color: transparent;">
+                    <VBox>
+                        <fx:include source="Sidebar.fxml" />
+                    </VBox>
+    </AnchorPane>
+    <AnchorPane prefWidth="1000.0">
+                    <VBox>
+                        <fx:include source="Dash.fxml" />
+                    </VBox>
+    </AnchorPane>
+</items>
+</SplitPane>
