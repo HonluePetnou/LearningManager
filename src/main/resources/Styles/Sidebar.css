@@ -3,11 +3,15 @@
     -fx-background-color: #f5f7fa;
 }
 .sidebar-header{
-    -fx-background-color:  #4838d1;
+    -fx-background-color:  white;
+    -fx-text-fill: #4838d1;
+    -fx-effect: dropshadow(gaussian, rgba(205, 203, 203, 0.5), 1, 0.5, 1, 1);
 }
+
 .label {
     -fx-font-size: 24px;
     -fx-font-weight: bold;
+    -fx-text-fill: #4838d1;
 }
 .sidebar-button {
     -fx-background-color: transparent;

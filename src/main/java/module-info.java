@@ -10,6 +10,7 @@ module com.example.librarymanager {
 
 
     opens com.example.librarymanager to javafx.fxml;
+    opens com.example.librarymanager.Controllers to javafx.fxml;
     exports com.example.librarymanager;
     exports com.example.librarymanager.Controllers;
     exports com.example.librarymanager.Controllers.Admin;

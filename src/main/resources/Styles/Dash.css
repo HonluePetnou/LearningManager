@@ -1,6 +1,13 @@
 .main{
     -fx-background-color: #efefef;
 }
+.main-label{
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+.main-date{
+    -fx-font-size: 16px;
+}
 /* Statistics Cards */
 .stat-card {
     -fx-background-color: #ffffff;
@@ -33,6 +40,64 @@
     -fx-font-size: 48px;
     -fx-fill: #4838d1;
 }
+.date-Label{
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+.date-picker {
+    -fx-font-size: 14px;
+    -fx-min-width: 200px;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.date-picker .text-field {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-padding: 5 8 5 8;
+    -fx-font-size: 14px;
+}
+
+.date-picker-popup {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+}
+
+.date-picker-popup .month-year-pane {
+    -fx-background-color: #f8f8f8;
+    -fx-padding: 5;
+}
+
+.date-picker-popup .month-year-pane .label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+.date-picker-popup .calendar-grid {
+    -fx-background-color: #00a1f8;
+    -fx-text-fill: white;
+}
+
+.date-picker-popup .day-cell {
+    -fx-font-size: 13px;
+}
+
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: #4838d1;
+}
+
+.date-picker-popup .day-cell:selected {
+    -fx-background-color: #4838d1;
+    -fx-text-fill: black;
+}
 
 /* Main Container */
 .table-container {
@@ -56,6 +121,9 @@
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
     -fx-cursor: hand;
+}
+.table-button:hover{
+    -fx-background-color: #2400a1;
 }
 /* Header row styling */
 .header-row {
@@ -160,7 +228,19 @@
     -fx-font-size: 12px;
     -fx-cursor: hand;
 }
-
-/*.book-button:hover {*/
-/*    -fx-background-color: #2980b9;*/
-/*}*/
+.outlined-button {
+    -fx-background-color: transparent;
+    -fx-border-color: #4838d1;
+    -fx-text-fill: #4838d1;
+    -fx-border-radius: 4px;
+    -fx-padding: 5px 15px;
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+}
+.outlined-button:hover{
+    -fx-background-color: #4838d1;
+    -fx-text-fill: white;
+}
+.book-button:hover {
+    -fx-background-color: #2400a1;
+}

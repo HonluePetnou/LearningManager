@@ -1,14 +1,508 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.librarymanager.Controllers.UserController"
-            prefHeight="400.0" prefWidth="600.0">
+<BorderPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../Styles/Users.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.UserController">
 
-</AnchorPane>
+    <top>
+        <Label styleClass="heading" text="📚 Users Management" />
+    </top>
+
+    <center>
+        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-padding: 20; -fx-background-color: #f2f2f2;" styleClass="table-view" BorderPane.alignment="TOP_CENTER">
+            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="column-header">
+                <HBox spacing="10" HBox.hgrow="ALWAYS">
+                    <Label minWidth="80" text="ID:" />
+                </HBox>
+
+                <HBox spacing="10" HBox.hgrow="ALWAYS">
+                    <Label minWidth="80" text="Name:" />
+                </HBox>
+
+                <HBox spacing="10" HBox.hgrow="ALWAYS">
+                    <Label minWidth="80" text="Email:" />
+                </HBox>
+
+                <HBox spacing="10" HBox.hgrow="ALWAYS">
+                    <Label minWidth="80" text="Phone:" />
+                </HBox>
+
+                <HBox spacing="10" HBox.hgrow="ALWAYS">
+                    <Label minWidth="80" text="Address:" />
+                </HBox>
+
+                <HBox spacing="10" HBox.hgrow="ALWAYS">
+                    <Label minWidth="80" text="Role:" />
+                </HBox>
+
+                <HBox spacing="10" HBox.hgrow="ALWAYS">
+                    <Label minWidth="80" text="Status:" />
+                </HBox>
+            </HBox>
+         <VBox fx:id="listView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="row-container" VBox.vgrow="ALWAYS">
+            <children>
+               <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="table-row">
+                  <children>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="1" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Name:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Email:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Phone:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Address:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Role:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Status:" />
+                        </children>
+                     </HBox>
+                  </children>
+                  <padding>
+                     <Insets bottom="5.0" top="5.0" />
+                  </padding>
+               </HBox>
+               <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="table-row">
+                  <children>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="2" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Name:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Email:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Phone:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Address:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Role:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Status:" />
+                        </children>
+                     </HBox>
+                  </children>
+                  <padding>
+                     <Insets bottom="5.0" top="5.0" />
+                  </padding>
+               </HBox>
+               <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="table-row">
+                  <children>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="3" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Name:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Email:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Phone:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Address:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Role:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Status:" />
+                        </children>
+                     </HBox>
+                  </children>
+                  <padding>
+                     <Insets bottom="5.0" top="5.0" />
+                  </padding>
+               </HBox>
+               <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="table-row">
+                  <children>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="4" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Name:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Email:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Phone:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Address:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Role:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Status:" />
+                        </children>
+                     </HBox>
+                  </children>
+                  <padding>
+                     <Insets bottom="5.0" top="5.0" />
+                  </padding>
+               </HBox>
+               <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="table-row">
+                  <children>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="5" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Name:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Email:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Phone:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Address:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Role:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Status:" />
+                        </children>
+                     </HBox>
+                  </children>
+                  <padding>
+                     <Insets bottom="5.0" top="5.0" />
+                  </padding>
+               </HBox>
+               <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="table-row">
+                  <children>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="6" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Name:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Email:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Phone:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Address:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Role:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Status:" />
+                        </children>
+                     </HBox>
+                  </children>
+                  <padding>
+                     <Insets bottom="5.0" top="5.0" />
+                  </padding>
+               </HBox>
+               <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="table-row">
+                  <children>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="7" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Name:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Email:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Phone:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Address:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Role:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Status:" />
+                        </children>
+                     </HBox>
+                  </children>
+                  <padding>
+                     <Insets bottom="5.0" top="5.0" />
+                  </padding>
+               </HBox>
+               <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="table-row">
+                  <children>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="8" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Name:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Email:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Phone:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Address:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Role:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Status:" />
+                        </children>
+                     </HBox>
+                  </children>
+                  <padding>
+                     <Insets bottom="5.0" top="5.0" />
+                  </padding>
+               </HBox>
+               <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="table-row">
+                  <children>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="9" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Name:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Email:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Phone:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Address:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Role:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Status:" />
+                        </children>
+                     </HBox>
+                  </children>
+                  <padding>
+                     <Insets bottom="5.0" top="5.0" />
+                  </padding>
+               </HBox>
+               <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="table-row">
+                  <children>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="10" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Name:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Email:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Phone:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Address:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Role:" />
+                        </children>
+                     </HBox>
+                     <HBox spacing="10" HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label minWidth="80" text="Status:" />
+                        </children>
+                     </HBox>
+                  </children>
+                  <padding>
+                     <Insets bottom="5.0" top="5.0" />
+                  </padding>
+               </HBox>
+            </children>
+         </VBox>
+            
+        </VBox>
+
+    </center>
+
+    <right>
+        <VBox maxWidth="1.7976931348623157E308" prefWidth="300.0" spacing="10" style="-fx-padding: 10;" styleClass="form-box">
+            <Label styleClass="section-title" text="Add New User" />
+            <TextField fx:id="authorField" promptText="Name" styleClass="text-field" />
+
+            <TextField fx:id="titleField" promptText="Surname" styleClass="text-field" />
+            <TextField fx:id="yearField" promptText="Email" styleClass="text-field" />
+         <TextField fx:id="yearField1" layoutX="21.0" layoutY="142.0" promptText="Phone" styleClass="text-field" />
+         <TextField fx:id="yearField11" layoutX="21.0" layoutY="227.0" promptText="Address" styleClass="text-field" />
+         <DatePicker maxWidth="1.7976931348623157E308" promptText="BirthDate" />
+         <HBox spacing="30.0">
+            <children>
+               <RadioButton mnemonicParsing="false" text="Male" />
+               <RadioButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Female" />
+            </children>
+         </HBox>
+
+            <Button onAction="#handleAddBook" text="Add User" />
+
+        </VBox>
+    </right>
+
+    <bottom>
+        <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10;">
+            <Label text="Search:" />
+            <TextField fx:id="searchField" onKeyReleased="#handleSearch" prefHeight="36.0" prefWidth="229.0" promptText="Type to filter..." styleClass="search-bar" />
+        </HBox>
+    </bottom>
+
+</BorderPane>

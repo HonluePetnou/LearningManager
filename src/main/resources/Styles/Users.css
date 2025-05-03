@@ -1,0 +1,131 @@
+/* ========== Root Styling ========== */
+.root {
+    -fx-background-color: #f4f6f8;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-padding: 20;
+}
+
+/* ========== Title Styling ========== */
+.heading{
+    -fx-text-fill: #333;
+    -fx-padding:  10px;
+    -fx-font-size: 24px;
+}
+.label {
+    -fx-text-fill: #333;
+}
+
+/* Main page title */
+.label:top {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+/* Section titles */
+.section-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+/* ========== Table Styling ========== */
+.table-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #dfe4ea;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-padding: 10;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.05), 4, 0, 2, 2);
+}
+
+/* Table header */
+.table-view .column-header {
+    -fx-background-color: #5a67d8;
+    -fx-padding: 12px;
+}
+.table-view .column-header,
+.table-view .column-header .label {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+}
+
+/* Table rows */
+.table-row{
+    -fx-background-color: #e1def8;
+    -fx-padding: 8px;
+}
+.table-view .table-row-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #ececec transparent;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #c3dafe;
+}
+
+/* ========== Button Styling ========== */
+.button {
+    -fx-background-color: #5a67d8;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 8 12 8 12;
+}
+
+.button:hover {
+    -fx-background-color: #434190;
+}
+
+.button:pressed {
+    -fx-background-color: #3c366b;
+}
+
+ /*========== TextField Styling ========== */
+.text-field {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #dfe4ea;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-padding: 6 8 6 8;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5;
+}
+
+/* Focused TextField */
+.text-field:focused {
+    -fx-border-color: #5a67d8;
+    -fx-background-color: #fefefe;
+}
+
+/* ========== VBox / HBox spacing ========== */
+.vbox, .hbox {
+    -fx-spacing: 10;
+}
+
+/* ========== Form VBox ========== */
+.form-box {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #dfe4ea;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 15;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.05), 4, 0, 2, 2);
+}
+
+/* ========== Search Bar Styling ========== */
+.search-bar {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #dfe4ea;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-padding: 8;
+    -fx-background-radius: 5;
+}
+
+.search-bar:focused {
+    -fx-border-color: #5a67d8;
+}

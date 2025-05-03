@@ -1,18 +1,32 @@
 package com.example.librarymanager.Views;
 
 import com.example.librarymanager.Controllers.DashController;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class ViewFactory {
-    private AnchorPane dashboardView;
+    private final StringProperty sidebarSelectedMenuItem;
+    private ScrollPane dashboardView;
+    private BorderPane usersView;
 
-    public ViewFactory() {}
-    public AnchorPane getDashboardView() {
+    public ViewFactory() {
+        this.sidebarSelectedMenuItem = new SimpleStringProperty();
+//        sidebarSelectedMenuItem = new SimpleStringProperty();
+    }
+
+    public StringProperty getSidebarSelectedMenuItem() {
+        return sidebarSelectedMenuItem;
+    }
+
+    public ScrollPane  getDashboardView() {
         if (dashboardView == null) {
             try {
                 dashboardView = new FXMLLoader(getClass().getResource("/Fxml/Dash.fxml")).load();
@@ -23,6 +37,16 @@ public class ViewFactory {
         }
         return dashboardView;
 
+    }
+    public BorderPane getUsersView() {  // Changed return type to BorderPane
+        if (usersView == null) {
+            try {
+                usersView = new FXMLLoader(getClass().getResource("/Fxml/Users.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return usersView;
     }
     public void showLoginWindow() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Login.fxml"));

@@ -11,14 +11,14 @@
 
 <VBox maxHeight="1.7976931348623157E308" maxWidth="300.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="200.0" spacing="10.0" stylesheets="@../Styles/Sidebar.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.SideController">
    <children>
-      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="10.0" styleClass="sidebar-header" VBox.vgrow="ALWAYS">
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="1.0" styleClass="sidebar-header" VBox.vgrow="ALWAYS">
          <children>
-            <ImageView fitHeight="50.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="42.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Images/logo.png" />
+                  <Image url="@../Images/BlackLogo2.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" text="E-Library" textFill="WHITE" />
+            <Label alignment="CENTER" text="E-Library" textFill="WHITE" HBox.hgrow="ALWAYS" />
          </children>
          <padding>
             <Insets bottom="5.0" top="5.0" />
@@ -53,7 +53,7 @@
             </Button>
          </children>
          <padding>
-            <Insets top="5.0" />
+            <Insets top="2.0" />
          </padding>
       </VBox>
       <VBox alignment="BOTTOM_LEFT" prefHeight="200.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
