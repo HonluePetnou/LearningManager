@@ -32,18 +32,25 @@
 /* ========== Table Styling ========== */
 .table-view {
     -fx-background-color: #ffffff;
-    -fx-border-color: #dfe4ea;
+    -fx-table-cell-border-color: transparent;
+    -fx-padding: 10;
+    -fx-border-color: #dcdde1;
     -fx-border-width: 1;
     -fx-border-radius: 8;
-    -fx-padding: 10;
     -fx-background-radius: 8;
-    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.05), 4, 0, 2, 2);
 }
 
+.table-view .filler {
+    -fx-background-color: #5661E9;
+}
+.table-view .scroll-bar:horizontal {
+    -fx-opacity: 0;
+    -fx-pref-height: 0;
+}
 /* Table header */
 .table-view .column-header {
     -fx-background-color: #5a67d8;
-    -fx-padding: 12px;
+    -fx-padding: 20px;
 }
 .table-view .column-header,
 .table-view .column-header .label {
