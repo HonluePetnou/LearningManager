@@ -20,8 +20,10 @@ public class DashController implements Initializable {
     public VBox membersContainer;
     public VBox table;
     public PieChart pieChart;
+    @SuppressWarnings("rawtypes")
     public LineChart lineChart;
 
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     @FXML
 //    private LineChart<String, Number> lineChart;
 

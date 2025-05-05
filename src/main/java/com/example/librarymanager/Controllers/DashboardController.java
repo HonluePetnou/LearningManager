@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 public class DashboardController implements Initializable {
     public BorderPane dash_Parent;
 
+    @SuppressWarnings("unused")
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Model.getModel().getViewFactory().getSidebarSelectedMenuItem().addListener((observable, oldValue, newValue) -> {

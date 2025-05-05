@@ -1,5 +1,5 @@
 module com.example.librarymanager {
-    requires javafx.controls;
+    requires transitive javafx.controls;
     requires javafx.fxml;
     requires java.sql;
     requires java.desktop;

@@ -22,6 +22,7 @@ public class SideController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addListener();
     }
+    @SuppressWarnings("unused")
     private void addListener(){
         dashboardBtn.setOnAction(event -> onDashboard());
         bookBtn.setOnAction(event -> onBooking());
