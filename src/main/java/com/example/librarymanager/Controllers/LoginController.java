@@ -19,6 +19,7 @@ public class LoginController implements Initializable {
     public Label RegistrationRedirect;
     public Label Login_err;
 
+    @SuppressWarnings("unused")
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LoginButton.setOnAction(event -> onLogin());
