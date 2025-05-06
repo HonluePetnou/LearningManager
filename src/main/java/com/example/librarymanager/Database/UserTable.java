@@ -16,13 +16,13 @@ public class UserTable implements Repository<User> {
     private static final String INSERT_USER = "INSERT INTO users (username, password_hash, role , phone , birthdate , gender , address , email) VALUES (?, ?, ?, ?, ?, ?, ? , ?)";
     private static final String UPDATE_USER = "UPDATE users SET username = ?, password_hash = ?, role = ? , phone = ? , birthdate = ? , gender = ? , address = ? , email = ? WHERE user_id = ?";
     private static final String DELETE_USER = "DELETE FROM users WHERE user_id = ?";
-    private static final String SELECT_ALL_USERS = "SELECT * FROM users";
+    private static final String SELECT_ALL_USERS = "SELECT * FROM users where role= ?";
     private static final String AUTHENTICATION_QUERY = "SELECT role, password_hash FROM users WHERE email = ?";
 
     @Override
-    public void create(User user) {
-        try (Connection conn = DatabaseUtils.getConnection();
-                PreparedStatement stmt = conn.prepareStatement(INSERT_USER)) {
+    public void create(User user) throws SQLException {
+             Connection conn = DatabaseUtils.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(INSERT_USER) ;
             stmt.setString(1, user.getFullName());
             String passwordHash = hashpassword.CrypterMotdePasse(user.getPassword());
             stmt.setString(2, passwordHash);
@@ -40,15 +40,14 @@ public class UserTable implements Repository<User> {
             stmt.setString(7, user.getAddress());
             stmt.setString(8, user.getEmail());
             stmt.executeUpdate();
-        } catch (SQLException e) {
-            System.err.println("user-create:"+e);  
-        }
+            stmt.close();
+            conn.close();
     }
 
     @Override
-    public void Update(User user) {
-        try (Connection conn = DatabaseUtils.getConnection();
-                PreparedStatement stmt = conn.prepareStatement(UPDATE_USER)) {
+    public void Update(User user) throws SQLException {
+           Connection conn = DatabaseUtils.getConnection();
+           PreparedStatement stmt = conn.prepareStatement(UPDATE_USER);
             stmt.setString(1, user.getFullName());
             String passwordHash = hashpassword.CrypterMotdePasse(user.getPassword());
             stmt.setString(2, passwordHash);
@@ -61,28 +60,27 @@ public class UserTable implements Repository<User> {
             stmt.setString(8, user.getEmail());
             stmt.setInt(9, user.getUser_id());
             stmt.executeUpdate();
-        } catch (SQLException e) {
-            System.err.println("user-update:"+e);  
-        }
+            stmt.close();
+            conn.close();
     }
 
     @Override
-    public void Delete(int id) {
-        try (Connection conn = DatabaseUtils.getConnection();
-                PreparedStatement stmt = conn.prepareStatement(DELETE_USER)) {
+    public void Delete(int id) throws SQLException {
+        Connection conn = DatabaseUtils.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(DELETE_USER) ; 
             stmt.setInt(1, id);
             stmt.executeUpdate();
-        } catch (SQLException e) {
-            System.err.println("user-delete:"+e);  
-        }
+            stmt.close();
+            conn.close();
     }
 
     @Override
-    public List<User> listAll() {
+    public List<User> listAll() throws SQLException {
         List<User> users = new ArrayList<>();
-        try (Connection conn = DatabaseUtils.getConnection();
+        Connection conn = DatabaseUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(SELECT_ALL_USERS);
-                ResultSet rs = stmt.executeQuery()) {
+                stmt.setString(1, "MEMBER");
+                ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 User user = new User();
                 user.setUser_id(rs.getInt("user_id"));
@@ -95,20 +93,20 @@ public class UserTable implements Repository<User> {
                 }
                 user.setBirthdate(LocalDate.parse(birthdatestr, DateTimeFormatter.ISO_DATE));
                 user.setGender(rs.getString("gender"));
-                user.setAddress("address");
-                user.setEmail("email");
+                user.setAddress(rs.getString("address"));
+                user.setEmail(rs.getString("email"));
                 users.add(user);
             }
-        } catch (SQLException e) {
-            System.err.println("Loan-listAll:"+e);  
-        }
+            rs.close();
+            stmt.close();
+            conn.close();
         return users;
     }
 
-    public static String Authenticate(String email, String password) {
+    public static String Authenticate(String email, String password) throws SQLException {
         String role = null;
-        try (Connection conn = DatabaseUtils.getConnection();
-                PreparedStatement stmt = conn.prepareStatement(AUTHENTICATION_QUERY)) {
+        Connection conn = DatabaseUtils.getConnection();
+        PreparedStatement stmt = conn.prepareStatement(AUTHENTICATION_QUERY);
             stmt.setString(1, email);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
@@ -117,8 +115,11 @@ public class UserTable implements Repository<User> {
                     role = rs.getString("role");
                 }
             }
-        } catch (SQLException e) {
-            System.err.println("user-Authentifier:"+e);  
+            rs.close();
+            stmt.close();
+            conn.close();
+        if (role == null) {
+            throw new SQLException("Invalid email or password");
         }
         return role;
     }
