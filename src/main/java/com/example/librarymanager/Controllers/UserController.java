@@ -1,5 +1,6 @@
 package com.example.librarymanager.Controllers;
 
+import com.example.librarymanager.Database.UserTable;
 import com.example.librarymanager.Models.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,7 +11,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class UserController implements Initializable {
@@ -36,6 +40,9 @@ public class UserController implements Initializable {
     @FXML private RadioButton femaleRadio;
     @FXML private TextField searchField;
 
+   private  UserTable userTable = new UserTable();
+   private  int numberOfUsers = 0;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Initialize gender selection
@@ -44,7 +51,7 @@ public class UserController implements Initializable {
         femaleRadio.setToggleGroup(genderGroup);
 
         // Configure table columns
-        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        idCol.setCellValueFactory(new PropertyValueFactory<>("user_id"));
         fullNameCol.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
         phoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
@@ -53,7 +60,8 @@ public class UserController implements Initializable {
         addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
 
         // Load initial data
-        userTableView.setItems(User.getInitialList());
+        numberOfUsers = getInitialList().size();
+        userTableView.setItems(getInitialList());
     }
 
     @FXML
@@ -77,6 +85,13 @@ public class UserController implements Initializable {
 
             // Create and add new user
             User newUser = new User(firstName, lastName, email, phone, birthdate, gender, address);
+            // add to database
+            newUser.setRole("MEMBER");
+            newUser.setPassword("defaultpassword");
+            userTable.create(newUser);
+            // add to table view
+            numberOfUsers++;
+            newUser.setUser_id(numberOfUsers);
             userTableView.getItems().add(newUser);
 
             // Clear form
@@ -84,7 +99,11 @@ public class UserController implements Initializable {
 
         } catch (NumberFormatException e) {
             showAlert("Error", "Please enter a valid phone number");
-        } catch (Exception e) {
+        } 
+        catch(SQLException e){
+            showAlert("Error ", "ADD NEW USER  FAIL");
+        }
+        catch (Exception e) {
             showAlert("Error", e.getMessage());
         }
     }
@@ -93,7 +112,7 @@ public class UserController implements Initializable {
     private void handleSearch(ActionEvent event) {
         String searchText = searchField.getText().toLowerCase();
         if (searchText.isEmpty()) {
-            userTableView.setItems(User.getInitialList());
+            userTableView.setItems(getInitialList());
             return;
         }
 
@@ -126,4 +145,21 @@ public class UserController implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    private ObservableList<User> getInitialList() {
+        ObservableList<User> users = FXCollections.observableArrayList();
+        try {
+            List<User> userList = new ArrayList<>();
+            userList = userTable.listAll();
+            for (User user : userList) {
+                users.add(user);
+            }
+          } catch (SQLException e) {
+            showAlert("Error", "FAIL TO FETCH DATA ");
+          }   
+          catch (Exception e){
+            showAlert("Error", "FAIL TO FETCH DATA :"+e.getMessage());
+          }
+          return users;
+        }    
 }

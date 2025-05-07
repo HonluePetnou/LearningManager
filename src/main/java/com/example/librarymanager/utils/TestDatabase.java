@@ -68,14 +68,31 @@ public class TestDatabase {
                 newUser.setPassword(password);
                 newUser.setRole(role);
                 newUser.setEmail(email);
+               try {
                 userTable.create(newUser);
+               } catch (Exception e) {
+                System.out.println("Error creating user: " + e.getMessage());
+                return;
+               }
                 System.out.println("User created.");
                 break;
             case 2:
+               try {
                 List<User> users = userTable.listAll();
-                for (int i = 0; i < users.size(); i++) {
-                    System.out.println(users.get(i).getFullName());
+                 // users.forEach(System.out::println);
+                 System.out.println("List of users:");
+                 if (users.isEmpty()) {
+                     System.out.println("No users found.");
+                     return;
                 }
+                 for (int i = 0; i < users.size(); i++) {
+                     System.out.println(users.get(i).getFullName());
+                 }
+               } catch (Exception e) {
+                System.out.println("Error listing users: " + e.getMessage());
+                return;
+               }
+               
                 break;
             case 3:
                 System.out.println("Enter user ID to update:");
@@ -92,13 +109,23 @@ public class TestDatabase {
                 updatedUser.setFullName(newUsername);
                 updatedUser.setPassword(newPassword);
                 updatedUser.setRole(newRole);
+               try {
                 userTable.Update(updatedUser);
+               } catch (Exception e) {
+                System.out.println("Error updating user: " + e.getMessage());
+                return;
+               }
                 System.out.println("User updated.");
                 break;
             case 4:
                 System.out.println("Enter user ID to delete:");
                 int deleteUserId = scanner.nextInt();
+               try {
                 userTable.Delete(deleteUserId);
+               } catch (Exception e) {
+                System.out.println("Error deleting user: " + e.getMessage());
+                return;
+               }
                 System.out.println("User deleted.");
                 break;
             case 5:
@@ -106,8 +133,18 @@ public class TestDatabase {
                 String authUsername = scanner.nextLine();
                 System.out.println("Enter password:");
                 String authPassword = scanner.nextLine();
+               try {
                 String authRole = UserTable.Authenticate(authUsername, authPassword);
+                if (authRole == null) {
+                    System.out.println("Authentication failed.");
+                    return;
+               }
                 System.out.println("Authenticated role: " + authRole);
+               } catch (Exception e) {
+                System.out.println("Error authenticating user: " + e.getMessage());
+                return;
+               }
+               
                 break;
             default:
                 System.out.println("Invalid choice.");
