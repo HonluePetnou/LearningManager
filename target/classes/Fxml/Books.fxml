@@ -13,21 +13,21 @@
 
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="800.0" styleClass="root" stylesheets="@../Styles/Book.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.BookController">
    <center>
-      <ScrollPane prefHeight="400.0" prefWidth="369.0" BorderPane.alignment="CENTER" fitToHeight="true" fitToWidth="true">
+      <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="600.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <content>
-            <GridPane fx:id="bookGrid">
+            <GridPane fx:id="bookGrid" hgap="15" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="15">
               <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                <RowConstraints maxHeight="300" minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
               </rowConstraints>
                <padding>
-                  <Insets left="10.0" right="10.0" top="10.0" bottom="10.0" />
+                  <Insets left="10.0" top="20.0" />
                </padding>
             </GridPane>
          </content>
       </ScrollPane>
    </center>
    <left>
-      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="400.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="400.0" spacing="15.0" BorderPane.alignment="CENTER">
          <children>
              <Label styleClass="form-title" text="Ajouter un Livre" />
 
@@ -51,15 +51,17 @@
 
              <Label styleClass="labeled" text="Copies disponibles:" />
              <TextField fx:id="availableCopiesField" promptText="Disponibles" />
-            <HBox>
+             <Label styleClass="labeled" text="Image Name:" />
+             <TextField fx:id="imageNameField" promptText="Enter image file name (e.g. book1.jpg)" />
+            <HBox alignment="TOP_CENTER" VBox.vgrow="ALWAYS">
                <children>
       
-                   <Label maxWidth="1.7976931348623157E308" styleClass="labeled" text="Image:" HBox.hgrow="ALWAYS" />
-                   <Button fx:id="chooseImageButton" onAction="#handleChooseImage" styleClass="primary-button" text="Choisir Une Image" />
+                   <Button fx:id="addBookButton" maxWidth="1.7976931348623157E308" onAction="#handleAddBook" prefHeight="30.0" prefWidth="200.0" styleClass="final-button" text="Ajouter Livre" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="10.0" right="10.0" top="10.0" />
+                     </padding></Button>
                </children>
             </HBox>
-
-             <Button fx:id="addBookButton" onAction="#handleAddBook" prefHeight="30.0" prefWidth="281.0" styleClass="final-button" text="Ajouter Livre" />
 
          </children>
          <padding>

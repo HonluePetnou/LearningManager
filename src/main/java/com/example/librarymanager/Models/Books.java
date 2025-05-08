@@ -1,5 +1,7 @@
 package com.example.librarymanager.Models;
 
+import java.util.Objects;
+
 public class Books {
     private int book_id;
     private String title;
@@ -54,4 +56,53 @@ public class Books {
 
     public String getImage_path() { return image_path; }
     public void setImage_path(String image_path) { this.image_path = image_path; }
+
+    // Method to handle string category input
+    public void setCategory(String category) {
+        // TODO: Implement category to category_id mapping
+        // For now, setting a default category_id
+        this.category_id = 1;
+    }
+
+    // Method to handle string year input
+    public void setYear(String year) {
+        try {
+            this.published_year = Integer.parseInt(year);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Invalid year format");
+        }
+    }
+
+    // Method to handle string total copies input
+    public void setTotal_copies(String totalCopies) {
+        try {
+            this.copies_total = Integer.parseInt(totalCopies);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Invalid total copies format");
+        }
+    }
+
+    // Method to handle string available copies input
+    public void setAvailable_copies(String availableCopies) {
+        try {
+            this.copies_available = Integer.parseInt(availableCopies);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Invalid available copies format");
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Books books = (Books) o;
+        return Objects.equals(title, books.title) &&
+               Objects.equals(author, books.author) &&
+               Objects.equals(isbn, books.isbn);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, author, isbn);
+    }
 }
