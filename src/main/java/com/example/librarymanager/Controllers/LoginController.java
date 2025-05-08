@@ -25,6 +25,7 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LoginButton.setOnAction(event -> onLogin());
+        RegistrationRedirect.setOnMouseClicked(event -> RegistrationRedirectOnAction());
         Login_err.setText("");
     }
 
@@ -43,5 +44,11 @@ public class LoginController implements Initializable {
        }   
         Model.getModel().getViewFactory().closeStage(stage);
         Model.getModel().getViewFactory().showDashboardWindow();
+    }
+
+   private void RegistrationRedirectOnAction(){
+    Stage stage = (Stage) Login_err.getScene().getWindow();
+    Model.getModel().getViewFactory().closeStage(stage);
+    Model.getModel().getViewFactory().showRegistrationWindow();
     }
 }

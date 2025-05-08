@@ -1,17 +1,22 @@
 package com.example.librarymanager.Controllers;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 import com.example.librarymanager.Database.UserTable;
+import com.example.librarymanager.Models.Model;
 import com.example.librarymanager.Models.User;
 
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import com.example.librarymanager.utils.Alertmessage;
 
-public class RegistrationController {
+public class RegistrationController implements Initializable{
     public Button RegisterButton;
     public Label LogInRedirect;
     public Label DoubleAuthentification;
@@ -19,6 +24,14 @@ public class RegistrationController {
     public PasswordField RegistrationPassword;
     public TextField RegistrationIdentifier;
     public TextField Username;
+
+     @SuppressWarnings("unused")
+     @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        LogInRedirect.setOnMouseClicked(event -> LogInRedirectOnAction());
+        RegisterButton.setOnAction(event -> RegisterButtonOnAction());
+    }
+
    
     public void RegisterButtonOnAction() {
         String username = Username.getText().trim();
@@ -40,6 +53,7 @@ public class RegistrationController {
         user.setFullName(username);
         user.setPassword(confirmedPassword);
         user.setEmail(email);
+        user.setRole("ADMIN");
         UserTable userTable = new UserTable() ;
         userTable.create(user);
       }catch(SQLException e){
@@ -54,7 +68,9 @@ public class RegistrationController {
       }
       LogInRedirectOnAction();
     }
-    public void LogInRedirectOnAction() {
-        // Redirect to login page
+    private void LogInRedirectOnAction() {
+        Stage stage = (Stage) LogInRedirect.getScene().getWindow();
+          Model.getModel().getViewFactory().closeStage(stage);
+        Model.getModel().getViewFactory().showLoginWindow();
     }
 }

@@ -18,7 +18,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         try {
-            Model.getModel().getViewFactory().showLoginWindow();
+            Model.getModel().getViewFactory().showRegistrationWindow();
         } catch (Exception e) {
             System.err.println("Error starting application: " + e.getMessage());
             e.printStackTrace();
