@@ -1,5 +1,5 @@
 --
--- Fichier généré par SQLiteStudio v3.4.4 sur lun. mai 5 13:17:02 2025
+-- Fichier généré par SQLiteStudio v3.4.4 sur mar. mai 6 07:16:26 2025
 --
 -- Encodage texte utilisé : UTF-8
 --
@@ -41,8 +41,11 @@ CREATE TABLE IF NOT EXISTS loans (
 );
 
 -- Tableau : users
-CREATE TABLE IF NOT EXISTS users (user_id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL UNIQUE, password_hash TEXT NOT NULL, role TEXT NOT NULL CHECK (role IN ('ADMIN', 'MEMBER')), created_at DATE DEFAULT (datetime('now')), phone INTEGER, birthdate TEXT, gender TEXT, address TEXT, email TEXT NOT NULL UNIQUE);
-
+CREATE TABLE IF NOT EXISTS users (user_id INTEGER PRIMARY KEY ASC AUTOINCREMENT, username TEXT NOT NULL UNIQUE, password_hash TEXT NOT NULL, role TEXT NOT NULL CHECK (role IN ('ADMIN', 'MEMBER')), created_at DATE DEFAULT (datetime('now')), phone INTEGER, birthdate TEXT, gender TEXT CHECK (gender IN ('Male', 'Female')), address TEXT, email TEXT NOT NULL UNIQUE);
+INSERT INTO users (user_id, username, password_hash, role, created_at, phone, birthdate, gender, address, email) VALUES (1, 'admin', '$2a$12$bhaJOc2G83.9.OX4w1wwkuaRFkxwvcIFb7JQ9EQCABVzewLVh6nSK', 'ADMIN', '2025-04-25 20:22:30', 0, '1700-01-01', NULL, NULL, 'admin@mail.com');
+INSERT INTO users (user_id, username, password_hash, role, created_at, phone, birthdate, gender, address, email) VALUES (2, 'Chris james', '$2a$12$wJfpFT9ulr12FA6SEN/cgOkDBGhbEcVNC.LB3agCRXHFxeWDLk4cW', 'MEMBER', '2025-05-06 02:42:43', 699123456, '1995-06-12', 'Male', 'Douala', 'chris@mail.com');
+INSERT INTO users (user_id, username, password_hash, role, created_at, phone, birthdate, gender, address, email) VALUES (3, 'Anna Smith', '$2a$12$Ec4uveRy0eXZPDKH1b35SOMFLYu30YlSYEBGoYsBFq7YE4OliUqPO', 'MEMBER', '2025-05-06 02:43:37', 678987654, '1998-03-22', 'Female', 'Yaounde', 'anna@mail.com');
+INSERT INTO users (user_id, username, password_hash, role, created_at, phone, birthdate, gender, address, email) VALUES (4, 'Jake Brown', '$2a$12$Pe3PIUCQu5/uZIYIaAIpde.5IU3tKVVvZ7i.YktSDJB2SuQyE28M.', 'MEMBER', '2025-05-06 02:44:34', 690456789, '1992-11-07', 'Male', 'Bafoussam', 'jake@mail.com');
 
 -- Index : idx_books_title
 CREATE INDEX IF NOT EXISTS idx_books_title ON books(title);
@@ -56,14 +59,12 @@ CREATE INDEX IF NOT EXISTS idx_loans_book ON loans(book_id);
 -- Index : idx_loans_user_status
 CREATE INDEX IF NOT EXISTS idx_loans_user_status ON loans(user_id, status);
 
--- Index : idx_users_username
-CREATE INDEX IF NOT EXISTS idx_users_username ON users (username);
+-- Index : idx_users_email
+CREATE UNIQUE INDEX IF NOT EXISTS idx_users_email ON users (email);
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
 -- =========================================================
---  Seed data
+--  ADMIN INDENTIFIER
 -- =========================================================
--- BCrypt hash for password "admin123"
-INSERT INTO users (user_id, username, password_hash, role, created_at, phone, birthdate, gender, address, email)
- VALUES (1, 'admin', '$2a$12$mSx4fNg1cqiXrHyCcSNqbO/vlv5k9yHp7jRTd/8x3y30eh3x9MJvS', 'ADMIN', '2025-04-25 20:22:30', NULL, NULL, NULL, NULL, 'admin123@gmail.com');
+--  password "admin123" Username "admin@mail.com" 

@@ -1,10 +1,8 @@
 package com.example.librarymanager.Views;
 
-import com.example.librarymanager.Controllers.DashController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -86,6 +84,21 @@ public class ViewFactory {
             System.err.println("Error showing login window: " + e.getMessage());
             e.printStackTrace();
             showErrorDialog("Login Error", "Failed to load login window", e.getMessage());
+        }
+    }
+    public void showRegistrationWindow() {
+        try {
+            URL resourceUrl = getClass().getResource("/Fxml/Registration.fxml");
+            if (resourceUrl == null) {
+                System.err.println("Error: Could not find Registration.fxml resource");
+                throw new IOException("Registration.fxml resource not found");
+            }
+            FXMLLoader fxmlLoader = new FXMLLoader(resourceUrl);
+            createStage(fxmlLoader);
+        } catch (Exception e) {
+            System.err.println("Error showing Registration window: " + e.getMessage());
+            e.printStackTrace();
+            showErrorDialog("Registration Error", "Failed to load Registration window", e.getMessage());
         }
     }
     public void showDashboardWindow() {

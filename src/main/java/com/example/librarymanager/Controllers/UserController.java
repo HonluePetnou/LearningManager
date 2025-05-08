@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.example.librarymanager.utils.Alertmessage;
+
 public class UserController implements Initializable {
 
     @FXML private TableView<User> userTableView;
@@ -79,7 +81,7 @@ public class UserController implements Initializable {
             // Validate required fields
             if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() ||
                     address.isEmpty() || birthdate == null) {
-                showAlert("Error", "All fields are required");
+                Alertmessage.showAlert("Error", "All fields are required");
                 return;
             }
 
@@ -98,13 +100,13 @@ public class UserController implements Initializable {
             clearFormFields();
 
         } catch (NumberFormatException e) {
-            showAlert("Error", "Please enter a valid phone number");
+            Alertmessage.showAlert("Error", "Please enter a valid phone number");
         } 
         catch(SQLException e){
-            showAlert("Error ", "ADD NEW USER  FAIL");
+            Alertmessage.showAlert("Error ", "ADD NEW USER  FAIL");
         }
         catch (Exception e) {
-            showAlert("Error", e.getMessage());
+            Alertmessage.showAlert("Error", e.getMessage());
         }
     }
 
@@ -138,13 +140,7 @@ public class UserController implements Initializable {
         genderGroup.selectToggle(null);
     }
 
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
+  
 
     private ObservableList<User> getInitialList() {
         ObservableList<User> users = FXCollections.observableArrayList();
@@ -155,10 +151,10 @@ public class UserController implements Initializable {
                 users.add(user);
             }
           } catch (SQLException e) {
-            showAlert("Error", "FAIL TO FETCH DATA ");
+            Alertmessage.showAlert("Error", "FAIL TO FETCH DATA ");
           }   
           catch (Exception e){
-            showAlert("Error", "FAIL TO FETCH DATA :"+e.getMessage());
+            Alertmessage.showAlert("Error", "FAIL TO FETCH DATA :"+e.getMessage());
           }
           return users;
         }    
