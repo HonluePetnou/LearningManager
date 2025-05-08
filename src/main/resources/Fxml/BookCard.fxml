@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="300.0" prefWidth="125.0" styleClass="book-card" stylesheets="@../Styles/Book.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.BookCardController">
+   <children>
+      <ImageView fx:id="bookImage" fitWidth="202.0" styleClass="book-image" VBox.vgrow="ALWAYS">
+         <image>
+            <Image url="@../Images/book1.jpg" />
+         </image></ImageView>
+      <VBox alignment="CENTER_LEFT" spacing="4.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label fx:id="bookTitle" styleClass="book-title" text="Book Title" />
+            <Label fx:id="bookAuthor" styleClass="book-author" text="Author Name" textAlignment="JUSTIFY" VBox.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </Label>
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="book-button" text="More" VBox.vgrow="ALWAYS">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="PLUS" />
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</VBox>
