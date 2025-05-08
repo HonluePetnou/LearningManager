@@ -17,7 +17,21 @@ public class DatabaseUtils {
     }
 
     public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(DB_URL);
+        try {
+            Connection conn = DriverManager.getConnection(DB_URL);
+            // Enable foreign keys for SQLite
+            try (java.sql.Statement stmt = conn.createStatement()) {
+                stmt.execute("PRAGMA foreign_keys = ON");
+            } catch (SQLException e) {
+                System.err.println("Failed to enable foreign keys: " + e.getMessage());
+                // Continue even if this fails
+            }
+            return conn;
+        } catch (SQLException e) {
+            System.err.println("Failed to get database connection: " + e.getMessage());
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     public static void closeConnection(Connection conn) {
@@ -25,7 +39,7 @@ public class DatabaseUtils {
             try {
                 conn.close();
             } catch (SQLException e) {
-                System.err.println("DatabaseUtils:"+e);
+                System.err.println("Error closing connection: " + e.getMessage());
             }
         }
     }

@@ -16,6 +16,7 @@ public class DashboardController implements Initializable {
         Model.getModel().getViewFactory().getSidebarSelectedMenuItem().addListener((observable, oldValue, newValue) -> {
             switch (newValue) {
                 case "Users" -> dash_Parent.setCenter(Model.getModel().getViewFactory().getUsersView());
+                case "Books" -> dash_Parent.setCenter(Model.getModel().getViewFactory().getBooksView());
                 default -> dash_Parent.setCenter(Model.getModel().getViewFactory().getDashboardView());
             }
         });

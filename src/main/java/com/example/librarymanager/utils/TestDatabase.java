@@ -174,14 +174,28 @@ public class TestDatabase {
                 newLoan.setBookId(bookId);
                 newLoan.setUserId(userId);
                 newLoan.setDueAt(dueDate);
-                loanTable.create(newLoan);
-                System.out.println("Loan created.");
+                try {
+                    loanTable.create(newLoan);
+                    System.out.println("Loan created.");
+                } catch (Exception e) {
+                    System.out.println("Error creating loan: " + e.getMessage());
+                }
                 break;
             case 2:
-                List<Loan> loans = loanTable.listAll();
-                // loans.forEach(System.out::println);
-                for (int i = 0; i < loans.size(); i++) {
-                    System.out.println(loans.get(i).getBorrowedAt());
+                try {
+                    List<Loan> loans = loanTable.listAll();
+                    // loans.forEach(System.out::println);
+                    if (loans.isEmpty()) {
+                        System.out.println("No loans found.");
+                    } else {
+                        for (int i = 0; i < loans.size(); i++) {
+                            System.out.println("Loan ID: " + loans.get(i).getLoanId() + 
+                                             ", Borrowed At: " + loans.get(i).getBorrowedAt() + 
+                                             ", Status: " + loans.get(i).getStatus());
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println("Error listing loans: " + e.getMessage());
                 }
                 break;
             case 3:
@@ -197,14 +211,22 @@ public class TestDatabase {
                 updatedLoan.setLoanId(loanId);
                 updatedLoan.setStatus(status);
                 updatedLoan.setReturnedAt(returnedDate);
-                loanTable.Update(updatedLoan);
-                System.out.println("Loan updated.");
+                try {
+                    loanTable.Update(updatedLoan);
+                    System.out.println("Loan updated.");
+                } catch (Exception e) {
+                    System.out.println("Error updating loan: " + e.getMessage());
+                }
                 break;
             case 4:
                 System.out.println("Enter loan ID to delete:");
                 int deleteLoanId = scanner.nextInt();
-                loanTable.Delete(deleteLoanId);
-                System.out.println("Loan deleted.");
+                try {
+                    loanTable.Delete(deleteLoanId);
+                    System.out.println("Loan deleted.");
+                } catch (Exception e) {
+                    System.out.println("Error deleting loan: " + e.getMessage());
+                }
                 break;
             default:
                 System.out.println("Invalid choice.");
@@ -246,14 +268,26 @@ public class TestDatabase {
                 newBook.setPublished_year(publishedYear);
                 newBook.setCopies_total(copiesTotal);
                 newBook.setCopies_available(copiesAvailable);
-                booksTable.create(newBook);
-                System.out.println("Book added.");
+                try {
+                    booksTable.create(newBook);
+                    System.out.println("Book added.");
+                } catch (Exception e) {
+                    System.out.println("Error adding book: " + e.getMessage());
+                }
                 break;
             case 2:
-                List<Books> books = booksTable.listAll();
-                // books.forEach(System.out::println);
-                for (int i = 0; i < books.size(); i++) {
-                   System.out.println( books.get(i).getAuthor());
+                try {
+                    List<Books> books = booksTable.listAll();
+                    // books.forEach(System.out::println);
+                    if (books.isEmpty()) {
+                        System.out.println("No books found.");
+                    } else {
+                        for (int i = 0; i < books.size(); i++) {
+                            System.out.println("Title: " + books.get(i).getTitle() + ", Author: " + books.get(i).getAuthor());
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println("Error listing books: " + e.getMessage());
                 }
                 break;
             case 3:
@@ -284,14 +318,22 @@ public class TestDatabase {
                         updatedBook.setPublished_year(newPublishedYear);
                         updatedBook.setCopies_total(newCopiesTotal);
                         updatedBook.setCopies_available(newCopiesAvailable);
-                booksTable.Update(updatedBook);
-                System.out.println("Book updated.");
+                try {
+                    booksTable.Update(updatedBook);
+                    System.out.println("Book updated.");
+                } catch (Exception e) {
+                    System.out.println("Error updating book: " + e.getMessage());
+                }
                 break;
             case 4:
                 System.out.println("Enter book ID to delete:");
                 int deleteBookId = scanner.nextInt();
-                booksTable.Delete(deleteBookId);
-                System.out.println("Book deleted.");
+                try {
+                    booksTable.Delete(deleteBookId);
+                    System.out.println("Book deleted.");
+                } catch (Exception e) {
+                    System.out.println("Error deleting book: " + e.getMessage());
+                }
                 break;
             case 5:
                 System.out.println("Enter title to search (use % for wildcards):");
@@ -300,8 +342,16 @@ public class TestDatabase {
                 String searchCategory = scanner.nextLine();
                 System.out.println("Enter author to search (use % for wildcards):");
                 String searchAuthor = scanner.nextLine();
-                List<Books> searchResults = booksTable.search(searchTitle, searchCategory, searchAuthor);
-                searchResults.forEach(System.out::println);
+                try {
+                    List<Books> searchResults = booksTable.search(searchTitle, searchCategory, searchAuthor);
+                    if (searchResults.isEmpty()) {
+                        System.out.println("No books found matching your search criteria.");
+                    } else {
+                        searchResults.forEach(System.out::println);
+                    }
+                } catch (Exception e) {
+                    System.out.println("Error searching books: " + e.getMessage());
+                }
                 break;
             default:
                 System.out.println("Invalid choice.");

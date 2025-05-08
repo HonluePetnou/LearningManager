@@ -16,7 +16,7 @@ public class BooksTable implements Repository<Books> {
     private static final String QUERY_DELETE_BOOK = "DELETE FROM books WHERE book_id = ?;";
 
     @Override
-    public void create(Books book) {
+    public void create(Books book) throws SQLException {
         try (Connection conn = DatabaseUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(QUERY_ADD_BOOK)) {
             stmt.setString(1, book.getTitle());
@@ -29,11 +29,12 @@ public class BooksTable implements Repository<Books> {
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.err.println("BooksTable-create:"+e);
+            throw e;
         }
     }
 
     @Override      
-    public void Update(Books book) {
+    public void Update(Books book) throws SQLException {
         try (Connection conn = DatabaseUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(QUERY_UPDATE_BOOK)) 
              {
@@ -45,25 +46,27 @@ public class BooksTable implements Repository<Books> {
             stmt.setInt(6, book.getCopies_total());
             stmt.setInt(7, book.getCopies_available());
             stmt.setInt(8, book.getBook_id());          
-              stmt.executeUpdate();        } 
-              catch (SQLException e) {           
-                System.err.println("BooksTable-update:"+e);     
-                 }   
-                  }
+            stmt.executeUpdate();
+        } catch (SQLException e) {           
+            System.err.println("BooksTable-update:"+e);
+            throw e;     
+        }   
+    }
 
     @Override
-    public void Delete(int id) {
+    public void Delete(int id) throws SQLException {
         try (Connection conn = DatabaseUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(QUERY_DELETE_BOOK)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            System.err.println("BooksTable-Delete:"+e);    
+            System.err.println("BooksTable-Delete:"+e);
+            throw e;    
         }
     }
 
     @Override
-    public List<Books> listAll() {
+    public List<Books> listAll() throws SQLException {
         List<Books> books = new ArrayList<>();
         try (Connection conn = DatabaseUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(QUERY_LIST_ALL_BOOKS);
@@ -81,12 +84,13 @@ public class BooksTable implements Repository<Books> {
                 books.add(book);
             }
         } catch (SQLException e) {
-            System.err.println("BooksTable-listAll:"+e);  
+            System.err.println("BooksTable-listAll:"+e);
+            throw e;  
         }
         return books;
     }
 
-    public List<Books> search(String title, String category, String author) {
+    public List<Books> search(String title, String category, String author) throws SQLException {
         List<Books> books = new ArrayList<>();
         try (Connection conn = DatabaseUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(QUERY_SEARCH_BOOKS)) {
@@ -107,10 +111,11 @@ public class BooksTable implements Repository<Books> {
                 books.add(book);
             }
         } catch (SQLException e) {
-            System.err.println("BooksTable-search:"+e);  
+            System.err.println("BooksTable-search:"+e);
+            throw e;  
         }
         return books;
     }
 
    
-} 
+}
