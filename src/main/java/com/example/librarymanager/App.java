@@ -18,14 +18,14 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         try {
-            Model.getModel().getViewFactory().showRegistrationWindow();
+            Model.getModel().getViewFactory().showLoginWindow();
         } catch (Exception e) {
             System.err.println("Error starting application: " + e.getMessage());
             e.printStackTrace();
             throw e;
         }
     }
-    
+
     public static void main(String[] args) {
         launch(args);
     }
