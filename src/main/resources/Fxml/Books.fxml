@@ -40,8 +40,8 @@
              <Label styleClass="labeled" text="ISBN:" />
              <TextField fx:id="isbnField" promptText="ISBN" />
 
-             <Label styleClass="labeled" text="Catégorie ID:" />
-             <TextField fx:id="categoryField" promptText="ID Catégorie" />
+             <Label styleClass="labeled" text="Catégorie :" />
+             <TextField fx:id="categoryField" promptText="Catégorie" />
 
              <Label styleClass="labeled" text="Année de publication:" />
              <TextField fx:id="yearField" promptText="Année" />
