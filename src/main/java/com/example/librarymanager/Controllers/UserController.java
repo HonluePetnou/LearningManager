@@ -29,6 +29,7 @@ public class UserController implements Initializable {
     @FXML private TableColumn<User, LocalDate> birthdateCol;
     @FXML private TableColumn<User, String> genderCol;
     @FXML private TableColumn<User, String> addressCol;
+    @FXML private TableColumn<User, Boolean> deleteCol;
 
     // Match these with FXML field names
     @FXML private TextField authorField;      // First Name
@@ -60,6 +61,34 @@ public class UserController implements Initializable {
         birthdateCol.setCellValueFactory(new PropertyValueFactory<>("birthdate"));
         genderCol.setCellValueFactory(new PropertyValueFactory<>("gender"));
         addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
+
+        deleteCol.setCellFactory(_ -> new TableCell<>() {
+            private final Button deleteButton = new Button("❌");
+
+            {
+                deleteButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
+
+                deleteButton.setOnAction(_ -> {
+                    User user = getTableView().getItems().get(getIndex());
+                    userTableView.getItems().remove(user);
+                    try {
+                        userTable.Delete(user.getUser_id());
+                    } catch (SQLException e) {
+                        Alertmessage.showAlert("Error", "Failed to delete user: " + e.getMessage());
+                    }
+                });
+            }
+
+            @Override
+            protected void updateItem(Boolean item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(deleteButton);
+                }
+            }
+        });
 
         // Load initial data
         numberOfUsers = getInitialList().size();

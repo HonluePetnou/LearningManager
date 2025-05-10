@@ -27,6 +27,7 @@
                 <TableColumn fx:id="birthdateCol" prefWidth="100.0" text="Birthdate" />
                 <TableColumn fx:id="genderCol" prefWidth="80.0" text="Gender" />
                 <TableColumn fx:id="addressCol" prefWidth="150.0" text="Address" />
+            <TableColumn fx:id="deleteCol" prefWidth="50.0" />
             </columns>
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
