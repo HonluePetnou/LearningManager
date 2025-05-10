@@ -1,0 +1,59 @@
+.title-label {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+}
+
+.grid-pane {
+    -fx-padding: 20;
+}
+
+.loan-card {
+    -fx-background-color: white;
+    -fx-background-radius: 8px;
+    -fx-padding: 15px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 8, 0.2, 0, 4);
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 8px;
+}
+
+.loan-card:hover{
+        -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.35), 12, 0.25, 0, 6);
+        -fx-cursor: hand;
+}
+
+.loan-card-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333;
+}
+
+.loan-card-label-italic {
+    -fx-font-size: 13px;
+    -fx-font-style: italic;
+    -fx-text-fill: #555;
+}
+
+.loan-status {
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+
+.loan-status.green {
+    -fx-text-fill: green;
+}
+
+.loan-status.red {
+    -fx-text-fill: red;
+}
+
+.loan-card-button {
+    -fx-background-color: #4838d1;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-padding: 5 10;
+    -fx-cursor: hand;
+}
+
+.loan-card-button:hover {
+    -fx-background-color: #15104e;
+}
