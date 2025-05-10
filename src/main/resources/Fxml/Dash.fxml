@@ -30,8 +30,8 @@
             <children>
                <VBox>
                   <children>
-                     <Label styleClass="main-label" text="Hi Musa" />
-                     <Label styleClass="main-date" text="jan 12 2025 | thursday 12:00 AM" />
+                     <Label fx:id="username" styleClass="main-label" text="Hi Musa" />
+                     <Label fx:id="localdate" styleClass="main-date" text="jan 12 2025 | thursday 12:00 AM" />
                   </children>
                </VBox>
             </children>

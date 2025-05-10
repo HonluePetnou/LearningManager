@@ -34,7 +34,6 @@ public class BookCardController {
             bookAuthor.setText(books.getAuthor());
         } catch (Exception e) {
             System.err.println("Error setting book data: " + e.getMessage());
-            e.printStackTrace();
         }
     }
 }

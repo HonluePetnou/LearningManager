@@ -14,6 +14,7 @@ public class BooksTable implements Repository<Books> {
     private static final String QUERY_ADD_BOOK = "INSERT INTO books (title, author, isbn, category_id, published_year, copies_total, copies_available,image_path) VALUES (?, ?, ?, ?, ?, ?, ?,?);";
     private static final String QUERY_UPDATE_BOOK = "UPDATE books SET title = ?, author = ?, isbn = ?, category_id = ?, published_year = ?, copies_total = ?, copies_available = ? , image_path = ? WHERE book_id = ?;";
     private static final String QUERY_DELETE_BOOK = "DELETE FROM books WHERE book_id = ?;";
+    private static final String COUNT_BOOKS = "SELECT COUNT(*) FROM books;";
 
     @Override
     public void create(Books book) throws SQLException {
@@ -109,4 +110,19 @@ public class BooksTable implements Repository<Books> {
             conn.close();
         return books;
     }   
+
+    @Override
+    public int Count() throws SQLException {
+        Connection conn = DatabaseUtils.getConnection();
+        PreparedStatement stmt = conn.prepareStatement(COUNT_BOOKS);
+        ResultSet rs = stmt.executeQuery();
+        int count = 0;
+        if (rs.next()) {
+            count = rs.getInt(1);
+        }
+        rs.close();
+        stmt.close();
+        conn.close();
+        return count;
+    }
 }

@@ -134,7 +134,7 @@ public class TestDatabase {
                 System.out.println("Enter password:");
                 String authPassword = scanner.nextLine();
                try {
-                String authRole = UserTable.Authenticate(authUsername, authPassword);
+                String authRole = UserTable.Authenticate(authUsername, authPassword).getRole();
                 if (authRole == null) {
                     System.out.println("Authentication failed.");
                     return;

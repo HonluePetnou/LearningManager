@@ -15,6 +15,7 @@ public class CategoryTable implements Repository<Category> {
     private static final String QUERY_ADD_CATEGORY = "INSERT INTO category (name) VALUES (?);";
     private static final String QUERY_UPDATE_CATEGORY = "UPDATE category SET name = ? WHERE category_id = ?;";
     private static final String QUERY_DELETE_CATEGORY = "DELETE FROM category WHERE category_id = ?;";
+    private static final String COUNT_CATEGORIES = "SELECT COUNT(*) FROM category;";
 
     @Override
     public void create(Category category) throws SQLException {
@@ -63,5 +64,20 @@ public class CategoryTable implements Repository<Category> {
     stmt.close();
     conn.close();
     return categories;
+   }
+
+   @Override
+   public int Count() throws SQLException {
+       Connection conn = DatabaseUtils.getConnection();
+       PreparedStatement stmt = conn.prepareStatement(COUNT_CATEGORIES);
+       ResultSet rs = stmt.executeQuery();
+       int count = 0;
+       if (rs.next()) {
+           count = rs.getInt(1);
+       }
+       rs.close();
+       stmt.close();
+       conn.close();
+       return count;
    }
 }

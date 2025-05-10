@@ -17,7 +17,8 @@ public class UserTable implements Repository<User> {
     private static final String UPDATE_USER = "UPDATE users SET username = ?, password_hash = ?, role = ? , phone = ? , birthdate = ? , gender = ? , address = ? , email = ? WHERE user_id = ?";
     private static final String DELETE_USER = "DELETE FROM users WHERE user_id = ?";
     private static final String SELECT_ALL_USERS = "SELECT * FROM users where role= ?";
-    private static final String AUTHENTICATION_QUERY = "SELECT role, password_hash FROM users WHERE email = ?";
+    private static final String AUTHENTICATION_QUERY = "SELECT role, password_hash , username , user_id , email FROM users WHERE email = ?";
+    private static final String COUNT_USERS_BY_ROLE = "SELECT COUNT(*) FROM users WHERE role = 'MEMBER'";
 
     @Override
     public void create(User user) throws SQLException {
@@ -30,7 +31,7 @@ public class UserTable implements Repository<User> {
             stmt.setInt(4, user.getPhone());
             String birthdateparse ;
             if( user.getBirthdate() == null){
-                birthdateparse   = "1700-01-01" ;
+                birthdateparse   = null ;
             }
             else{
                 birthdateparse =user.getBirthdate().format(DateTimeFormatter.ISO_LOCAL_DATE);
@@ -89,9 +90,11 @@ public class UserTable implements Repository<User> {
                 user.setPhone(rs.getInt("phone"));
                 String birthdatestr = rs.getString("birthdate");
                 if( rs.getString("birthdate")== null){
-                    birthdatestr = "1700-01-01" ;
+                    user.setBirthdate(null);
                 }
-                user.setBirthdate(LocalDate.parse(birthdatestr, DateTimeFormatter.ISO_DATE));
+                else{
+                    user.setBirthdate(LocalDate.parse(birthdatestr, DateTimeFormatter.ISO_DATE));
+                }
                 user.setGender(rs.getString("gender"));
                 user.setAddress(rs.getString("address"));
                 user.setEmail(rs.getString("email"));
@@ -103,8 +106,8 @@ public class UserTable implements Repository<User> {
         return users;
     }
 
-    public static String Authenticate(String email, String password) throws SQLException {
-        String role = null;
+    public static User Authenticate(String email, String password) throws SQLException {
+       User user = new User();
         Connection conn = DatabaseUtils.getConnection();
         PreparedStatement stmt = conn.prepareStatement(AUTHENTICATION_QUERY);
             stmt.setString(1, email);
@@ -112,15 +115,31 @@ public class UserTable implements Repository<User> {
             if (rs.next()) {
                 String storedHash = rs.getString("password_hash");
                 if (hashpassword.decrypterMotdePasse(password, storedHash)) {
-                    role = rs.getString("role");
+                   user.setRole(rs.getString("role"));
+                   user.setFullName(rs.getString("username"));
+                }
+                else{
+                    user.setRole(null);
                 }
             }
             rs.close();
             stmt.close();
             conn.close();
-        if (role == null) {
-            throw new SQLException("Invalid email or password");
+        return user;
+    }
+
+    @Override
+    public int Count() throws SQLException{
+        Connection conn = DatabaseUtils.getConnection();
+        PreparedStatement stmt = conn.prepareStatement(COUNT_USERS_BY_ROLE);
+        ResultSet rs = stmt.executeQuery();
+        int count = 0;
+        if (rs.next()) {
+            count = rs.getInt(1);
         }
-        return role;
+        rs.close();
+        stmt.close();
+        conn.close();
+        return count;
     }
 }
