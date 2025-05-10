@@ -17,9 +17,9 @@
          <content>
             <GridPane fx:id="bookGrid" hgap="15" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="15">
               <rowConstraints>
-                <RowConstraints maxHeight="350" minHeight="350" prefHeight="350" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="350" minHeight="350" prefHeight="350" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="350" minHeight="350" prefHeight="350" vgrow="SOMETIMES" />
+<!--                <RowConstraints maxHeight="350" minHeight="350" prefHeight="350" vgrow="SOMETIMES" />-->
+<!--                <RowConstraints maxHeight="350" minHeight="350" prefHeight="350" vgrow="SOMETIMES" />-->
+<!--                <RowConstraints maxHeight="350" minHeight="350" prefHeight="350" vgrow="SOMETIMES" />-->
               </rowConstraints>
                <padding>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -57,15 +57,15 @@
              <TextField fx:id="imageNameField" promptText="Enter image file name (e.g. book1.jpg)" />
             <HBox>
                <children>
-                   <Label maxWidth="1.7976931348623157E308" styleClass="labeled" text="Image:" HBox.hgrow="ALWAYS" />
-                   <Button fx:id="chooseImageButton" onAction="#handleChooseImage" styleClass="primary-button" text="Choisir Une Image" />
-               </children>
-            </HBox>
-            <HBox>
-               <children>
       
-                   <Button fx:id="addBookButton" maxWidth="1.7976931348623157E308" onAction="#handleAddBook" prefHeight="30.0" prefWidth="281.0" styleClass="final-button" text="Ajouter Livre" HBox.hgrow="ALWAYS" />
+                   <Button fx:id="addBookButton" alignment="CENTER" maxWidth="1.7976931348623157E308" onAction="#handleAddBook" prefHeight="35.0" prefWidth="280.0" styleClass="final-button" text="Ajouter Livre" HBox.hgrow="ALWAYS" />
                </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
             </HBox>
 
          </children>

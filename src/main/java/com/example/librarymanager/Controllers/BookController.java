@@ -209,7 +209,7 @@ public class BookController implements Initializable {
 
                 // Update grid position
                 columns++;
-                if (columns >= 4) {
+                if (columns == 4) {
                     columns = 0;
                     rows++;
                 }

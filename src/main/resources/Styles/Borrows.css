@@ -23,19 +23,19 @@
 }
 
 .loan-card-label {
-    -fx-font-size: 14px;
+    -fx-font-size: 20px;
     -fx-text-fill: #333;
 }
 
 .loan-card-label-italic {
-    -fx-font-size: 13px;
+    -fx-font-size: 16px;
     -fx-font-style: italic;
     -fx-text-fill: #555;
 }
 
 .loan-status {
     -fx-font-weight: bold;
-    -fx-font-size: 13px;
+    -fx-font-size: 14px;
 }
 
 .loan-status.green {

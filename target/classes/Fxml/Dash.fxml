@@ -244,7 +244,7 @@
                               <children>
                                  <ImageView fitHeight="180" fitWidth="200.0">
                                     <image>
-                                       <Image url="@../Images/boo1.jpg" />
+                                       <Image url="@../Images/book1.jpg" />
                                     </image>
                                  </ImageView>
                                  <Label styleClass="book-title" text="Clean Code" />
