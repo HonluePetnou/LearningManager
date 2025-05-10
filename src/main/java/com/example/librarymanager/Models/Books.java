@@ -57,9 +57,11 @@ public class Books {
     public String getImage_path() { return image_path; }
     public void setImage_path(String image_path) { this.image_path = image_path; }
 
-
-    public void setCategory(int id) {
-        this.category_id = id;
+    // Method to handle string category input
+    public void setCategory(String category) {
+        // TODO: Implement category to category_id mapping
+        // For now, setting a default category_id
+        this.category_id = 1;
     }
 
     // Method to handle string year input
@@ -71,12 +73,22 @@ public class Books {
         }
     }
 
-    public void setTotal_copies(int totalCopies) {
-            this.copies_total = totalCopies ;
+    // Method to handle string total copies input
+    public void setTotal_copies(String totalCopies) {
+        try {
+            this.copies_total = Integer.parseInt(totalCopies);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Invalid total copies format");
+        }
     }
 
-    public void setAvailable_copies(int availableCopies) {
-            this.copies_available = availableCopies ;
+    // Method to handle string available copies input
+    public void setAvailable_copies(String availableCopies) {
+        try {
+            this.copies_available = Integer.parseInt(availableCopies);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Invalid available copies format");
+        }
     }
 
     @Override

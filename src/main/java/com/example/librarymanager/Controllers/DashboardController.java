@@ -17,6 +17,7 @@ public class DashboardController implements Initializable {
             switch (newValue) {
                 case "Users" -> dash_Parent.setCenter(Model.getModel().getViewFactory().getUsersView());
                 case "Books" -> dash_Parent.setCenter(Model.getModel().getViewFactory().getBooksView());
+                case "Borrows" -> dash_Parent.setCenter(Model.getModel().getViewFactory().getBorrowsView());
                 default -> dash_Parent.setCenter(Model.getModel().getViewFactory().getDashboardView());
             }
         });

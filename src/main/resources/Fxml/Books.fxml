@@ -17,17 +17,19 @@
          <content>
             <GridPane fx:id="bookGrid" hgap="15" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="15">
               <rowConstraints>
-                <RowConstraints maxHeight="300" minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                <RowConstraints maxHeight="350" minHeight="350" prefHeight="350" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="350" minHeight="350" prefHeight="350" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="350" minHeight="350" prefHeight="350" vgrow="SOMETIMES" />
               </rowConstraints>
                <padding>
-                  <Insets left="10.0" top="20.0" />
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </padding>
             </GridPane>
          </content>
       </ScrollPane>
    </center>
    <left>
-      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="400.0" spacing="15.0" BorderPane.alignment="CENTER">
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="400.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
              <Label styleClass="form-title" text="Ajouter un Livre" />
 
@@ -40,8 +42,8 @@
              <Label styleClass="labeled" text="ISBN:" />
              <TextField fx:id="isbnField" promptText="ISBN" />
 
-             <Label styleClass="labeled" text="Catégorie :" />
-             <TextField fx:id="categoryField" promptText="Catégorie" />
+             <Label styleClass="labeled" text="Catégorie ID:" />
+             <TextField fx:id="categoryField" promptText="ID Catégorie" />
 
              <Label styleClass="labeled" text="Année de publication:" />
              <TextField fx:id="yearField" promptText="Année" />
@@ -53,13 +55,16 @@
              <TextField fx:id="availableCopiesField" promptText="Disponibles" />
              <Label styleClass="labeled" text="Image Name:" />
              <TextField fx:id="imageNameField" promptText="Enter image file name (e.g. book1.jpg)" />
-            <HBox alignment="TOP_CENTER" VBox.vgrow="ALWAYS">
+            <HBox>
+               <children>
+                   <Label maxWidth="1.7976931348623157E308" styleClass="labeled" text="Image:" HBox.hgrow="ALWAYS" />
+                   <Button fx:id="chooseImageButton" onAction="#handleChooseImage" styleClass="primary-button" text="Choisir Une Image" />
+               </children>
+            </HBox>
+            <HBox>
                <children>
       
-                   <Button fx:id="addBookButton" maxWidth="1.7976931348623157E308" onAction="#handleAddBook" prefHeight="30.0" prefWidth="200.0" styleClass="final-button" text="Ajouter Livre" HBox.hgrow="ALWAYS">
-                     <padding>
-                        <Insets bottom="10.0" right="10.0" top="10.0" />
-                     </padding></Button>
+                   <Button fx:id="addBookButton" maxWidth="1.7976931348623157E308" onAction="#handleAddBook" prefHeight="30.0" prefWidth="281.0" styleClass="final-button" text="Ajouter Livre" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
 

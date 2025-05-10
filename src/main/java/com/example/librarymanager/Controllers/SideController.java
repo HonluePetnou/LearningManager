@@ -3,6 +3,7 @@ package com.example.librarymanager.Controllers;
 import com.example.librarymanager.Models.Model;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -53,7 +54,12 @@ public class SideController implements Initializable {
         Model.getModel().getViewFactory().getSidebarSelectedMenuItem().set("Help");
     }
     private void onLogout(){
-        Model.getModel().getViewFactory().getSidebarSelectedMenuItem().set("Logout");
+        // Get the current stage from any button
+        Stage currentStage = (Stage) logoutBtn.getScene().getWindow();
+        // Close the current stage
+        Model.getModel().getViewFactory().closeStage(currentStage);
+        // Show the login window
+        Model.getModel().getViewFactory().showLoginWindow();
     }
     private void onCopyright(){
         Model.getModel().getViewFactory().getSidebarSelectedMenuItem().set("Copyright");

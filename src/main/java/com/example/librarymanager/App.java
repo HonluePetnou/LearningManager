@@ -25,10 +25,9 @@ public class App extends Application {
             throw e;
         }
     }
-
+    
     public static void main(String[] args) {
         launch(args);
     }
-
 }
      

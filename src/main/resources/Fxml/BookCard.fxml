@@ -8,13 +8,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="300.0" prefWidth="150.0" styleClass="book-card" stylesheets="@../Styles/Book.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.BookCardController">
+<VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="300.0" prefWidth="125.0" styleClass="book-card" stylesheets="@../Styles/Book.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.BookCardController">
    <children>
-      <ImageView fx:id="bookImage" fitWidth="250.0" styleClass="book-image" >
+      <ImageView fx:id="bookImage" fitWidth="200.0" styleClass="book-image" >
          <image>
             <Image url="@../Images/book1.jpg" />
-         </image>
-      </ImageView>
+         </image></ImageView>
       <VBox alignment="CENTER_LEFT" spacing="4.0" >
          <children>
             <Label fx:id="bookTitle" styleClass="book-title" text="Book Title" />

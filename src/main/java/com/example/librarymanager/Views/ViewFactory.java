@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -18,6 +19,7 @@ public class ViewFactory {
     private ScrollPane dashboardView;
     private BorderPane usersView;
     private BorderPane booksView;
+    private AnchorPane borrowsView;
 
     public ViewFactory() {
         this.sidebarSelectedMenuItem = new SimpleStringProperty();
@@ -70,6 +72,30 @@ public class ViewFactory {
             }
         }
         return usersView;
+    }
+    
+    public BorderPane getBorrowsView() {
+        if (borrowsView == null) {
+            try {
+                URL resourceUrl = getClass().getResource("/Fxml/Borrows.fxml");
+                if (resourceUrl == null) {
+                    System.err.println("Error: Could not find Borrows.fxml resource");
+                    throw new IOException("Borrows.fxml resource not found");
+                }
+                FXMLLoader loader = new FXMLLoader(resourceUrl);
+                borrowsView = loader.load();
+            } catch (Exception e) {
+                System.err.println("Error loading Borrows view: " + e.getMessage());
+                e.printStackTrace();
+                // Create a fallback view to avoid returning null
+                borrowsView = new AnchorPane();
+                borrowsView.getChildren().add(new Label("Error loading Borrows view: " + e.getMessage()));
+            }
+        }
+        // Wrap AnchorPane in BorderPane to maintain consistency with other views
+        BorderPane wrapper = new BorderPane();
+        wrapper.setCenter(borrowsView);
+        return wrapper;
     }
     public void showLoginWindow() {
         try {
