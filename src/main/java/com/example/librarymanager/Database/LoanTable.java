@@ -13,12 +13,13 @@ public class LoanTable implements Repository<Loan> {
   private static final String INSERT_LOAN = "INSERT INTO loans (book_id, user_id, due_at) VALUES (?, ?, ?)";
   private static final String UPDATE_LOAN = "UPDATE loans SET status = ?, returned_at = ? WHERE loan_id = ?";
   private static final String DELETE_LOAN = "DELETE FROM loans WHERE loan_id = ?";
-  private static final String SELECT_ALL_LOANS = "SELECT * FROM loans";
+  private static final String SELECT_ALL_LOANS = "SELECT l.* , b.title , u.username FROM loans l join books b on l.book_id = b.book_id join users u on l.user_id = u.user_id where status = 'ONGOING' or status = 'OVERDUE'";
+  private static final String COUNT_LOANS = "SELECT COUNT(*) FROM loans";
 
   @Override
   public void create(Loan loan) throws SQLException {
-    try (Connection conn = DatabaseUtils.getConnection();
-        PreparedStatement stmt = conn.prepareStatement(INSERT_LOAN)) {
+   Connection conn = DatabaseUtils.getConnection();
+        PreparedStatement stmt = conn.prepareStatement(INSERT_LOAN);
       stmt.setInt(1, loan.getBookId());
       stmt.setInt(2, loan.getUserId());
       
@@ -29,16 +30,14 @@ public class LoanTable implements Repository<Loan> {
       String formattedDate = loan.getDueAt().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME).replace("T", " ");
       stmt.setString(3, formattedDate);
       stmt.executeUpdate();
-    } catch (SQLException e) {
-      System.err.println("Loan-create:"+e);
-      throw e;  
-    }
+      stmt.close();
+      conn.close();
   }
 
   @Override
   public void Update(Loan loan) throws SQLException {
-    try (Connection conn = DatabaseUtils.getConnection();
-        PreparedStatement stmt = conn.prepareStatement(UPDATE_LOAN)) {
+      Connection conn = DatabaseUtils.getConnection();
+        PreparedStatement stmt = conn.prepareStatement(UPDATE_LOAN);
       stmt.setString(1, loan.getStatus());
       
       if (loan.getReturnedAt() == null) {
@@ -49,36 +48,33 @@ public class LoanTable implements Repository<Loan> {
       stmt.setString(2, formattedDate);
       stmt.setInt(3, loan.getLoanId());
       stmt.executeUpdate();
-    } catch (SQLException e) {
-      System.err.println("Loan-update:"+e);
-      throw e;  
-    }
+     stmt.close();
+     conn.close();
   }
 
   @Override
   public void Delete(int id) throws SQLException {
-    try (Connection conn = DatabaseUtils.getConnection();
-        PreparedStatement stmt = conn.prepareStatement(DELETE_LOAN)) {
+        Connection conn = DatabaseUtils.getConnection();
+        PreparedStatement stmt = conn.prepareStatement(DELETE_LOAN);
       stmt.setInt(1, id);
       stmt.executeUpdate();
-    } catch (SQLException e) {
-      System.err.println("Loan-delete:"+e);
-      throw e;  
-    }
+     stmt.close();
+     conn.close();
   }
 
   @Override
   public List<Loan> listAll() throws SQLException {
     List<Loan> loans = new ArrayList<>();
-    try (Connection conn = DatabaseUtils.getConnection();
+        Connection conn = DatabaseUtils.getConnection();
         PreparedStatement stmt = conn.prepareStatement(SELECT_ALL_LOANS);
-        ResultSet rs = stmt.executeQuery()) {
+        ResultSet rs = stmt.executeQuery();
       while (rs.next()) {
         Loan loan = new Loan();
         loan.setLoanId(rs.getInt("loan_id"));
+        loan.setBook_name(rs.getString("title"));
+        loan.setUser_name(rs.getString("username"));
         loan.setBookId(rs.getInt("book_id"));
         loan.setUserId(rs.getInt("user_id"));
-        
         String borrowedDate = rs.getString("borrowed_at");
         if (borrowedDate != null && !borrowedDate.isEmpty()) {
           loan.setBorrowedAt(LocalDateTime.parse(borrowedDate.replace(" ", "T"), DateTimeFormatter.ISO_LOCAL_DATE_TIME));
@@ -97,10 +93,24 @@ public class LoanTable implements Repository<Loan> {
         loan.setStatus(rs.getString("status"));
         loans.add(loan);
       }
-    } catch (SQLException e) {
-      System.err.println("Loan-listAll:"+e);
-      throw e;  
-    }
+    rs.close();
+    stmt.close();
+    conn.close();
     return loans;
+  }
+
+  @Override
+  public int Count() throws SQLException{
+      Connection conn = DatabaseUtils.getConnection();
+      PreparedStatement stmt = conn.prepareStatement(COUNT_LOANS);
+      ResultSet rs = stmt.executeQuery();
+      int count = 0;
+      if (rs.next()) {
+          count = rs.getInt(1);
+      }
+      rs.close();
+      stmt.close();
+      conn.close();
+      return count;
   }
 }

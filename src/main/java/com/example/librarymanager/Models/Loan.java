@@ -11,6 +11,8 @@ public class Loan {
     private LocalDateTime dueAt; 
     private LocalDateTime returnedAt; 
     private String status; 
+    private String book_name ;
+    private String user_name ;
 
 
     public Loan() {
@@ -72,4 +74,24 @@ public class Loan {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public String getBook_name() {
+        return book_name;
+    }
+
+
+    public void setBook_name(String book_name) {
+        this.book_name = book_name;
+    }
+
+
+    public String getUser_name() {
+        return user_name;
+    }
+
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
+
 }

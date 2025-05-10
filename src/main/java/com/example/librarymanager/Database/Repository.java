@@ -7,4 +7,5 @@ public interface Repository<T> {
     public void Update(T entity) throws Exception;
     public void Delete(int id) throws Exception;
     public List<T> listAll() throws Exception; 
+    public int Count() throws Exception;
 }
