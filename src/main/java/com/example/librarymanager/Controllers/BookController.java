@@ -86,10 +86,15 @@ public class BookController implements Initializable {
         try {
             books = booksTable.listAll();
             for (Books book : books) {
-                // Verify if the image exists in the classpath
-                if (getClass().getClassLoader().getResource(book.getImage_path()) == null) {
-                    System.err.println("Warning: Image not found in classpath: " + book.getImage_path());
-                    book.setImage_path(""); // Set empty path if image not found
+                // Verify and fix image path
+                String imagePath = book.getImage_path();
+                if (!imagePath.startsWith("/")) {
+                    imagePath = "/" + imagePath;
+                    book.setImage_path(imagePath);
+                }
+                if (getClass().getResource(imagePath) == null) {
+                    System.err.println("Warning: Image not found in classpath: " + imagePath);
+                    book.setImage_path("/Images/test1.jpg"); // Set default image if not found
                 }
             }
 
@@ -142,8 +147,8 @@ public class BookController implements Initializable {
         newBook.setYear(year);
         newBook.setTotal_copies(totalCopies_parseInt);
         newBook.setAvailable_copies(availableCopies_parseInt);
-        if (imageName != null && !imageName.trim().isEmpty()) {
-            newBook.setImage_path("Images/" + imageName.trim() + ".jpg");
+        if (!imageName.trim().isEmpty()) {
+            newBook.setImage_path("/Images/" + imageName.trim());
         } else {
             newBook.setImage_path(""); // or set a default image path if desired
         }

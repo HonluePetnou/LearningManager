@@ -20,13 +20,20 @@ public class BookCardController {
     public void setData(Books books) {
         try {
             // Safely load the image with error handling
-            if (books.getImage_path() != null && !books.getImage_path().isEmpty()) {
+            String imagePath = books.getImage_path();
+            if (imagePath != null && !imagePath.isEmpty()) {
                 try {
-                    Image image = new Image(getClass().getClassLoader().getResourceAsStream(books.getImage_path()));
+                    Image image = new Image(getClass().getResource(imagePath).toExternalForm());
                     bookImage.setImage(image);
                 } catch (Exception e) {
-                    System.err.println("Error loading image: " + books.getImage_path() + " - " + e.getMessage());
-                    // Load a default image or leave the current one
+                    System.err.println("Error loading image: " + imagePath + " - " + e.getMessage());
+                    // Load default image
+                    try {
+                        Image defaultImage = new Image(getClass().getResource("/Images/test1.jpg").toExternalForm());
+                        bookImage.setImage(defaultImage);
+                    } catch (Exception ex) {
+                        System.err.println("Error loading default image: " + ex.getMessage());
+                    }
                 }
             }
             
