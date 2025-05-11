@@ -125,4 +125,61 @@ public class BooksTable implements Repository<Books> {
         conn.close();
         return count;
     }
+
+    private static final String QUERY_GET_BOOK_BY_ISBN = "SELECT b.*, c.name as category FROM books b LEFT JOIN category c ON b.category_id = c.category_id WHERE b.isbn = ?;";
+
+    public Books getBookByISBN(String isbn) throws SQLException {
+        Books book = null;
+        Connection conn = DatabaseUtils.getConnection();
+        PreparedStatement stmt = conn.prepareStatement(QUERY_GET_BOOK_BY_ISBN);
+        stmt.setString(1, isbn);
+        ResultSet rs = stmt.executeQuery();
+        
+        if (rs.next()) {
+            book = new Books();
+            book.setBook_id(rs.getInt("book_id"));
+            book.setTitle(rs.getString("title")); 
+            book.setAuthor(rs.getString("author"));
+            book.setIsbn(rs.getString("isbn"));
+            book.setCategory_id(rs.getInt("category_id"));
+            book.setPublished_year(rs.getInt("published_year"));
+            book.setCopies_total(rs.getInt("copies_total"));
+            book.setCopies_available(rs.getInt("copies_available"));
+            book.setImage_path(rs.getString("image_path"));
+        }
+        
+        rs.close();
+        stmt.close();
+        conn.close();
+        return book;
+    }
+    
+    private static final String QUERY_GET_BOOK_BY_TITLE = "SELECT b.*, c.name as category FROM books b LEFT JOIN category c ON b.category_id = c.category_id WHERE b.title = ?;";
+
+    public static Books getBookByTitle(String title) throws SQLException {
+        Books book = null;
+        Connection conn = DatabaseUtils.getConnection();
+        PreparedStatement stmt = conn.prepareStatement(QUERY_GET_BOOK_BY_TITLE);
+        stmt.setString(1, title);
+        ResultSet rs = stmt.executeQuery();
+        
+        if (rs.next()) {
+            book = new Books();
+            book.setBook_id(rs.getInt("book_id"));
+            book.setTitle(rs.getString("title")); 
+            book.setAuthor(rs.getString("author"));
+            book.setIsbn(rs.getString("isbn"));
+            book.setCategory_id(rs.getInt("category_id"));
+            book.setPublished_year(rs.getInt("published_year"));
+            book.setCopies_total(rs.getInt("copies_total"));
+            book.setCopies_available(rs.getInt("copies_available"));
+            book.setImage_path(rs.getString("image_path"));
+        }
+        
+        rs.close();
+        stmt.close();
+        conn.close();
+        return book;
+    }
+          
 }

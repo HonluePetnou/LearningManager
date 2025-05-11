@@ -194,14 +194,14 @@ public class BookController implements Initializable {
                 }
 
                 VBox bookBox = fxmlLoader.load();
-                BookCardController bookController = fxmlLoader.getController();
+                BookCardController bookCardController = fxmlLoader.getController();
 
-                if (bookController == null) {
+                if (bookCardController == null) {
                     System.err.println("Error: BookCardController is null");
                     continue;
                 }
 
-                bookController.setData(book);
+                bookCardController.setData(book);
 
                 // Configure book card layout
                 bookBox.setPrefWidth(200);
@@ -215,7 +215,7 @@ public class BookController implements Initializable {
 
                 // Update grid position
                 columns++;
-                if (columns == 4) {
+                if (columns == 3) {
                     columns = 0;
                     rows++;
                 }

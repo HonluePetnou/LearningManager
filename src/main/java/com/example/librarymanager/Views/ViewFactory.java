@@ -158,6 +158,22 @@ public class ViewFactory {
         }
     }
 
+    // public void showBooksDetailsWindow() {
+    //     try {
+    //         URL resourceUrl = getClass().getResource("/Fxml/BookDetails.fxml");
+    //         if (resourceUrl == null) {
+    //             System.err.println("Error: Could not find BookDetails.fxml resource");
+    //             throw new IOException("BookDetails.fxml resource not found");
+    //         }
+    //         FXMLLoader loader = new FXMLLoader(resourceUrl);
+    //         createStage(loader);
+    //     } catch (Exception e) {
+    //         System.err.println("Error showing book details window: " + e.getMessage());
+    //         e.printStackTrace();
+    //         showErrorDialog("Book Details Error", "Failed to load book details window", e.getMessage());
+    //     }
+    // }
+
     private void createStage(FXMLLoader fxmlLoader) {
         Scene scene = null;
         try {
