@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.example.librarymanager.Models.Books;
-import com.example.librarymanager.Models.Model;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,6 +43,7 @@ public class BookCardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         BooksDetailsButton.setOnAction(event -> {
+            System.out.println("DETAILS");
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/BookDetails.fxml"));
             Parent root = loader.load();
@@ -86,14 +86,14 @@ public class BookCardController implements Initializable {
                 }
             }
             
-            // id = books.getBook_id();
+            id = books.getBook_id();
             bookTitle.setText(books.getTitle());
             bookAuthor.setText(books.getAuthor());
-            // isbn = books.getIsbn();
-            // category_id = books.getCategory_id();
-            // year = books.getPublished_year();
-            // copies_total = books.getCopies_total();
-            // copies_available = books.getCopies_available();
+            isbn = books.getIsbn();
+            category_id = books.getCategory_id();
+            year = books.getPublished_year();
+            copies_total = books.getCopies_total();
+            copies_available = books.getCopies_available();
             imagePath = books.getImage_path();
         } catch (Exception e) {
             System.err.println("Error setting book data: " + e.getMessage());

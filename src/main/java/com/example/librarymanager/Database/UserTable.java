@@ -115,6 +115,7 @@ public class UserTable implements Repository<User> {
             if (rs.next()) {
                 String storedHash = rs.getString("password_hash");
                 if (hashpassword.decrypterMotdePasse(password, storedHash)) {
+                   user.setUser_id(rs.getInt("user_id"));
                    user.setRole(rs.getString("role"));
                    user.setFullName(rs.getString("username"));
                 }
