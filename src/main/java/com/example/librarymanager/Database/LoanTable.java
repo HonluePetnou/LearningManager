@@ -15,6 +15,7 @@ public class LoanTable implements Repository<Loan> {
   private static final String DELETE_LOAN = "DELETE FROM loans WHERE loan_id = ?";
   private static final String SELECT_ALL_LOANS = "SELECT l.* , b.title , u.username FROM loans l join books b on l.book_id = b.book_id join users u on l.user_id = u.user_id where status = 'ONGOING' or status = 'OVERDUE'";
   private static final String COUNT_LOANS = "SELECT COUNT(*) FROM loans";
+  private static final String SELECT_LOAN_ID = "SELECT loan_id FROM loans where ( user_id= ? AND book_id = ?) AND (status = 'ONGOING' or status = 'OVERDUE')";
 
   @Override
   public void create(Loan loan) throws SQLException {
@@ -22,7 +23,7 @@ public class LoanTable implements Repository<Loan> {
         PreparedStatement stmt = conn.prepareStatement(INSERT_LOAN);
       stmt.setInt(1, loan.getBookId());
       stmt.setInt(2, loan.getUserId());
-      
+      System.out.println(loan.getBookId() +" ---- "+ loan.getUserId() );
       if (loan.getDueAt() == null) {
         throw new SQLException("Due date cannot be null");
       }
@@ -112,5 +113,21 @@ public class LoanTable implements Repository<Loan> {
       stmt.close();
       conn.close();
       return count;
+  }
+
+  public int getLoanId(int user_id , int book_id) throws SQLException {
+    int id = 0 ;
+       Connection conn = DatabaseUtils.getConnection() ;
+       PreparedStatement stmt = conn.prepareStatement(SELECT_LOAN_ID);
+       stmt.setInt(1, user_id);
+       stmt.setInt(2, book_id);
+       ResultSet rs = stmt.executeQuery() ;
+      if(rs.next()){
+        id = rs.getInt(1);
+      }
+       rs.close();
+       stmt.close();
+       conn.close();
+       return id ;
   }
 }
