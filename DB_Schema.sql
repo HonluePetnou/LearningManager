@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS books (
     copies_total      INTEGER NOT NULL DEFAULT 1 CHECK (copies_total > 0),
     copies_available  INTEGER NOT NULL DEFAULT 1 CHECK (copies_available >= 0),
     created_at        DATE    DEFAULT (datetime('now')),
+    image_path        TEXT,
     FOREIGN KEY (category_id) REFERENCES category(category_id) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 

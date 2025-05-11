@@ -66,7 +66,7 @@ public class UserController implements Initializable {
             private final Button deleteButton = new Button("❌");
 
             {
-                deleteButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
+                deleteButton.setStyle("-fx-background-color: red; -fx-text-fill: white; -fx-cursor: hand;");
 
                 deleteButton.setOnAction(_ -> {
                     User user = getTableView().getItems().get(getIndex());
