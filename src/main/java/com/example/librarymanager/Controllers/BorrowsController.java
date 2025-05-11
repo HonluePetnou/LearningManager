@@ -11,6 +11,7 @@ import java.util.List;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
@@ -34,7 +35,7 @@ public class BorrowsController {
         loans = loanTable.listAll() ;
      } catch (SQLException e) {
        System.err.println("fail to fetch the loans"+e);
-       Alertmessage.showAlert("Error", "internal error");
+       Alertmessage.showAlert(AlertType.ERROR, "Error", "internal error");
        return ;
      }
         
@@ -122,14 +123,14 @@ public class BorrowsController {
                         loan.setReturnedAt(LocalDateTime.now());
                         loan.setStatus("RETURNED");
                         loanTable.Update(loan);
-                       Alertmessage.showAlert("Success", "rendu !");
+                       Alertmessage.showAlert(AlertType.INFORMATION, "Success", "rendu !");
                     } catch (SQLException e) {
-                       Alertmessage.showAlert("Error", "internal error");
+                       Alertmessage.showAlert(AlertType.ERROR, "Error", "internal error");
                        System.err.println("fail to Update  the loan :"+e);
                     }
                     return ;
                   }
-                  Alertmessage.showAlert("Error", "deja rendu");
+                  Alertmessage.showAlert(AlertType.ERROR, "Error", "deja rendu");
                 });
 
                 loanGrid.add(card, column, row);

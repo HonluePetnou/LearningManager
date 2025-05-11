@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -74,7 +75,7 @@ public class UserController implements Initializable {
                     try {
                         userTable.Delete(user.getUser_id());
                     } catch (SQLException e) {
-                        Alertmessage.showAlert("Error", "Failed to delete user: " + e.getMessage());
+                        Alertmessage.showAlert(AlertType.ERROR, "Error", "Failed to delete user: " + e.getMessage());
                     }
                 });
             }
@@ -110,7 +111,7 @@ public class UserController implements Initializable {
             // Validate required fields
             if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() ||
                     address.isEmpty() || birthdate == null) {
-                Alertmessage.showAlert("Error", "All fields are required");
+                Alertmessage.showAlert(AlertType.ERROR, "Error", "All fields are required");
                 return;
             }
 
@@ -129,13 +130,13 @@ public class UserController implements Initializable {
             clearFormFields();
 
         } catch (NumberFormatException e) {
-            Alertmessage.showAlert("Error", "Please enter a valid phone number");
+            Alertmessage.showAlert(AlertType.ERROR, "Error", "Please enter a valid phone number");
         } 
         catch(SQLException e){
-            Alertmessage.showAlert("Error ", "ADD NEW USER  FAIL");
+            Alertmessage.showAlert(AlertType.ERROR, "Error ", "ADD NEW USER  FAIL");
         }
         catch (Exception e) {
-            Alertmessage.showAlert("Error", e.getMessage());
+            Alertmessage.showAlert(AlertType.ERROR, "Error", e.getMessage());
         }
     }
 
@@ -180,10 +181,10 @@ public class UserController implements Initializable {
                 users.add(user);
             }
           } catch (SQLException e) {
-            Alertmessage.showAlert("Error", "FAIL TO FETCH DATA ");
+            Alertmessage.showAlert(AlertType.ERROR, "Error", "FAIL TO FETCH DATA ");
           }   
           catch (Exception e){
-            Alertmessage.showAlert("Error", "FAIL TO FETCH DATA :"+e.getMessage());
+            Alertmessage.showAlert(AlertType.ERROR, "Error", "FAIL TO FETCH DATA :"+e.getMessage());
           }
           return users;
         }    

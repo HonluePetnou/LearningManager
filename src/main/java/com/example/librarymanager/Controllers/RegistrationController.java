@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 import com.example.librarymanager.utils.Alertmessage;
@@ -40,12 +41,12 @@ public class RegistrationController implements Initializable{
         String email = RegistrationIdentifier.getText().trim();
 
         if (username.isEmpty() || password.isEmpty() || confirmedPassword.isEmpty() || email.isEmpty()) {
-          Alertmessage.showAlert("ERROR","All fields are required.");
+          Alertmessage.showAlert(AlertType.ERROR, "ERROR","All fields are required.");
             return;
         }
 
         if (!password.equals(confirmedPassword)) {
-            Alertmessage.showAlert("ERROR","The passwords are not the same");
+            Alertmessage.showAlert(AlertType.ERROR, "ERROR","The passwords are not the same");
             return;
         }
       try {
@@ -58,12 +59,12 @@ public class RegistrationController implements Initializable{
         userTable.create(user);
       }catch(SQLException e){
         System.err.println("ERROR:"+e);
-        Alertmessage.showAlert("ERROR","the Registration fail due to an internal problem");
+        Alertmessage.showAlert(AlertType.ERROR, "ERROR","the Registration fail due to an internal problem");
         return ;
       }
        catch (Exception e) {
         System.err.println("ERROR:"+e);
-        Alertmessage.showAlert("ERROR","the Registration fail due to an internal problem");
+        Alertmessage.showAlert(AlertType.ERROR, "ERROR","the Registration fail due to an internal problem");
         return ;
       }
       LogInRedirectOnAction();

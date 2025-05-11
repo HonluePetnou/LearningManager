@@ -14,6 +14,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
@@ -123,18 +124,18 @@ public class BookController implements Initializable {
            totalCopies_parseInt = Integer.parseInt(totalCopies);
           availableCopies_parseInt = Integer.parseInt(availableCopies);
         } catch (NumberFormatException e) {
-            Alertmessage.showAlert("error","Invalid total copies format");
+            Alertmessage.showAlert(AlertType.ERROR, "error","Invalid total copies format");
             return ;
         }
 
         if (title.isEmpty() || author.isEmpty() || category.isEmpty() || isbn.isEmpty() || year.isEmpty()
                 || totalCopies.isEmpty() || availableCopies.isEmpty() || imageName.isEmpty()) {
-            Alertmessage.showAlert("Error", "All field are required");
+            Alertmessage.showAlert(AlertType.ERROR, "Error", "All field are required");
             return ;
         }
 
        if( availableCopies_parseInt > totalCopies_parseInt){
-        Alertmessage.showAlert("Error", "available Copies should be less than total Copies");
+        Alertmessage.showAlert(AlertType.ERROR, "Error", "available Copies should be less than total Copies");
         return ;
        }
 
@@ -155,7 +156,7 @@ public class BookController implements Initializable {
         // Add the new book to the database
         try {
             booksTable.create(newBook);
-            Alertmessage.showAlert("Success", "Book added successfully");
+            Alertmessage.showAlert(AlertType.INFORMATION, "Success", "Book added successfully");
             if (books == null) {
                 books = new ArrayList<>();
             }
@@ -163,11 +164,11 @@ public class BookController implements Initializable {
             refreshBookGrid();
         } catch (SQLException e) {
             System.err.println("Error adding book to database: " + e.getMessage());
-            Alertmessage.showAlert("Error", "Failed to add book to database");
+            Alertmessage.showAlert(AlertType.INFORMATION, "Error", "Failed to add book to database");
             return ;
         } catch (Exception e) {
             System.err.println("Error adding book to database: " + e.getMessage());
-            Alertmessage.showAlert("Error", "Failed to add book to database");
+            Alertmessage.showAlert(AlertType.ERROR, "Error", "Failed to add book to database");
             return ;
         }
     }
@@ -247,10 +248,10 @@ public class BookController implements Initializable {
         try {
             categoryTable.create(new Category(name));
         } catch (SQLException e) {
-            Alertmessage.showAlert("Error", "Failed to create category");
+            Alertmessage.showAlert(AlertType.ERROR, "Error", "Failed to create category");
             return -1; // Return -1 in case of an error
         } catch (Exception e) {
-            Alertmessage.showAlert("Error", "Failed to create category");
+            Alertmessage.showAlert(AlertType.ERROR, "Error", "Failed to create category");
             return -1; 
         }
         categories = getCategories();
