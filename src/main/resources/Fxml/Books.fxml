@@ -8,19 +8,13 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="800.0" styleClass="root" stylesheets="@../Styles/Book.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.BookController">
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="600.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <content>
-            <GridPane fx:id="bookGrid" hgap="15" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="15">
-              <rowConstraints>
-<!--                <RowConstraints maxHeight="350" minHeight="350" prefHeight="350" vgrow="SOMETIMES" />-->
-<!--                <RowConstraints maxHeight="350" minHeight="350" prefHeight="350" vgrow="SOMETIMES" />-->
-<!--                <RowConstraints maxHeight="350" minHeight="350" prefHeight="350" vgrow="SOMETIMES" />-->
-              </rowConstraints>
+            <GridPane fx:id="bookGrid" alignment="CENTER" hgap="15" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="15">
                <padding>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </padding>

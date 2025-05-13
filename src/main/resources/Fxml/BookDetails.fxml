@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.BookDetailsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="600.0" stylesheets="@../Styles/BookDetails.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.BookDetailsController">
    <ImageView fx:id="bookImageView" fitHeight="230.0" fitWidth="200.0" layoutX="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="14.0" />
    <HBox layoutX="180.0" layoutY="348.0" prefHeight="619.0" prefWidth="600.0" spacing="20.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="250.0">
       <children>
@@ -50,14 +50,14 @@
             <Label alignment="TOP_LEFT" layoutX="10.0" layoutY="209.0" text="Copies disponibles" GridPane.rowIndex="6" />
             <TextField fx:id="availableCopiesTextField" layoutX="10.0" layoutY="242.0" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
           </GridPane>
-         <VBox prefHeight="294.0" prefWidth="206.0">
+         <VBox prefHeight="294.0" prefWidth="206.0" HBox.hgrow="ALWAYS">
             <children>
                <Label text="Description">
                   <VBox.margin>
                      <Insets bottom="10.0" />
                   </VBox.margin>
                </Label>
-               <TextArea fx:id="bookDescriptionArea" prefHeight="200.0" prefWidth="200.0" promptText="Description Ici..." wrapText="true" VBox.vgrow="ALWAYS">
+               <TextArea fx:id="bookDescriptionArea" prefHeight="242.0" prefWidth="228.0" promptText="Description Ici..." wrapText="true" VBox.vgrow="ALWAYS">
                   <VBox.margin>
                      <Insets bottom="10.0" />
                   </VBox.margin>
@@ -76,7 +76,7 @@
       </padding>
    </HBox>
 
-    <ButtonBar layoutX="398.0" layoutY="565.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="32.0">
+    <ButtonBar layoutX="398.0" layoutY="565.0" prefHeight="40.0" prefWidth="218.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="32.0">
       <buttons>
           <Button fx:id="returnButton" mnemonicParsing="false" text="Rendre" />
           <Button fx:id="borrowButton" layoutX="204.0" layoutY="17.0" mnemonicParsing="false" text="Emprunter" />
