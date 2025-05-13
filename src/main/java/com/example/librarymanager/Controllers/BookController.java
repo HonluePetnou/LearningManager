@@ -5,6 +5,7 @@ import com.example.librarymanager.Database.CategoryTable;
 import com.example.librarymanager.Models.Books;
 import com.example.librarymanager.Models.Category;
 import com.example.librarymanager.utils.Alertmessage;
+import com.example.librarymanager.utils.FormValidation;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -108,8 +109,17 @@ public class BookController implements Initializable {
         return books;
     }
 
+    public List<Books> getBooks() {
+        return books;
+    }
+
     @FXML
     void handleAddBook(ActionEvent event) {
+        // Validate input fields
+        if (!FormValidation.isValidInput(titleField, authorField, isbnField, yearField, categoryField, totalCopiesField, availableCopiesField, imageNameField)) {
+            return; // Stop submission if validation fails
+        }
+
         String title = titleField.getText();
         String author = authorField.getText();
         String category = categoryField.getText();
@@ -162,23 +172,20 @@ public class BookController implements Initializable {
             }
             books.add(newBook);
             refreshBookGrid();
+            clearForm();
+
         } catch (SQLException e) {
             System.err.println("Error adding book to database: " + e.getMessage());
-            Alertmessage.showAlert(AlertType.INFORMATION, "Error", "Failed to add book to database");
+            Alertmessage.showAlert(AlertType.ERROR, "Error", "Failed to add book to database" + e.getMessage());
             return ;
         } catch (Exception e) {
             System.err.println("Error adding book to database: " + e.getMessage());
-            Alertmessage.showAlert(AlertType.ERROR, "Error", "Failed to add book to database");
+            Alertmessage.showAlert(AlertType.ERROR, "Error", "Failed to add book to database" + e.getMessage());
             return ;
         }
     }
 
-    @FXML
-    void handleChooseImage(ActionEvent event) {
-        // Implémentez cette méthode
-    }
-
-    private void refreshBookGrid() {
+    public void refreshBookGrid() {
         bookGrid.getChildren().clear();
         int columns = 0;
         int rows = 0;
@@ -200,6 +207,9 @@ public class BookController implements Initializable {
                     System.err.println("Error: BookCardController is null");
                     continue;
                 }
+
+                // Pass the current BookController to the BookCardController
+                bookCardController.setBookController(this);
 
                 bookCardController.setData(book);
 
@@ -256,6 +266,17 @@ public class BookController implements Initializable {
         }
         categories = getCategories();
         return getCategoryIdByName(name); 
+    }
+
+    public void clearForm () {
+        titleField.clear();
+        authorField.clear();
+        categoryField.clear();
+        isbnField.clear();
+        yearField.clear();
+        totalCopiesField.clear();
+        availableCopiesField.clear();
+        imageNameField.clear();
     }
 
 }

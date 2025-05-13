@@ -22,19 +22,19 @@
 <!--                  <Insets bottom="10.0" />-->
 <!--               </padding>-->
             </Label>
-            <Button fx:id="BooksDetailsButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="book-button" text="More">
+            <Button fx:id="booksDetailsButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="book-button" text="More">
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="PLUS" />
                </graphic>
             </Button>
             
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="book-button" text="Modifier">
+            <Button fx:id="editBookButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="book-button" text="Modifier">
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="PENCIL" />
                </graphic>
             </Button>
             
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="book-button" text="Supprimer">
+            <Button fx:id="deleteBookButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="book-button" text="Supprimer">
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="TRASH" />
                </graphic>

@@ -11,12 +11,13 @@ public class Books {
     private int published_year;
     private int copies_total;
     private int copies_available;
-    private String image_path;  // ✅ ajout du champ image
+    private String image_path;
+    private String description;
 
     public Books() {
     }
 
-    public Books(int book_id, String title, String author, String isbn, int category_id, int published_year, int copies_total, int copies_available, String image_path) {
+    public Books(int book_id, String title, String author, String isbn, int category_id, int published_year, int copies_total, int copies_available, String image_path, String description) {
         this.book_id = book_id;
         this.title = title;
         this.author = author;
@@ -26,6 +27,7 @@ public class Books {
         this.copies_total = copies_total;
         this.copies_available = copies_available;
         this.image_path = image_path;
+        this.description = description;
     }
 
     // Getters et Setters
@@ -56,6 +58,9 @@ public class Books {
 
     public String getImage_path() { return image_path; }
     public void setImage_path(String image_path) { this.image_path = image_path; }
+
+    public String getDescription() { return description; };
+    public void setDescription(String description) { this.description = description; }
 
 
     public void setCategory(int id) {
