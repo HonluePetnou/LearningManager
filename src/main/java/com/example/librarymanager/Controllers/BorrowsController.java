@@ -94,6 +94,8 @@ public class BorrowsController {
                                 loan.setStatus("RETURNED");
                                 loanTable.Update(loan);
                                 Alertmessage.showAlert(AlertType.INFORMATION, "Success", "Returned");
+                                // Remove the card from the grid after successful return
+                                loanGrid.getChildren().remove(card);
                             } catch (SQLException e) {
                                 Alertmessage.showAlert(AlertType.ERROR, "Error", "Internal error");
                                 System.err.println("Fail to Update  the loan : " + e.getMessage());
