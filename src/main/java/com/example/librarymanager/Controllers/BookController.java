@@ -279,6 +279,7 @@ public class BookController implements Initializable {
         totalCopiesField.clear();
         availableCopiesField.clear();
         imageNameField.clear();
+        bookDescriptionArea.clear();
     }
 
 }

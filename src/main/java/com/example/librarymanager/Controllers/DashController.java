@@ -63,6 +63,7 @@ public class DashController implements Initializable {
         seeAllButton.setOnAction(_ -> onSeeAllUsers());
         moreButton.setOnAction(_ -> onMoreBooks());
 
+
         User user = CurrentUser.getUser();
         String name;
         if (user == null || user.getFullName() == null) {
@@ -163,11 +164,10 @@ public class DashController implements Initializable {
     private void onSeeAllUsers() {
         Model.getModel().getViewFactory().getSidebarSelectedMenuItem().set("Users");
     }
-
     private void onMoreBooks() {
         Model.getModel().getViewFactory().getSidebarSelectedMenuItem().set("Books");
     }
-
+    
     private static int[] getBorrowbymonth(){
         int [] borrows = new int[12];
      try {
