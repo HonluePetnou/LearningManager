@@ -1,138 +1,192 @@
 /* ========== Root Styling ========== */
 .root {
-    -fx-background-color: #f4f6f8;
-    -fx-font-family: "Segoe UI", sans-serif;
-    -fx-padding: 20;
+  -fx-background-color: #f4f6f8;
+  background-color: #f4f6f8;
+  -fx-font-family: "Segoe UI", sans-serif;
+  font-family: "Segoe UI", sans-serif;
+  -fx-padding: 20;
+  padding: 20px;
 }
 
 /* ========== Title Styling ========== */
-.heading{
-    -fx-text-fill: #333;
-    -fx-padding:  10px;
-    -fx-font-size: 24px;
+.heading {
+  -fx-text-fill: #333;
+  color: #333;
+  -fx-padding: 10px;
+  padding: 10px;
+  -fx-font-size: 24px;
+  font-size: 24px;
 }
 .label {
-    -fx-text-fill: #333;
+  -fx-text-fill: #333;
+  color: #333;
 }
 
 /* Main page title */
 .label:top {
-    -fx-font-size: 28px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #2c3e50;
+  -fx-font-size: 28px;
+  font-size: 28px;
+  -fx-font-weight: bold;
+  font-weight: bold;
+  -fx-text-fill: #2c3e50;
+  color: #2c3e50;
 }
 
 /* Section titles */
 .section-title {
-    -fx-font-size: 20px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #2c3e50;
+  -fx-font-size: 20px;
+  font-size: 20px;
+  -fx-font-weight: bold;
+  font-weight: bold;
+  -fx-text-fill: #2c3e50;
+  color: #2c3e50;
 }
 
 /* ========== Table Styling ========== */
 .table-view {
-    -fx-background-color: #ffffff;
-    -fx-table-cell-border-color: transparent;
-    -fx-padding: 10;
-    -fx-border-color: #dcdde1;
-    -fx-border-width: 1;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
+  -fx-background-color: #ffffff;
+  background-color: #ffffff;
+  -fx-table-cell-border-color: transparent;
+  /* No direct CSS equivalent for -fx-table-cell-border-color */
+  -fx-padding: 10;
+  padding: 10px;
+  -fx-border-color: #dcdde1;
+  border-color: #dcdde1;
+  -fx-border-width: 1;
+  border-width: 1px;
+  -fx-border-radius: 8;
+  border-radius: 8px;
+  -fx-background-radius: 8;
 }
-
 .table-view .filler {
-    -fx-background-color: #5661E9;
+  -fx-background-color: #5661e9;
+  background-color: #5661e9;
 }
 .table-view .scroll-bar:horizontal {
-    -fx-opacity: 0;
-    -fx-pref-height: 0;
+  -fx-opacity: 0;
+  opacity: 0;
+  -fx-pref-height: 0;
+  height: 0;
 }
 /* Table header */
 .table-view .column-header {
-    -fx-background-color: #5a67d8;
-    -fx-padding: 20px;
+  -fx-background-color: #5a67d8;
+  background-color: #5a67d8;
+  -fx-padding: 20px;
+  padding: 20px;
 }
 .table-view .column-header,
 .table-view .column-header .label {
-    -fx-text-fill: #ffffff;
-    -fx-font-weight: bold;
-    -fx-alignment: CENTER;
+  -fx-text-fill: #ffffff;
+  color: #ffffff;
+  -fx-font-weight: bold;
+  font-weight: bold;
+  -fx-alignment: CENTER;
+  text-align: center;
 }
 
 /* Table rows */
-.table-row{
-    -fx-background-color: #e1def8;
-    -fx-padding: 8px;
+.table-row {
+  -fx-background-color: #e1def8;
+  background-color: #e1def8;
+  -fx-padding: 8px;
+  padding: 8px;
 }
 .table-view .table-row-cell {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent transparent #ececec transparent;
+  -fx-background-color: transparent;
+  background-color: transparent;
+  -fx-border-color: transparent transparent #ececec transparent;
+  border-color: transparent transparent #ececec transparent;
 }
-
 .table-view .table-row-cell:selected {
-    -fx-background-color: #c3dafe;
+  -fx-background-color: #c3dafe;
+  background-color: #c3dafe;
 }
 
 /* ========== Button Styling ========== */
 .button {
-    -fx-background-color: #5a67d8;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-background-radius: 5;
-    -fx-padding: 8 12 8 12;
+  -fx-background-color: #5a67d8;
+  background-color: #5a67d8;
+  -fx-text-fill: white;
+  color: white;
+  -fx-font-weight: bold;
+  font-weight: bold;
+  -fx-background-radius: 5;
+  border-radius: 5px;
+  -fx-padding: 8 12 8 12;
+  padding: 8px 12px 8px 12px;
 }
-
 .button:hover {
-    -fx-background-color: #434190;
+  -fx-background-color: #434190;
+  background-color: #434190;
 }
-
 .button:pressed {
-    -fx-background-color: #3c366b;
+  -fx-background-color: #3c366b;
+  background-color: #3c366b;
 }
 
- /*========== TextField Styling ========== */
+/*========== TextField Styling ========== */
 .text-field {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #dfe4ea;
-    -fx-border-width: 1;
-    -fx-border-radius: 5;
-    -fx-padding: 6 8 6 8;
-    -fx-font-size: 14px;
-    -fx-background-radius: 5;
+  -fx-background-color: #ffffff;
+  background-color: #ffffff;
+  -fx-border-color: #dfe4ea;
+  border-color: #dfe4ea;
+  -fx-border-width: 1;
+  border-width: 1px;
+  -fx-border-radius: 5;
+  border-radius: 5px;
+  -fx-padding: 6 8 6 8;
+  padding: 6px 8px 6px 8px;
+  -fx-font-size: 14px;
+  font-size: 14px;
+  -fx-background-radius: 5;
 }
-
-/* Focused TextField */
 .text-field:focused {
-    -fx-border-color: #5a67d8;
-    -fx-background-color: #fefefe;
+  -fx-border-color: #5a67d8;
+  border-color: #5a67d8;
+  -fx-background-color: #fefefe;
+  background-color: #fefefe;
 }
 
 /* ========== VBox / HBox spacing ========== */
-.vbox, .hbox {
-    -fx-spacing: 10;
+.vbox,
+.hbox {
+  -fx-spacing: 10;
+  gap: 10px;
 }
 
 /* ========== Form VBox ========== */
 .form-box {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #dfe4ea;
-    -fx-border-width: 1;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
-    -fx-padding: 15;
-    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.05), 4, 0, 2, 2);
+  -fx-background-color: #ffffff;
+  background-color: #ffffff;
+  -fx-border-color: #dfe4ea;
+  border-color: #dfe4ea;
+  -fx-border-width: 1;
+  border-width: 1px;
+  -fx-border-radius: 8;
+  border-radius: 8px;
+  -fx-background-radius: 8;
+  -fx-padding: 15;
+  padding: 15px;
+  -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.05), 4, 0, 2, 2);
+  /* No standard CSS equivalent for JavaFX dropshadow */
 }
 
 /* ========== Search Bar Styling ========== */
 .search-bar {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #dfe4ea;
-    -fx-border-width: 1;
-    -fx-border-radius: 5;
-    -fx-padding: 8;
-    -fx-background-radius: 5;
+  -fx-background-color: #ffffff;
+  background-color: #ffffff;
+  -fx-border-color: #dfe4ea;
+  border-color: #dfe4ea;
+  -fx-border-width: 1;
+  border-width: 1px;
+  -fx-border-radius: 5;
+  border-radius: 5px;
+  -fx-padding: 8;
+  padding: 8px;
+  -fx-background-radius: 5;
 }
-
 .search-bar:focused {
-    -fx-border-color: #5a67d8;
+  -fx-border-color: #5a67d8;
+  border-color: #5a67d8;
 }

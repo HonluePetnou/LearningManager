@@ -1,59 +1,86 @@
 .title-label {
-    -fx-font-size: 28px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #333;
+  -fx-font-size: 28px;
+  font-size: 28px;
+  -fx-font-weight: bold;
+  font-weight: bold;
+  -fx-text-fill: #333;
+  color: #333;
 }
 
 .grid-pane {
-    -fx-padding: 20;
+  -fx-padding: 20;
+  padding: 20px;
 }
 
 .loan-card {
-    -fx-background-color: white;
-    -fx-background-radius: 8px;
-    -fx-padding: 15px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 8, 0.2, 0, 4);
-    -fx-border-color: #e0e0e0;
-    -fx-border-radius: 8px;
+  -fx-background-color: white;
+  background-color: white;
+  -fx-background-radius: 8px;
+  border-radius: 8px;
+  -fx-padding: 15px;
+  padding: 15px;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 8, 0.2, 0, 4);
+  /* No standard CSS equivalent for JavaFX dropshadow */
+  -fx-border-color: #e0e0e0;
+  border-color: #e0e0e0;
+  -fx-border-radius: 8px;
+  border-radius: 8px;
 }
 
-.loan-card:hover{
-        -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.35), 12, 0.25, 0, 6);
-        -fx-cursor: hand;
+.loan-card:hover {
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.35), 12, 0.25, 0, 6);
+  /* No standard CSS equivalent for JavaFX dropshadow */
+  -fx-cursor: hand;
+  cursor: pointer;
 }
 
 .loan-card-label {
-    -fx-font-size: 18px;
-    -fx-text-fill: #333;
+  -fx-font-size: 18px;
+  font-size: 18px;
+  -fx-text-fill: #333;
+  color: #333;
 }
 
 .loan-card-label-italic {
-    -fx-font-size: 16px;
-    -fx-font-style: italic;
-    -fx-text-fill: #555;
+  -fx-font-size: 16px;
+  font-size: 16px;
+  -fx-font-style: italic;
+  font-style: italic;
+  -fx-text-fill: #555;
+  color: #555;
 }
 
 .loan-status {
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
+  -fx-font-weight: bold;
+  font-weight: bold;
+  -fx-font-size: 14px;
+  font-size: 14px;
 }
 
 .loan-status.green {
-    -fx-text-fill: green;
+  -fx-text-fill: green;
+  color: green;
 }
 
 .loan-status.red {
-    -fx-text-fill: red;
+  -fx-text-fill: red;
+  color: red;
 }
 
 .loan-card-button {
-    -fx-background-color: #4838d1;
-    -fx-text-fill: white;
-    -fx-background-radius: 5;
-    -fx-padding: 5 10;
-    -fx-cursor: hand;
+  -fx-background-color: #4838d1;
+  background-color: #4838d1;
+  -fx-text-fill: white;
+  color: white;
+  -fx-background-radius: 5px;
+  border-radius: 5px;
+  -fx-padding: 5 10;
+  padding: 5px 10px;
+  -fx-cursor: hand;
+  cursor: pointer;
 }
 
 .loan-card-button:hover {
-    -fx-background-color: #15104e;
+  -fx-background-color: #15104e;
+  background-color: #15104e;
 }

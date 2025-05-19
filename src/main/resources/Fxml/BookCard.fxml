@@ -8,6 +8,37 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
+<!--
+    BookCard.fxml
+    FXML layout for displaying a single book card in the library application.
+
+    This component represents a visual card for a book, showing its cover image,
+    title, author, and action buttons for viewing details, editing, or deleting the book.
+
+    Main features:
+    - Displays the book's cover image, title, and author.
+    - Provides a "More" button to view additional details about the book.
+    - Provides an "Edit" button to modify book information.
+    - Provides a "Delete" button to remove the book from the library.
+    - Uses FontAwesome icons for button graphics.
+    - Styled via the external Book.css stylesheet.
+
+    FXML elements:
+    - VBox (root): Container for the book card layout.
+    - ImageView (fx:id="bookImage"): Displays the book's cover image.
+    - Label (fx:id="bookTitle"): Displays the book's title.
+    - Label (fx:id="bookAuthor"): Displays the book's author.
+    - Button (fx:id="booksDetailsButton"): Opens book details.
+    - Button (fx:id="editBookButton"): Opens the edit book form.
+    - Button (fx:id="deleteBookButton"): Deletes the book.
+
+    Controller:
+    - com.example.librarymanager.Controllers.BookCardController
+
+    Styles:
+    - Uses style classes defined in Book.css for consistent appearance.
+-->
+
 <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="300.0" prefWidth="125.0" styleClass="book-card" stylesheets="@../Styles/Book.css"
    xmlns="http://javafx.com/javafx/23.0.1"
    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.BookCardController">
@@ -30,13 +61,13 @@
                   <FontAwesomeIconView fill="WHITE" glyphName="PLUS" />
                </graphic>
             </Button>
-            
+
             <Button fx:id="editBookButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="book-button" text="Edit">
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="PENCIL" />
                </graphic>
             </Button>
-            
+
             <Button fx:id="deleteBookButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="book-button" text="Delete">
                <graphic>
                   <FontAwesomeIconView fill="RED" glyphName="TRASH" />

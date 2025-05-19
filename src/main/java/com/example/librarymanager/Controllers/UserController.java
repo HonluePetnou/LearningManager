@@ -20,33 +20,88 @@ import java.util.ResourceBundle;
 
 import com.example.librarymanager.utils.Alertmessage;
 
+/**
+ * JavaFX controller for managing users in the application.
+ *
+ * This controller handles the user management view, including displaying all
+ * users,
+ * adding new users, searching, and deleting users from the system.
+ *
+ * Main features:
+ * - Displays all users in a TableView with columns for ID, name, email, phone,
+ * birthdate, gender, and address.
+ * - Allows adding a new user via a form.
+ * - Allows searching users by name, email, phone, or address.
+ * - Allows deleting users directly from the table.
+ * - Validates input fields before adding a user.
+ * - Clears the form after adding a user.
+ *
+ * Dependencies:
+ * - UserTable: for database operations related to users.
+ * - User: the user data model.
+ * - Alertmessage: for displaying error messages.
+ *
+ * FXML requirements:
+ * - TableView: userTableView
+ * - TableColumns: idCol, fullNameCol, emailCol, phoneCol, birthdateCol,
+ * genderCol, addressCol, deleteCol
+ * - TextFields: authorField (first name), titleField (last name), yearField
+ * (email), yearField1 (phone), yearField11 (address), searchField
+ * - DatePicker: birthdatePicker
+ * - ToggleGroup: genderGroup
+ * - RadioButtons: maleRadio, femaleRadio
+ */
 public class UserController implements Initializable {
 
-    @FXML private TableView<User> userTableView;
-    @FXML private TableColumn<User, Integer> idCol;
-    @FXML private TableColumn<User, String> fullNameCol;
-    @FXML private TableColumn<User, String> emailCol;
-    @FXML private TableColumn<User, Integer> phoneCol;
-    @FXML private TableColumn<User, LocalDate> birthdateCol;
-    @FXML private TableColumn<User, String> genderCol;
-    @FXML private TableColumn<User, String> addressCol;
-    @FXML private TableColumn<User, Boolean> deleteCol;
+    @FXML
+    private TableView<User> userTableView;
+    @FXML
+    private TableColumn<User, Integer> idCol;
+    @FXML
+    private TableColumn<User, String> fullNameCol;
+    @FXML
+    private TableColumn<User, String> emailCol;
+    @FXML
+    private TableColumn<User, Integer> phoneCol;
+    @FXML
+    private TableColumn<User, LocalDate> birthdateCol;
+    @FXML
+    private TableColumn<User, String> genderCol;
+    @FXML
+    private TableColumn<User, String> addressCol;
+    @FXML
+    private TableColumn<User, Boolean> deleteCol;
 
-    // Match these with FXML field names
-    @FXML private TextField authorField;      // First Name
-    @FXML private TextField titleField;       // Last Name
-    @FXML private TextField yearField;        // Email
-    @FXML private TextField yearField1;       // Phone
-    @FXML private TextField yearField11;      // Address
-    @FXML private DatePicker birthdatePicker;
-    @FXML private ToggleGroup genderGroup;
-    @FXML private RadioButton maleRadio;
-    @FXML private RadioButton femaleRadio;
-    @FXML private TextField searchField;
+    // Form fields
+    @FXML
+    private TextField authorField; // First Name
+    @FXML
+    private TextField titleField; // Last Name
+    @FXML
+    private TextField yearField; // Email
+    @FXML
+    private TextField yearField1; // Phone
+    @FXML
+    private TextField yearField11; // Address
+    @FXML
+    private DatePicker birthdatePicker;
+    @FXML
+    private ToggleGroup genderGroup;
+    @FXML
+    private RadioButton maleRadio;
+    @FXML
+    private RadioButton femaleRadio;
+    @FXML
+    private TextField searchField;
 
-   private  UserTable userTable = new UserTable();
-   private  int numberOfUsers = 0;
+    private UserTable userTable = new UserTable();
+    private int numberOfUsers = 0;
 
+    /**
+     * Initializes the controller, configures the table columns, sets up gender
+     * selection,
+     * and loads the initial list of users.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Initialize gender selection
@@ -63,12 +118,12 @@ public class UserController implements Initializable {
         genderCol.setCellValueFactory(new PropertyValueFactory<>("gender"));
         addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
 
+        // Configure delete button in table
         deleteCol.setCellFactory(_ -> new TableCell<>() {
             private final Button deleteButton = new Button("❌");
 
             {
                 deleteButton.setStyle("-fx-background-color: red; -fx-text-fill: white; -fx-cursor: hand;");
-
                 deleteButton.setOnAction(_ -> {
                     User user = getTableView().getItems().get(getIndex());
                     userTableView.getItems().remove(user);
@@ -96,6 +151,13 @@ public class UserController implements Initializable {
         userTableView.setItems(getInitialList());
     }
 
+    /**
+     * Handles the add user button action.
+     * Validates input, creates a new user, adds it to the database and table, and
+     * clears the form.
+     * 
+     * @param event the action event
+     */
     @FXML
     private void handleAddUser(ActionEvent event) {
         try {
@@ -117,11 +179,9 @@ public class UserController implements Initializable {
 
             // Create and add new user
             User newUser = new User(firstName, lastName, email, phone, birthdate, gender, address);
-            // add to database
             newUser.setRole("MEMBER");
             newUser.setPassword("defaultpassword");
             userTable.create(newUser);
-            // add to table view
             numberOfUsers++;
             newUser.setUser_id(numberOfUsers);
             userTableView.getItems().add(newUser);
@@ -131,15 +191,19 @@ public class UserController implements Initializable {
 
         } catch (NumberFormatException e) {
             Alertmessage.showAlert(AlertType.ERROR, "Error", "Please enter a valid phone number");
-        } 
-        catch(SQLException e){
+        } catch (SQLException e) {
             Alertmessage.showAlert(AlertType.ERROR, "Error ", "ADD NEW USER  FAIL");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Alertmessage.showAlert(AlertType.ERROR, "Error", e.getMessage());
         }
     }
 
+    /**
+     * Handles the search action.
+     * Filters the user list based on the search text.
+     * 
+     * @param event the action event
+     */
     @FXML
     private void handleSearch(ActionEvent event) {
         String searchText = searchField.getText().toLowerCase();
@@ -160,6 +224,9 @@ public class UserController implements Initializable {
         userTableView.setItems(filteredList);
     }
 
+    /**
+     * Clears all fields in the add user form.
+     */
     private void clearFormFields() {
         authorField.clear();
         titleField.clear();
@@ -170,8 +237,11 @@ public class UserController implements Initializable {
         genderGroup.selectToggle(null);
     }
 
-  
-
+    /**
+     * Loads the initial list of users from the database.
+     * 
+     * @return ObservableList of users
+     */
     private ObservableList<User> getInitialList() {
         ObservableList<User> users = FXCollections.observableArrayList();
         try {
@@ -180,12 +250,11 @@ public class UserController implements Initializable {
             for (User user : userList) {
                 users.add(user);
             }
-          } catch (SQLException e) {
+        } catch (SQLException e) {
             Alertmessage.showAlert(AlertType.ERROR, "Error", "FAIL TO FETCH DATA ");
-          }   
-          catch (Exception e){
-            Alertmessage.showAlert(AlertType.ERROR, "Error", "FAIL TO FETCH DATA :"+e.getMessage());
-          }
-          return users;
-        }    
+        } catch (Exception e) {
+            Alertmessage.showAlert(AlertType.ERROR, "Error", "FAIL TO FETCH DATA :" + e.getMessage());
+        }
+        return users;
+    }
 }

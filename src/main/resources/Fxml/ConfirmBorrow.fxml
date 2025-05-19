@@ -12,37 +12,65 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="364.0" stylesheets="@../Styles/BookDetails.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.ConfirmBorrowController">
-   <HBox prefHeight="619.0" prefWidth="600.0" spacing="20.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <children>
-          <GridPane alignment="CENTER" prefHeight="250.0" prefWidth="346.0">
-              <columnConstraints>
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-      
-                    <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-      
-                    <Label text="User ID" />
-              <Label text="Quantity" GridPane.rowIndex="1" />
-              <Label text="Return Date" GridPane.rowIndex="2" />
-              <TextField fx:id="userId" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" />
-              <TextField fx:id="numberOfBook" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <DatePicker fx:id="returndate" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-          </GridPane>
-      </children>
-      <padding>
-         <Insets left="20.0" right="20.0" />
-      </padding>
-   </HBox>
+<!--
+    ConfirmBorrow.fxml
+    FXML layout for the borrow confirmation dialog in the library application.
 
-    <ButtonBar layoutX="67.0" layoutY="182.0" prefHeight="40.0" prefWidth="218.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="20.0">
-      <buttons>
-          <Button fx:id="confirmbutton" mnemonicParsing="false" text="Confirm" />
-      </buttons>
-    </ButtonBar>
+    This component provides a form for confirming a book loan, allowing the user to specify
+    the user ID, quantity of books to borrow, and the return date.
+
+    Main features:
+    - Displays input fields for user ID, quantity, and return date.
+    - Uses a GridPane for organized form layout.
+    - Provides a "Confirm" button in a ButtonBar to submit the borrow request.
+    - Styled via the external BookDetails.css stylesheet.
+
+    FXML elements:
+    - AnchorPane (root): Main container for the dialog.
+    - HBox: Contains the form GridPane.
+    - GridPane: Contains Labels and input fields (TextField for user ID, TextField for quantity, DatePicker for return date).
+    - ButtonBar: Contains the "Confirm" button (fx:id="confirmbutton").
+
+    Controller:
+    - com.example.librarymanager.Controllers.ConfirmBorrowController
+
+    Styles:
+    - Uses style classes and the external BookDetails.css stylesheet for consistent appearance.
+-->
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="364.0" stylesheets="@../Styles/BookDetails.css"
+  xmlns="http://javafx.com/javafx/23.0.1"
+  xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.ConfirmBorrowController">
+  <HBox prefHeight="619.0" prefWidth="600.0" spacing="20.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <children>
+      <GridPane alignment="CENTER" prefHeight="250.0" prefWidth="346.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+
+        <Label text="User ID" />
+        <Label text="Quantity" GridPane.rowIndex="1" />
+        <Label text="Return Date" GridPane.rowIndex="2" />
+        <TextField fx:id="userId" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" />
+        <TextField fx:id="numberOfBook" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <DatePicker fx:id="returndate" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      </GridPane>
+    </children>
+    <padding>
+      <Insets left="20.0" right="20.0" />
+    </padding>
+  </HBox>
+
+  <ButtonBar layoutX="67.0" layoutY="182.0" prefHeight="40.0" prefWidth="218.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="20.0">
+    <buttons>
+      <Button fx:id="confirmbutton" mnemonicParsing="false" text="Confirm" />
+    </buttons>
+  </ButtonBar>
 </AnchorPane>

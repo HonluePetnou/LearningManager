@@ -15,6 +15,40 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
+/**
+ * Factory class for managing and displaying application views (windows/scenes).
+ *
+ * This class provides methods to load, cache, and display different JavaFX
+ * views
+ * such as Dashboard, Books, Users, Borrows, and Help. It also manages the
+ * currently
+ * selected sidebar menu item and provides utility methods for opening and
+ * closing
+ * application windows.
+ *
+ * Main features:
+ * - Loads and caches FXML views for efficient switching between scenes.
+ * - Provides methods to show main application windows (login, registration,
+ * dashboard, books, confirm borrow).
+ * - Handles errors gracefully by displaying error dialogs if FXML resources are
+ * missing or fail to load.
+ * - Maintains a StringProperty for the currently selected sidebar menu item.
+ * - Ensures consistent view wrapping (e.g., wrapping AnchorPane or VBox in
+ * BorderPane).
+ *
+ * Usage:
+ * - Call getDashboardView(), getBooksView(), getUsersView(), getBorrowsView(),
+ * or getHelpView() to retrieve views.
+ * - Use showLoginWindow(), showRegistrationWindow(), showMainWindow(),
+ * showBooksWindow(), or showConfirmBorrowWindow() to open windows.
+ * - Use closeStage(Stage) to close a window.
+ * - Use getSidebarSelectedMenuItem() to observe or change the selected sidebar
+ * menu item.
+ *
+ * Dependencies:
+ * - JavaFX: FXMLLoader, Scene, Stage, Alert, and layout classes.
+ * - FXML files: Located in the /Fxml/ directory.
+ */
 public class ViewFactory {
     private final StringProperty sidebarSelectedMenuItem;
     private ScrollPane dashboardView;
@@ -35,9 +69,9 @@ public class ViewFactory {
     public ScrollPane getDashboardView() {
         if (dashboardView == null) {
             try {
-                dashboardView = new FXMLLoader(getClass().getResource("/Fxml/Dash.fxml")).load();
+                dashboardView = new FXMLLoader(getClass().getResource("/Fxml/Dashboard.fxml")).load();
             } catch (Exception e) {
-                // throw new RuntimeException(e);
+                // throw new RuntimeE xception(e);
                 e.printStackTrace();
             }
         }
@@ -157,19 +191,19 @@ public class ViewFactory {
         }
     }
 
-    public void showDashboardWindow() {
+    public void showMainWindow() {
         try {
-            URL resourceUrl = getClass().getResource("/Fxml/Dashboard.fxml");
+            URL resourceUrl = getClass().getResource("/Fxml/Main.fxml");
             if (resourceUrl == null) {
-                System.err.println("Error: Could not find Dashboard.fxml resource");
-                throw new IOException("Dashboard.fxml resource not found");
+                System.err.println("Error: Could not find Main.fxml resource");
+                throw new IOException("Main.fxml resource not found");
             }
             FXMLLoader fxmlLoader = new FXMLLoader(resourceUrl);
             createStage(fxmlLoader);
         } catch (Exception e) {
-            System.err.println("Error showing dashboard window: " + e.getMessage());
+            System.err.println("Error showing main window: " + e.getMessage());
             e.printStackTrace();
-            showErrorDialog("Dashboard Error", "Failed to load dashboard window", e.getMessage());
+            showErrorDialog("Application Error", "Failed to load main window", e.getMessage());
         }
     }
 
@@ -200,7 +234,7 @@ public class ViewFactory {
 
             // Créer la scène et obtenir le controller avant de l'afficher
             Scene scene = new Scene(loader.load());
-           
+
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("BOOKER");

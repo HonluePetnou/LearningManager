@@ -21,52 +21,111 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+/**
+ * JavaFX controller for displaying a book card in the UI.
+ *
+ * This controller manages the display of a book's information (title, author,
+ * image)
+ * and provides actions to view details, edit, or delete the book.
+ *
+ * Main features:
+ * - Displays book title, author, and cover image.
+ * - Opens a details window for the book.
+ * - Opens an edit form for the book.
+ * - Deletes the book (with confirmation), updates the database and UI.
+ *
+ * Dependencies:
+ * - BookController: to refresh the grid after deletion.
+ * - BooksTable: for database operations.
+ * - Books: data model representing a book.
+ *
+ * Usage:
+ * - Call setData(Books) to initialize the card with a book.
+ * - Call setBookController(BookController) to enable UI updates after deletion.
+ *
+ * Expected FXML:
+ * - Buttons: booksDetailsButton, editBookButton, deleteBookButton
+ * - Labels: bookTitle, bookAuthor
+ * - ImageView: bookImage
+ */
 public class BookCardController implements Initializable {
 
+    /**
+     * Button to show book details.
+     */
     @FXML
     private Button booksDetailsButton;
 
+    /**
+     * Button to edit the book.
+     */
     @FXML
     private Button editBookButton;
 
+    /**
+     * Button to delete the book.
+     */
     @FXML
     private Button deleteBookButton;
 
+    /**
+     * Label displaying the book's author.
+     */
     @FXML
     private Label bookAuthor;
 
+    /**
+     * ImageView displaying the book's cover.
+     */
     @FXML
     private ImageView bookImage;
 
+    /**
+     * Label displaying the book's title.
+     */
     @FXML
     private Label bookTitle;
 
-    // private String imagePath;
-    private Books book; // Shared instance of the book
+    /**
+     * The book instance displayed by this card.
+     */
+    private Books book;
+
+    /**
+     * Access to the books table for database operations.
+     */
     private BooksTable booksTable;
+
+    /**
+     * Main controller for managing the book grid.
+     */
     private BookController bookController;
 
+    /**
+     * Injects the main controller for grid management.
+     * 
+     * @param bookController the main controller
+     */
     public void setBookController(BookController bookController) {
         this.bookController = bookController;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        // Initialization if needed
     }
 
+    /**
+     * Opens the details window for the book.
+     * 
+     * @param book the book to display
+     */
     private void detailsBook(Books book) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/BookDetails.fxml"));
             Parent root = loader.load();
-
-            // Obtenir le contrôleur de BookDetails
             BookDetailsController detailsController = loader.getController();
-
-            // Passer les données du livre au contrôleur
-            detailsController.setBookDetails(book); // getBook() retourne un objet Books
-
-            // Afficher la fenêtre des détails
+            detailsController.setBookDetails(book);
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -75,19 +134,18 @@ public class BookCardController implements Initializable {
         }
     }
 
+    /**
+     * Opens the edit form for the book.
+     * 
+     * @param book the book to edit
+     */
     private void editBook(Books book) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/EditBook.fxml"));
             Parent root = loader.load();
-
-            // Get the EditBookController
             EditBookController editBookController = loader.getController();
-
-            // Pass the shared Books object and the BookCardController
             editBookController.setBookCardController(this);
-            editBookController.setBookDetails(book); // getBook() retourne un objet Books
-
-            // Show the edit form
+            editBookController.setBookDetails(book);
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -96,26 +154,30 @@ public class BookCardController implements Initializable {
         }
     }
 
+    /**
+     * Deletes the book after confirmation, updates the database and UI.
+     * 
+     * @param book the book to delete
+     */
     private void deleteBook(Books book) {
         try {
-            // Confirm deletion
+            // User confirmation
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Delete Book");
             alert.setHeaderText("Are you sure you want to delete this book?");
             alert.setContentText("This action cannot be undone.");
             if (alert.showAndWait().orElse(ButtonType.CANCEL) != ButtonType.OK) {
-                return; // Exit if the user cancels
+                return;
             }
 
-            // Remove the book from the books list in BookController
+            // Remove from UI
             if (bookController != null) {
                 bookController.getBooks().remove(book);
                 System.out.println("Book successfully deleted from UI.");
-                // Refresh UI
                 bookController.refreshBookGrid();
             }
 
-            // Delete the book from the database
+            // Remove from database
             booksTable = new BooksTable();
             try {
                 booksTable.Delete(book.getBook_id());
@@ -129,6 +191,12 @@ public class BookCardController implements Initializable {
         }
     }
 
+    /**
+     * Loads an image from the given path, or a default image if not found.
+     * 
+     * @param path the image path
+     * @return the loaded image
+     */
     private Image loadImage(String path) {
         try {
             if (path != null && !path.isEmpty()) {
@@ -137,7 +205,7 @@ public class BookCardController implements Initializable {
                     return new Image(imageUrl.toExternalForm());
                 }
             }
-            // Load default image if path is null, empty or resource not found
+            // Default image
             URL defaultImageUrl = getClass().getResource("/Images/test1.jpg");
             if (defaultImageUrl != null) {
                 return new Image(defaultImageUrl.toExternalForm());
@@ -149,22 +217,21 @@ public class BookCardController implements Initializable {
         }
     }
 
-    @SuppressWarnings("unused")
+    /**
+     * Initializes the card with the book data and configures the buttons.
+     * 
+     * @param books the book to display
+     */
     public void setData(Books books) {
         try {
-            this.book = books; // Store the shared instance of the book
-
-            // Configure button handlers
-            booksDetailsButton.setOnAction(event -> detailsBook(book));
-            editBookButton.setOnAction(event -> editBook(book));
-            deleteBookButton.setOnAction(event -> deleteBook(book));
-
-            // Load image using the new utility method
+            this.book = books;
+            booksDetailsButton.setOnAction(_ -> detailsBook(book));
+            editBookButton.setOnAction(_ -> editBook(book));
+            deleteBookButton.setOnAction(_ -> deleteBook(book));
             Image image = loadImage(books.getImage_path());
             if (image != null) {
                 bookImage.setImage(image);
             }
-
             bookTitle.setText(books.getTitle());
             bookAuthor.setText(books.getAuthor());
         } catch (Exception e) {
@@ -172,5 +239,4 @@ public class BookCardController implements Initializable {
             e.printStackTrace();
         }
     }
-
 }

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+    Main.fxml
+    FXML layout for the main application window of the library manager.
+
+    This component serves as the root layout for the application after login.
+    It organizes the sidebar navigation and the main content area using a BorderPane.
+
+    Main features:
+    - Displays the sidebar navigation on the left, included from Sidebar.fxml.
+    - Shows the main dashboard or content area in the center, included from Dash.fxml.
+    - Uses a BorderPane for flexible layout management.
+    - Allows dynamic switching of the center content based on user navigation.
+
+    FXML elements:
+    - BorderPane (root): Main container for the application layout.
+    - VBox (left): Contains the sidebar navigation.
+    - VBox (center): Contains the main dashboard or other views.
+
+    Controller:
+    - com.example.librarymanager.Controllers.MainController
+
+    Styles:
+    - Inherits styles from included FXML files and global stylesheets.
+-->
+
+<BorderPane cacheShape="false"
+    xmlns="http://javafx.com/javafx/23.0.1"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.MainController" fx:id="dash_Parent">
+    <left>
+        <VBox>
+            <fx:include source="Sidebar.fxml" />
+        </VBox>
+    </left>
+    <center>
+        <VBox maxWidth="1.7976931348623157E308">
+            <fx:include source="Dashboard.fxml" />
+        </VBox>
+    </center>
+</BorderPane>

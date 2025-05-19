@@ -20,6 +20,37 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
+/**
+ * JavaFX controller for confirming a book borrowing (loan) operation.
+ *
+ * This controller manages the confirmation form where a user can borrow a book.
+ * It validates user input, checks book availability, creates the loan in the
+ * database,
+ * updates the available copies, and triggers a UI refresh.
+ *
+ * Main features:
+ * - Validates all required fields (user ID, number of books, return date).
+ * - Ensures the return date is in the future.
+ * - Checks that the requested number of books does not exceed available copies.
+ * - Prevents borrowing the same book multiple times by the same user.
+ * - Creates a new loan record and updates the book's available copies in the
+ * database.
+ * - Shows user feedback via alerts.
+ * - Closes the confirmation window upon successful borrowing.
+ *
+ * Dependencies:
+ * - LoanTable: for loan database operations.
+ * - BooksTable: for updating book availability.
+ * - Alertmessage: for user feedback.
+ * - CurrentUser: for accessing the current book and loan context.
+ * - Model: for closing the window.
+ * - BorrowsController: for triggering a refresh of the loan list.
+ *
+ * FXML requirements:
+ * - Button: confirmbutton
+ * - TextField: numberOfBook, userId
+ * - DatePicker: returndate
+ */
 public class ConfirmBorrowController implements Initializable {
 
   @FXML
@@ -42,16 +73,24 @@ public class ConfirmBorrowController implements Initializable {
 
   private BooksTable booksTable = new BooksTable();
 
-  @SuppressWarnings("unused")
+  /**
+   * Initializes the controller and sets up the confirm button action.
+   */
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
-    confirmbutton.setOnAction(event -> {
+    confirmbutton.setOnAction(_ -> {
       if (confirmBorrow()) {
         closeStage();
       }
     });
   }
 
+  /**
+   * Validates the form, creates the loan, updates the book, and triggers UI
+   * refresh.
+   * 
+   * @return true if the borrow operation was successful, false otherwise
+   */
   private boolean confirmBorrow() {
     loan = CurrentUser.getLoan();
     book = CurrentUser.getBook();
@@ -75,23 +114,26 @@ public class ConfirmBorrowController implements Initializable {
       loan.setDueAt(returndate.getValue().atStartOfDay());
       loan.setBookId(book.getBook_id());
       loan.setNumberOfBook(Integer.parseInt(numberOfBook.getText()));
-     
-      if( loanTable.getLoanId(Integer.parseInt(userId.getText()), book.getBook_id() ) != 0 ){
-          Alertmessage.showAlert(AlertType.INFORMATION, "INFO", "vous avez deja emprunter ce livre"); 
-          return false ;
+
+      if (loanTable.getLoanId(Integer.parseInt(userId.getText()), book.getBook_id()) != 0) {
+        Alertmessage.showAlert(AlertType.INFORMATION, "INFO", "You have already borrowed this book.");
+        return false;
       }
       loanTable.create(loan);
       booksTable.Update(book);
-      Alertmessage.showAlert(AlertType.INFORMATION, "INFO", "livre emprunte avec success");    
+      Alertmessage.showAlert(AlertType.INFORMATION, "INFO", "Book borrowed successfully.");
       BorrowsController.triggerUpdate();
       return true;
     } catch (Exception e) {
       System.err.println("fail to create loan:" + e);
-      Alertmessage.showAlert(AlertType.ERROR, "ERROR", "internal error");
+      Alertmessage.showAlert(AlertType.ERROR, "ERROR", "Internal error");
     }
     return false;
   }
 
+  /**
+   * Closes the confirmation window.
+   */
   private void closeStage() {
     Stage stage = (Stage) numberOfBook.getScene().getWindow();
     Model.getModel().getViewFactory().closeStage(stage);

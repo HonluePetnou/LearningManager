@@ -1,22 +1,370 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.BorderPane?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane cacheShape="false"
-            xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.librarymanager.Controllers.DashboardController"
-            fx:id="dash_Parent"
->
-    <left>
-        <VBox>
-            <fx:include source="Sidebar.fxml" />
-        </VBox>
-    </left>
-    <center>
-        <VBox maxWidth="1.7976931348623157E308">
-            <fx:include source="Dash.fxml" />
-        </VBox>
-    </center>
-</BorderPane>
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="Infinity" maxWidth="Infinity" stylesheets="@../Styles/Dashboard.css"
+   xmlns="http://javafx.com/javafx/23.0.1"
+   xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.DashboardController">
+
+   <content>
+      <VBox prefHeight="800.0" spacing="10.0" styleClass="main">
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+         <!-- Here goes everything you had inside the old VBox -->
+
+         <!-- Top Greeting HBox -->
+         <HBox prefHeight="50.0">
+            <children>
+               <VBox>
+                  <children>
+                     <Label fx:id="username" styleClass="main-label" text="Hi Musa" />
+                     <Label fx:id="localdate" styleClass="main-date" text="jan 12 2025 | thursday 12:00 AM" />
+                  </children>
+               </VBox>
+            </children>
+         </HBox>
+         <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10">
+            <children>
+               <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="250.0" prefWidth="300.0" spacing="5" styleClass="stat-card" HBox.hgrow="ALWAYS">
+                  <children>
+                     <HBox spacing="30.0">
+                        <children>
+                           <FontAwesomeIconView glyphName="BOOK" size="60" styleClass="stat-icon" />
+                           <VBox>
+                              <children>
+                                 <Label styleClass="stat-title" text="TOTAL BOOKS" />
+                                 <Label fx:id="totalBooksLabel" styleClass="stat-value" text="1,245" />
+                              </children>
+                           </VBox>
+                        </children>
+                     </HBox>
+                  </children>
+               </VBox>
+               <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="250.0" prefWidth="300.0" spacing="5" styleClass="stat-card" HBox.hgrow="ALWAYS">
+                  <children>
+                     <HBox spacing="30.0">
+                        <children>
+                           <FontAwesomeIconView glyphName="HANDSHAKE_ALT" size="60" styleClass="stat-icon" />
+                           <VBox>
+                              <children>
+                                 <Label styleClass="stat-title" text="BORROWED" />
+                                 <Label fx:id="borrowedBooksLabel" styleClass="stat-value" text="402" />
+                              </children>
+                           </VBox>
+                        </children>
+                     </HBox>
+                  </children>
+               </VBox>
+               <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="250.0" prefWidth="300.0" spacing="5" styleClass="stat-card" HBox.hgrow="ALWAYS">
+                  <children>
+                     <HBox spacing="30.0">
+                        <children>
+                           <FontAwesomeIconView glyphName="USER" size="60" styleClass="stat-icon" />
+                           <VBox>
+                              <children>
+                                 <Label styleClass="stat-title" text="ACTIVE USERS" />
+                                 <Label fx:id="activeUsersLabel" styleClass="stat-value" text="183" />
+                              </children>
+                           </VBox>
+                        </children>
+                     </HBox>
+                  </children>
+               </VBox>
+            </children>
+         </HBox>
+         <HBox layoutX="30.0" layoutY="512.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="760.0" spacing="20.0" styleClass="books-hbox">
+            <children>
+               <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="877.0" HBox.hgrow="ALWAYS">
+                  <children>
+                     <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" spacing="20.0" VBox.vgrow="ALWAYS">
+                        <children>
+                           <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                              <children>
+                                 <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                                    <children>
+                                       <Label styleClass="date-Label" text="Starting Date" />
+                                    </children>
+                                 </HBox>
+                                 <HBox prefHeight="100.0" prefWidth="200.0">
+                                    <children>
+                                       <DatePicker maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                                    </children>
+                                 </HBox>
+                              </children>
+                           </VBox>
+                           <VBox layoutX="10.0" layoutY="10.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                              <children>
+                                 <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                                    <children>
+                                       <Label styleClass="date-Label" text="Ending Date" />
+                                    </children>
+                                 </HBox>
+                                 <HBox prefHeight="100.0" prefWidth="200.0">
+                                    <children>
+                                       <DatePicker maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                                    </children>
+                                 </HBox>
+                              </children>
+                           </VBox>
+                           <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                              <children>
+                                 <Button mnemonicParsing="false" styleClass="outlined-button" text="Reinitialize" />
+                                 <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="book-button" text="Visualize" />
+                              </children>
+                           </VBox>
+                        </children>
+                     </HBox>
+                     <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="877.0" VBox.vgrow="ALWAYS">
+                        <children>
+                           <LineChart fx:id="lineChart" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="300.0" prefHeight="500.0" prefWidth="877.0" title="Daily Borrows Stats" HBox.hgrow="ALWAYS">
+                              <xAxis>
+                                 <CategoryAxis side="BOTTOM" />
+                              </xAxis>
+                              <yAxis>
+                                 <NumberAxis side="LEFT" />
+                              </yAxis>
+                           </LineChart>
+                        </children>
+                     </HBox>
+                  </children>
+               </VBox>
+            </children>
+         </HBox>
+         <HBox prefHeight="302.0" prefWidth="760.0">
+            <children>
+               <VBox prefHeight="450.0" prefWidth="380.0" spacing="10" HBox.hgrow="ALWAYS">
+                  <children>
+                     <Label styleClass="section-header" text="Pie chart here " />
+                     <VBox fx:id="membersContainer" spacing="10" styleClass="items-container" />
+                     <PieChart fx:id="pieChart" />
+                  </children>
+               </VBox>
+               <VBox fx:id="table" prefHeight="450.0" prefWidth="380.0" spacing="10" styleClass="table-container" HBox.hgrow="ALWAYS">
+                  <children>
+                     <HBox VBox.vgrow="ALWAYS">
+                        <children>
+                           <HBox HBox.hgrow="ALWAYS">
+                              <children>
+                                 <Label prefHeight="35.0" prefWidth="167.0" styleClass="table-header" text="Golden Users" />
+                              </children>
+                           </HBox>
+                           <HBox alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">
+                              <children>
+                                 <Button fx:id="seeAllButton" mnemonicParsing="false" styleClass="table-button" text="See All" />
+                              </children>
+                           </HBox>
+                        </children>
+                     </HBox>
+                     <HBox styleClass="header-row">
+                        <children>
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="100.0" styleClass="header-cell" text="ID" HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="200.0" styleClass="header-cell" text="Fullname" HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="250.0" styleClass="header-cell" text="Email" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="316.0" layoutY="15.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="header-cell" text="Location" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="398.0" layoutY="15.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="header-cell" text="Sex" HBox.hgrow="ALWAYS" />
+                        </children>
+                     </HBox>
+                     <HBox fx:id="row1" styleClass="data-row odd-row">
+                        <children>
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="100.0" styleClass="data-cell" text="001" HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="200.0" styleClass="data-cell" text="Djifack Daril" HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="250.0" styleClass="data-cell status-active" text="RamoliyaKumai@gmail.com" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="311.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="data-cell status-active" text="Douala" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="408.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="data-cell status-active" text="Male" HBox.hgrow="ALWAYS" />
+                        </children>
+                     </HBox>
+                     <HBox fx:id="row11" layoutX="31.0" layoutY="151.0" styleClass="data-row odd-row">
+                        <children>
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="100.0" styleClass="data-cell" text="002" HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="200.0" styleClass="data-cell" text="Petnou Honlue A." HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="250.0" styleClass="data-cell status-active" text="petnouhonlue@gmail.com" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="311.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="data-cell status-active" text="Bangangte" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="408.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="data-cell status-active" text="Male" HBox.hgrow="ALWAYS" />
+                        </children>
+                     </HBox>
+                     <HBox fx:id="row111" layoutX="31.0" layoutY="164.0" styleClass="data-row odd-row">
+                        <children>
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="100.0" styleClass="data-cell" text="003" HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="200.0" styleClass="data-cell" text="Jane Doe" HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="250.0" styleClass="data-cell status-active" text="janedoe@gmail.com" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="311.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="data-cell status-active" text="Paris" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="408.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="data-cell status-active" text="Female" HBox.hgrow="ALWAYS" />
+                        </children>
+                     </HBox>
+                     <HBox fx:id="row1111" layoutX="31.0" layoutY="202.0" styleClass="data-row odd-row">
+                        <children>
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="100.0" styleClass="data-cell" text="004" HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="200.0" styleClass="data-cell" text="Julia Smith" HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="250.0" styleClass="data-cell status-active" text="Juliasmith@gmail.com" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="311.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="data-cell status-active" text="Montreal" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="408.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="data-cell status-active" text="Female" HBox.hgrow="ALWAYS" />
+                        </children>
+                     </HBox>
+                     <HBox fx:id="row11111" layoutX="31.0" layoutY="240.0" styleClass="data-row odd-row">
+                        <children>
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="100.0" styleClass="data-cell" text="005" HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="200.0" styleClass="data-cell" text="Kamdeu Chret" HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="250.0" styleClass="data-cell status-active" text="kamdeuchret@gmail.com" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="311.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="data-cell status-active" text="yaounde" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="408.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="data-cell status-active" text="Male" HBox.hgrow="ALWAYS" />
+                        </children>
+                     </HBox>
+                  </children>
+               </VBox>
+            </children>
+         </HBox>
+         <HBox prefHeight="150.0" prefWidth="760.0" spacing="20.0" styleClass="books-hbox">
+            <children>
+               <VBox alignment="CENTER" spacing="20.0" HBox.hgrow="ALWAYS">
+                  <children>
+                     <HBox>
+                        <children>
+                           <Label prefHeight="35.0" prefWidth="167.0" styleClass="table-header" text="Main Books" />
+                        </children>
+                     </HBox>
+                     <HBox alignment="CENTER" spacing="20.0" VBox.vgrow="ALWAYS">
+                        <children>
+                           <VBox prefHeight="300.0" prefWidth="200.0" styleClass="book-card">
+                              <padding>
+                                 <Insets bottom="20.0" />
+                              </padding>
+                              <children>
+                                 <ImageView fitHeight="180" fitWidth="200.0">
+                                    <image>
+                                       <Image url="@../Images/book3.jpg" />
+                                    </image>
+                                    <viewport>
+                                       <Rectangle2D />
+                                    </viewport>
+                                 </ImageView>
+                                 <Label styleClass="book-title" text="JavaFX Essentials" />
+                                 <Button styleClass="book-button" text="Borrow" />
+                              </children>
+                           </VBox>
+                           <VBox prefHeight="300.0" prefWidth="200.0" styleClass="book-card">
+                              <padding>
+                                 <Insets bottom="20.0" />
+                              </padding>
+                              <children>
+                                 <ImageView fitHeight="180" fitWidth="200.0">
+                                    <image>
+                                       <Image url="@../Images/book1.jpg" />
+                                    </image>
+                                 </ImageView>
+                                 <Label styleClass="book-title" text="Clean Code" />
+                                 <Button styleClass="book-button" text="Borrow" />
+                              </children>
+                           </VBox>
+                           <VBox prefHeight="300.0" prefWidth="200.0" styleClass="book-card">
+                              <padding>
+                                 <Insets bottom="20.0" />
+                              </padding>
+                              <children>
+                                 <ImageView fitHeight="180" fitWidth="200">
+                                    <image>
+                                       <Image url="@../Images/book2.jpg" />
+                                    </image>
+                                 </ImageView>
+                                 <Label styleClass="book-title" text="Design Patterns" />
+                                 <Button styleClass="book-button" text="Borrow" />
+                              </children>
+                           </VBox>
+                           <VBox prefHeight="300.0" prefWidth="200.0" styleClass="book-card">
+                              <padding>
+                                 <Insets bottom="20.0" />
+                              </padding>
+                              <children>
+                                 <ImageView fitHeight="180" fitWidth="200.0">
+                                    <image>
+                                       <Image url="@../Images/book3.jpg" />
+                                    </image>
+                                    <viewport>
+                                       <Rectangle2D />
+                                    </viewport>
+                                 </ImageView>
+                                 <Label styleClass="book-title" text="JavaFX Essentials" />
+                                 <Button styleClass="book-button" text="Borrow" />
+                              </children>
+                           </VBox>
+                           <VBox layoutX="678.0" layoutY="10.0" prefHeight="300.0" prefWidth="200.0" styleClass="book-card">
+                              <padding>
+                                 <Insets bottom="20.0" />
+                              </padding>
+                              <children>
+                                 <ImageView fitHeight="180" fitWidth="200.0">
+                                    <image>
+                                       <Image url="@../Images/book3.jpg" />
+                                    </image>
+                                    <viewport>
+                                       <Rectangle2D />
+                                    </viewport>
+                                 </ImageView>
+                                 <Label styleClass="book-title" text="JavaFX Essentials" />
+                                 <Button styleClass="book-button" text="Borrow" />
+                              </children>
+                           </VBox>
+                        </children>
+                     </HBox>
+                     <HBox alignment="CENTER">
+                        <children>
+                           <Button fx:id="moreButton" mnemonicParsing="false" styleClass="outlined-button" text="More +" />
+                        </children>
+                     </HBox>
+                  </children>
+               </VBox>
+            </children>
+         </HBox>
+
+         <!-- Stats Section HBox -->
+         <!-- ... same as before ... -->
+
+         <!-- Charts + Users Table HBox -->
+         <!-- ... same as before ... -->
+
+         <!-- Books Section HBox -->
+         <!-- ... same as before ... -->
+
+      </VBox>
+   </content>
+</ScrollPane>
+
+<!--
+    ConfirmBorrow.fxml
+    FXML layout for the borrow confirmation dialog in the library application.
+
+    This component provides a form for confirming a book loan, allowing the user to specify
+    the user ID, quantity of books to borrow, and the return date.
+
+    Main features:
+    - Displays input fields for user ID, quantity, and return date.
+    - Uses a GridPane for organized form layout.
+    - Provides a "Confirm" button in a ButtonBar to submit the borrow request.
+    - Styled via the external BookDetails.css stylesheet.
+
+    FXML elements:
+    - AnchorPane (root): Main container for the dialog.
+    - HBox: Contains the form GridPane.
+    - GridPane: Contains Labels and input fields (TextField for user ID, TextField for quantity, DatePicker for return date).
+    - ButtonBar: Contains the "Confirm" button (fx:id="confirmbutton").
+
+    Controller:
+    - com.example.librarymanager.Controllers.ConfirmBorrowController
+
+    Styles:
+    - Uses style classes and the external BookDetails.css stylesheet for consistent appearance.
+-->

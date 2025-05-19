@@ -8,7 +8,42 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" styleClass="root" stylesheets="@../Styles/Help.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.HelpController">
+<!--
+    Help.fxml
+    FXML layout for the help/contact developer view in the library application.
+
+    This component provides a user interface for displaying contact information for the application's developers.
+    It presents developer cards with photos, names, phone numbers, emails, and a contact button for each developer.
+
+    Main features:
+    - Displays a styled title ("CONTACT DEVELOPER") at the top.
+    - Shows developer cards in a horizontal layout (HBox), each with:
+        - Developer photo (ImageView)
+        - Name (Label)
+        - Phone number (Label)
+        - Email address (Label)
+        - "CONTACT" button
+    - Uses VBox for vertical alignment and spacing within each card.
+    - Responsive and visually appealing layout using style classes and Help.css.
+
+    FXML elements:
+    - VBox (root): Main vertical container for the view.
+    - Label: Displays the section title.
+    - HBox: Contains the developer cards.
+    - VBox (per card): Contains the developer's image, name, contact info, and button.
+    - ImageView: Displays the developer's photo.
+    - Button: "CONTACT" button for each developer.
+
+    Controller:
+    - com.example.librarymanager.Controllers.HelpController
+
+    Styles:
+    - Uses style classes and the external Help.css stylesheet for consistent appearance.
+-->
+
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" styleClass="root" stylesheets="@../Styles/Help.css"
+    xmlns="http://javafx.com/javafx/23.0.1"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.HelpController">
 
     <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="240.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2C3E50; -fx-padding: 10 0 20 0;" text="CONTACT DEVELOPER" VBox.vgrow="ALWAYS">
         <VBox.margin>
@@ -22,34 +57,35 @@
         <VBox alignment="TOP_CENTER" spacing="15.0" styleClass="card, card-1" HBox.hgrow="ALWAYS">
             <ImageView fitHeight="120" fitWidth="200" preserveRatio="true" styleClass="card-image">
                 <Image url="@../Images/dev1.jpg" />
-            <VBox.margin>
-               <Insets bottom="10.0" />
-            </VBox.margin>
+                <VBox.margin>
+                    <Insets bottom="10.0" />
+                </VBox.margin>
             </ImageView>
 
             <Label styleClass="card-title" text="HONLUE PETNOU" />
-         <Label styleClass="card-content" text="Number : +237 6 75 71 21 03" wrapText="true" />
-         <Label styleClass="card-content" text="Email : honluepetnou@gmail.com" wrapText="true" />
+            <Label styleClass="card-content" text="Number : +237 6 75 71 21 03" wrapText="true" />
+            <Label styleClass="card-content" text="Email : honluepetnou@gmail.com" wrapText="true" />
 
-                        <Button styleClass="card-button" text="CONTACT" />
+            <Button styleClass="card-button" text="CONTACT" />
         </VBox>
 
         <!-- Deuxième carte -->
         <VBox alignment="TOP_CENTER" spacing="15.0" styleClass="card, card-2" HBox.hgrow="ALWAYS">
             <ImageView fitHeight="120" fitWidth="124.0" preserveRatio="true" styleClass="card-image">
                 <Image url="@../Images/dev2.jpg" />
-            <VBox.margin>
-               <Insets />
-            </VBox.margin>
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin>
             </ImageView>
 
             <Label styleClass="card-title" text="DJIFACK DARIL" />
 
             <Label styleClass="card-content" text="Number : +237 6 76 83 67 53" wrapText="true" VBox.vgrow="ALWAYS">
-            <VBox.margin>
-               <Insets />
-            </VBox.margin></Label>
-         <Label styleClass="card-content" text="Email : darilvia64@gmail.com" wrapText="true" VBox.vgrow="ALWAYS" />
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin>
+            </Label>
+            <Label styleClass="card-content" text="Email : darilvia64@gmail.com" wrapText="true" VBox.vgrow="ALWAYS" />
 
             <Button styleClass="card-button" text="CONTACT" />
         </VBox>
@@ -58,14 +94,14 @@
         <VBox alignment="TOP_CENTER" spacing="15.0" styleClass="card, card-3" HBox.hgrow="ALWAYS">
             <ImageView fitHeight="120" fitWidth="200" preserveRatio="true" styleClass="card-image">
                 <Image url="@../Images/dev3.jpg" />
-            <VBox.margin>
-               <Insets bottom="10.0" />
-            </VBox.margin>
+                <VBox.margin>
+                    <Insets bottom="10.0" />
+                </VBox.margin>
             </ImageView>
 
             <Label styleClass="card-title" text="KAMDEU CHRETIEN" />
-         <Label styleClass="card-content" text="Number :  +237 6 72 43 11 50" wrapText="true" />
-         <Label styleClass="card-content" text="Email : kamdeuchretien@gmail.com" wrapText="true" />
+            <Label styleClass="card-content" text="Number :  +237 6 72 43 11 50" wrapText="true" />
+            <Label styleClass="card-content" text="Email : kamdeuchretien@gmail.com" wrapText="true" />
 
             <Button styleClass="card-button" text="CONTACT" />
         </VBox>

@@ -9,7 +9,39 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="1.7976931348623157E308" maxWidth="300.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="200.0" spacing="10.0" stylesheets="@../Styles/Sidebar.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.SideController">
+<!--
+    Sidebar.fxml
+    FXML layout for the sidebar navigation in the library application.
+
+    This component provides the main navigation menu for the application, allowing users to switch
+    between different sections such as Dashboard, Books, Users, Borrows, Settings, Help, and Log Out.
+
+    Main features:
+    - Displays the application logo and name at the top.
+    - Provides navigation buttons for Dashboard, Books, Users, Borrows, and Settings.
+    - Includes Help and Log Out buttons at the bottom.
+    - Uses FontAwesome icons for button graphics.
+    - Shows a copyright label.
+    - Uses VBox and HBox for structured vertical and horizontal layout.
+    - Styled via the external Sidebar.css stylesheet.
+
+    FXML elements:
+    - VBox (root): Main vertical container for the sidebar.
+    - HBox: Contains the logo and application name.
+    - VBox: Contains navigation buttons (dashboardBtn, bookBtn, userBtn, borrowBtn, settingsBtn).
+    - VBox (bottom): Contains helpBtn, logoutBtn, and copyright label.
+    - FontAwesomeIconView: Used for button and label icons.
+
+    Controller:
+    - com.example.librarymanager.Controllers.SideController
+
+    Styles:
+    - Uses style classes and the external Sidebar.css stylesheet for consistent appearance.
+-->
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="300.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="200.0" spacing="10.0" stylesheets="@../Styles/Sidebar.css"
+   xmlns="http://javafx.com/javafx/23.0.1"
+   xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.SideController">
    <children>
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="1.0" styleClass="sidebar-header" VBox.vgrow="ALWAYS">
          <children>

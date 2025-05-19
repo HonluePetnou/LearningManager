@@ -11,7 +11,36 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../Styles/Users.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.UserController">
+<!--
+    Users.fxml
+    FXML layout for the user management view in the library application.
+
+    This component provides a user interface for displaying, adding, and managing users.
+    It includes a table for listing all users, a form for adding new users, and a search bar for filtering users.
+
+    Main features:
+    - Displays all users in a TableView with columns for ID, full name, email, phone, birthdate, gender, and address.
+    - Provides a form on the right for adding a new user, including fields for name, surname, email, phone, address, birthdate, and gender selection.
+    - Includes a search bar at the bottom for filtering users by any field.
+    - Uses a styled "Add User" button to submit the form.
+    - Layout and appearance are managed using JavaFX BorderPane, VBox, HBox, and CSS.
+
+    FXML elements:
+    - BorderPane (root): Main container for the user management view.
+    - TableView (center, fx:id="userTableView"): Displays the list of users.
+    - VBox (right): Contains the add user form with TextFields, DatePicker, RadioButtons, and Button.
+    - HBox (bottom): Contains the search bar for filtering users.
+
+    Controller:
+    - com.example.librarymanager.Controllers.UserController
+
+    Styles:
+    - Uses style classes and the external Users.css stylesheet for consistent appearance.
+-->
+
+<BorderPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../Styles/Users.css"
+    xmlns="http://javafx.com/javafx/23.0.1"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.UserController">
 
     <top>
         <Label styleClass="heading" text="📚 Users Management" />
@@ -27,7 +56,7 @@
                 <TableColumn fx:id="birthdateCol" prefWidth="100.0" text="Birthdate" />
                 <TableColumn fx:id="genderCol" prefWidth="80.0" text="Gender" />
                 <TableColumn fx:id="addressCol" prefWidth="150.0" text="Address" />
-            <TableColumn fx:id="deleteCol" prefWidth="50.0" />
+                <TableColumn fx:id="deleteCol" prefWidth="50.0" />
             </columns>
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -42,8 +71,8 @@
 
             <TextField fx:id="titleField" promptText="Surname" styleClass="text-field" />
             <TextField fx:id="yearField" promptText="Email" styleClass="text-field" />
-         <TextField fx:id="yearField1" layoutX="21.0" layoutY="142.0" promptText="Phone" styleClass="text-field" />
-         <TextField fx:id="yearField11" layoutX="21.0" layoutY="227.0" promptText="Address" styleClass="text-field" />
+            <TextField fx:id="yearField1" layoutX="21.0" layoutY="142.0" promptText="Phone" styleClass="text-field" />
+            <TextField fx:id="yearField11" layoutX="21.0" layoutY="227.0" promptText="Address" styleClass="text-field" />
             <DatePicker fx:id="birthdatePicker" maxWidth="1.7976931348623157E308" promptText="BirthDate" />
             <HBox spacing="30.0">
                 <children>

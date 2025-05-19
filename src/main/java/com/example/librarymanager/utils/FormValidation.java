@@ -4,10 +4,52 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextArea;
 
+/**
+ * Utility class for validating form input fields.
+ *
+ * This class provides static methods to validate user input in book-related
+ * forms.
+ * It checks for required fields, correct data types, and logical constraints
+ * (e.g., positive numbers).
+ * If validation fails, it displays an error alert with all validation messages.
+ *
+ * Main features:
+ * - Validates that all required fields are filled.
+ * - Checks that year, total copies, and available copies are valid positive
+ * numbers.
+ * - Ensures available copies are not negative.
+ * - Displays a JavaFX alert with all validation errors if any are found.
+ *
+ * Usage:
+ * - Call FormValidation.isValidInput(...) with all relevant fields before
+ * submitting a form.
+ *
+ * Dependencies:
+ * - JavaFX TextField, TextArea, and Alert.
+ * - Alertmessage utility for displaying error messages.
+ */
 public class FormValidation {
 
-    public static boolean isValidInput(TextField bookTitleTextField, TextField bookAuthorTextField, TextField isbnTextField, TextField yearTextField, TextField categoryTextField, TextField totalCopiesTextField, TextField availableCopiesTextField, TextField imageTextField, TextArea bookDescriptionArea) 
-    {
+    /**
+     * Validates the input fields for a book form.
+     * Checks for required fields and valid numeric values.
+     * Shows an error alert if validation fails.
+     *
+     * @param bookTitleTextField       the TextField for the book title
+     * @param bookAuthorTextField      the TextField for the author
+     * @param isbnTextField            the TextField for the ISBN
+     * @param yearTextField            the TextField for the publication year
+     * @param categoryTextField        the TextField for the category
+     * @param totalCopiesTextField     the TextField for total copies
+     * @param availableCopiesTextField the TextField for available copies
+     * @param imageTextField           the TextField for the image name
+     * @param bookDescriptionArea      the TextArea for the book description
+     * @return true if all fields are valid, false otherwise
+     */
+    public static boolean isValidInput(TextField bookTitleTextField, TextField bookAuthorTextField,
+            TextField isbnTextField, TextField yearTextField, TextField categoryTextField,
+            TextField totalCopiesTextField, TextField availableCopiesTextField, TextField imageTextField,
+            TextArea bookDescriptionArea) {
         StringBuilder errorMessage = new StringBuilder();
 
         if (bookTitleTextField.getText() == null || bookTitleTextField.getText().trim().isEmpty()) {
@@ -33,7 +75,7 @@ public class FormValidation {
         }
         if (categoryTextField.getText() == null || categoryTextField.getText().trim().isEmpty()) {
             errorMessage.append("Category is required.\n");
-        } 
+        }
         if (totalCopiesTextField.getText() == null || totalCopiesTextField.getText().trim().isEmpty()) {
             errorMessage.append("Total copies are required.\n");
         } else {
@@ -73,5 +115,5 @@ public class FormValidation {
 
         return true;
     }
-    
+
 }

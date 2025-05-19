@@ -14,44 +14,76 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="600.0" stylesheets="@../Styles/BookDetails.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.BookDetailsController">
+<!--
+    BookDetails.fxml
+    FXML layout for displaying detailed information about a single book in the library application.
+
+    This component presents a detailed view of a book, including its cover image,
+    title, author, ISBN, publication year, category, total and available copies, and description.
+    It also provides a button to borrow the book.
+
+    Main features:
+    - Displays the book's cover image at the top.
+    - Shows all key book details in a read-only form using TextFields and Labels.
+    - Displays the book's description in a read-only TextArea.
+    - Provides a "Borrow" button for borrowing the book.
+    - Uses a responsive layout with GridPane, VBox, and HBox for organized presentation.
+    - Styled via the external BookDetails.css stylesheet.
+
+    FXML elements:
+    - AnchorPane (root): Main container for the layout.
+    - ImageView (fx:id="bookImageView"): Displays the book's cover image.
+    - GridPane: Contains Labels and TextFields for book details (title, author, ISBN, year, category, copies).
+    - VBox: Contains the description Label and TextArea.
+    - ButtonBar: Contains the "Borrow" button (fx:id="borrowButton").
+
+    Controller:
+    - com.example.librarymanager.Controllers.BookDetailsController
+
+    Styles:
+    - Uses style classes and BookDetails.css for consistent appearance.
+-->
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="600.0" stylesheets="@../Styles/BookDetails.css"
+   xmlns="http://javafx.com/javafx/23.0.1"
+   xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.BookDetailsController">
    <ImageView fx:id="bookImageView" fitHeight="230.0" fitWidth="200.0" layoutX="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="14.0" />
    <HBox layoutX="180.0" layoutY="348.0" prefHeight="619.0" prefWidth="600.0" spacing="20.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="250.0">
       <children>
-          <GridPane alignment="CENTER" prefHeight="187.0" prefWidth="300.0">
-              <columnConstraints>
-                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-      
-                    <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <GridPane alignment="CENTER" prefHeight="187.0" prefWidth="300.0">
+            <columnConstraints>
+               <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+
+            <rowConstraints>
                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-      
-                    <Label text="Title" />
-              <Label text="Author" GridPane.rowIndex="1" />
-              <Label alignment="TOP_LEFT" text="Total Copies" GridPane.rowIndex="5" />
-                    <Label text="Title" />
-              <Label text="Author" GridPane.rowIndex="1" />
-              <Label alignment="TOP_LEFT" text="Total Copies" GridPane.rowIndex="5" />
-              <Label text="Category" GridPane.rowIndex="4" />
-              <Label text="Publish Year" GridPane.rowIndex="3" />
-              <Label text="ISBN" GridPane.rowIndex="2" />
-              <TextField fx:id="bookTitleTextField" editable="false" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" />
-              <TextField fx:id="bookAuthorTextField" editable="false" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-              <TextField fx:id="isbnTextField" editable="false" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-              <TextField fx:id="yearTextField" editable="false" layoutX="290.0" layoutY="19.0" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-              <TextField fx:id="categoryTextField" editable="false" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-              <TextField fx:id="totalCopiesTextField" editable="false" prefHeight="26.0" prefWidth="222.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+
+            <Label text="Title" />
+            <Label text="Author" GridPane.rowIndex="1" />
+            <Label alignment="TOP_LEFT" text="Total Copies" GridPane.rowIndex="5" />
+            <Label text="Title" />
+            <Label text="Author" GridPane.rowIndex="1" />
+            <Label alignment="TOP_LEFT" text="Total Copies" GridPane.rowIndex="5" />
+            <Label text="Category" GridPane.rowIndex="4" />
+            <Label text="Publish Year" GridPane.rowIndex="3" />
+            <Label text="ISBN" GridPane.rowIndex="2" />
+            <TextField fx:id="bookTitleTextField" editable="false" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" />
+            <TextField fx:id="bookAuthorTextField" editable="false" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="isbnTextField" editable="false" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="yearTextField" editable="false" layoutX="290.0" layoutY="19.0" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="categoryTextField" editable="false" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="totalCopiesTextField" editable="false" prefHeight="26.0" prefWidth="222.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label alignment="TOP_LEFT" layoutX="10.0" layoutY="209.0" text="Total copies available" GridPane.rowIndex="6" />
             <TextField fx:id="availableCopiesTextField" editable="false" layoutX="10.0" layoutY="242.0" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-          </GridPane>
+         </GridPane>
          <VBox prefHeight="294.0" prefWidth="206.0" HBox.hgrow="ALWAYS">
             <children>
                <Label text="Description">
@@ -75,9 +107,9 @@
       </padding>
    </HBox>
 
-    <ButtonBar layoutX="398.0" layoutY="565.0" prefHeight="40.0" prefWidth="218.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="32.0">
+   <ButtonBar layoutX="398.0" layoutY="565.0" prefHeight="40.0" prefWidth="218.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="32.0">
       <buttons>
-          <Button fx:id="borrowButton" layoutX="204.0" layoutY="17.0" mnemonicParsing="false" text="Borrow" />
+         <Button fx:id="borrowButton" layoutX="204.0" layoutY="17.0" mnemonicParsing="false" text="Borrow" />
       </buttons>
-    </ButtonBar>
+   </ButtonBar>
 </AnchorPane>

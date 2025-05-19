@@ -8,6 +8,28 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Utility class for testing database operations via the console.
+ *
+ * This class provides a simple command-line interface to test CRUD operations
+ * for UserTable, LoanTable, and BooksTable. It allows you to create, list,
+ * update, delete, and search users, loans, and books directly from the console.
+ *
+ * Main features:
+ * - Interactive menu for selecting which table to test (User, Loan, Book).
+ * - Sub-menus for each table to perform CRUD operations and authentication.
+ * - Reads input from the user and displays results or error messages.
+ *
+ * Usage:
+ * - Run the main method to start the interactive console tester.
+ * - Follow the prompts to test various database operations.
+ *
+ * Dependencies:
+ * - UserTable, LoanTable, BooksTable: for database operations.
+ * - User, Loan, Books: data models.
+ * - java.util.Scanner: for reading user input.
+ * - java.time.LocalDateTime: for handling date/time fields.
+ */
 public class TestDatabase {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -22,7 +44,7 @@ public class TestDatabase {
             System.out.println("3. Test BooksTable");
             System.out.println("0. Exit");
             int choice = scanner.nextInt();
-            scanner.nextLine(); 
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -51,7 +73,7 @@ public class TestDatabase {
         System.out.println("4. Delete User");
         System.out.println("5. Authenticate User");
         int choice = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
 
         switch (choice) {
             case 1:
@@ -68,31 +90,31 @@ public class TestDatabase {
                 newUser.setPassword(password);
                 newUser.setRole(role);
                 newUser.setEmail(email);
-               try {
-                userTable.create(newUser);
-               } catch (Exception e) {
-                System.out.println("Error creating user: " + e.getMessage());
-                return;
-               }
+                try {
+                    userTable.create(newUser);
+                } catch (Exception e) {
+                    System.out.println("Error creating user: " + e.getMessage());
+                    return;
+                }
                 System.out.println("User created.");
                 break;
             case 2:
-               try {
-                List<User> users = userTable.listAll();
-                 // users.forEach(System.out::println);
-                 System.out.println("List of users:");
-                 if (users.isEmpty()) {
-                     System.out.println("No users found.");
-                     return;
+                try {
+                    List<User> users = userTable.listAll();
+                    // users.forEach(System.out::println);
+                    System.out.println("List of users:");
+                    if (users.isEmpty()) {
+                        System.out.println("No users found.");
+                        return;
+                    }
+                    for (int i = 0; i < users.size(); i++) {
+                        System.out.println(users.get(i).getFullName());
+                    }
+                } catch (Exception e) {
+                    System.out.println("Error listing users: " + e.getMessage());
+                    return;
                 }
-                 for (int i = 0; i < users.size(); i++) {
-                     System.out.println(users.get(i).getFullName());
-                 }
-               } catch (Exception e) {
-                System.out.println("Error listing users: " + e.getMessage());
-                return;
-               }
-               
+
                 break;
             case 3:
                 System.out.println("Enter user ID to update:");
@@ -109,23 +131,23 @@ public class TestDatabase {
                 updatedUser.setFullName(newUsername);
                 updatedUser.setPassword(newPassword);
                 updatedUser.setRole(newRole);
-               try {
-                userTable.Update(updatedUser);
-               } catch (Exception e) {
-                System.out.println("Error updating user: " + e.getMessage());
-                return;
-               }
+                try {
+                    userTable.Update(updatedUser);
+                } catch (Exception e) {
+                    System.out.println("Error updating user: " + e.getMessage());
+                    return;
+                }
                 System.out.println("User updated.");
                 break;
             case 4:
                 System.out.println("Enter user ID to delete:");
                 int deleteUserId = scanner.nextInt();
-               try {
-                userTable.Delete(deleteUserId);
-               } catch (Exception e) {
-                System.out.println("Error deleting user: " + e.getMessage());
-                return;
-               }
+                try {
+                    userTable.Delete(deleteUserId);
+                } catch (Exception e) {
+                    System.out.println("Error deleting user: " + e.getMessage());
+                    return;
+                }
                 System.out.println("User deleted.");
                 break;
             case 5:
@@ -133,18 +155,18 @@ public class TestDatabase {
                 String authUsername = scanner.nextLine();
                 System.out.println("Enter password:");
                 String authPassword = scanner.nextLine();
-               try {
-                String authRole = UserTable.Authenticate(authUsername, authPassword).getRole();
-                if (authRole == null) {
-                    System.out.println("Authentication failed.");
+                try {
+                    String authRole = UserTable.Authenticate(authUsername, authPassword).getRole();
+                    if (authRole == null) {
+                        System.out.println("Authentication failed.");
+                        return;
+                    }
+                    System.out.println("Authenticated role: " + authRole);
+                } catch (Exception e) {
+                    System.out.println("Error authenticating user: " + e.getMessage());
                     return;
-               }
-                System.out.println("Authenticated role: " + authRole);
-               } catch (Exception e) {
-                System.out.println("Error authenticating user: " + e.getMessage());
-                return;
-               }
-               
+                }
+
                 break;
             default:
                 System.out.println("Invalid choice.");
@@ -158,7 +180,7 @@ public class TestDatabase {
         System.out.println("3. Update Loan");
         System.out.println("4. Delete Loan");
         int choice = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
 
         switch (choice) {
             case 1:
@@ -166,7 +188,7 @@ public class TestDatabase {
                 int bookId = scanner.nextInt();
                 System.out.println("Enter user ID:");
                 int userId = scanner.nextInt();
-                scanner.nextLine(); 
+                scanner.nextLine();
                 System.out.println("Enter due date (yyyy-MM-ddTHH:mm:ss):");
                 String dueDateStr = scanner.nextLine();
                 LocalDateTime dueDate = LocalDateTime.parse(dueDateStr);
@@ -189,9 +211,9 @@ public class TestDatabase {
                         System.out.println("No loans found.");
                     } else {
                         for (int i = 0; i < loans.size(); i++) {
-                            System.out.println("Loan ID: " + loans.get(i).getLoanId() + 
-                                             ", Borrowed At: " + loans.get(i).getBorrowedAt() + 
-                                             ", Status: " + loans.get(i).getStatus());
+                            System.out.println("Loan ID: " + loans.get(i).getLoanId() +
+                                    ", Borrowed At: " + loans.get(i).getBorrowedAt() +
+                                    ", Status: " + loans.get(i).getStatus());
                         }
                     }
                 } catch (Exception e) {
@@ -201,7 +223,7 @@ public class TestDatabase {
             case 3:
                 System.out.println("Enter loan ID to update:");
                 int loanId = scanner.nextInt();
-                scanner.nextLine(); 
+                scanner.nextLine();
                 System.out.println("Enter new status:");
                 String status = scanner.nextLine();
                 System.out.println("Enter returned date (yyyy-MM-ddTHH:mm:ss):");
@@ -241,7 +263,7 @@ public class TestDatabase {
         System.out.println("4. Delete Book");
         System.out.println("5. Search Books");
         int choice = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
 
         switch (choice) {
             case 1:
@@ -259,7 +281,7 @@ public class TestDatabase {
                 int copiesTotal = scanner.nextInt();
                 System.out.println("Enter available copies:");
                 int copiesAvailable = scanner.nextInt();
-                scanner.nextLine(); 
+                scanner.nextLine();
                 Books newBook = new Books();
                 newBook.setTitle(title);
                 newBook.setAuthor(author);
@@ -283,7 +305,8 @@ public class TestDatabase {
                         System.out.println("No books found.");
                     } else {
                         for (int i = 0; i < books.size(); i++) {
-                            System.out.println("Title: " + books.get(i).getTitle() + ", Author: " + books.get(i).getAuthor());
+                            System.out.println(
+                                    "Title: " + books.get(i).getTitle() + ", Author: " + books.get(i).getAuthor());
                         }
                     }
                 } catch (Exception e) {
@@ -308,16 +331,16 @@ public class TestDatabase {
                 int newCopiesTotal = scanner.nextInt();
                 System.out.println("Enter new available copies:");
                 int newCopiesAvailable = scanner.nextInt();
-                scanner.nextLine(); 
+                scanner.nextLine();
                 Books updatedBook = new Books();
-                        updatedBook.setBook_id(bookId);
-                        updatedBook.setTitle(newTitle);
-                        updatedBook.setAuthor(newAuthor);
-                        updatedBook.setIsbn(newIsbn);
-                        updatedBook.setCategory_id(newCategoryId);
-                        updatedBook.setPublished_year(newPublishedYear);
-                        updatedBook.setCopies_total(newCopiesTotal);
-                        updatedBook.setCopies_available(newCopiesAvailable);
+                updatedBook.setBook_id(bookId);
+                updatedBook.setTitle(newTitle);
+                updatedBook.setAuthor(newAuthor);
+                updatedBook.setIsbn(newIsbn);
+                updatedBook.setCategory_id(newCategoryId);
+                updatedBook.setPublished_year(newPublishedYear);
+                updatedBook.setCopies_total(newCopiesTotal);
+                updatedBook.setCopies_available(newCopiesAvailable);
                 try {
                     booksTable.Update(updatedBook);
                     System.out.println("Book updated.");

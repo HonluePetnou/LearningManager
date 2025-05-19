@@ -1,44 +1,72 @@
 .root {
-    -fx-font-family: 'Segoe UI', Arial, sans-serif;
-    -fx-background-color: #f5f7fa;
+  -fx-font-family: "Segoe UI", Arial, sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif;
+  -fx-background-color: #f5f7fa;
+  background-color: #f5f7fa;
 }
-.sidebar-header{
-    -fx-background-color:  white;
-    -fx-text-fill: #4838d1;
-    -fx-effect: dropshadow(gaussian, rgba(205, 203, 203, 0.5), 1, 0.5, 1, 1);
+.sidebar-header {
+  -fx-background-color: white;
+  background-color: white;
+  -fx-text-fill: #4838d1;
+  color: #4838d1;
+  -fx-effect: dropshadow(gaussian, rgba(205, 203, 203, 0.5), 1, 0.5, 1, 1);
+  /* No standard CSS equivalent for JavaFX dropshadow */
 }
 
 .label {
-    -fx-font-size: 24px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #4838d1;
+  -fx-font-size: 24px;
+  font-size: 24px;
+  -fx-font-weight: bold;
+  font-weight: bold;
+  -fx-text-fill: #4838d1;
+  color: #4838d1;
 }
-.sidebar-button , .sidebar-label{
-    -fx-background-color: transparent;
-    -fx-text-fill: #bdc3c7;
-    -fx-font-size: 16px;
-    -fx-padding: 10px 20px;
-    -fx-alignment: center-left;
-    -fx-cursor: hand;
+.sidebar-button,
+.sidebar-label {
+  -fx-background-color: transparent;
+  background-color: transparent;
+  -fx-text-fill: #bdc3c7;
+  color: #bdc3c7;
+  -fx-font-size: 16px;
+  font-size: 16px;
+  -fx-padding: 10px 20px;
+  padding: 10px 20px;
+  -fx-alignment: center-left;
+  /* No direct CSS equivalent for -fx-alignment */
+  -fx-cursor: hand;
+  cursor: pointer;
 }
 
 .sidebar-button:hover {
-    -fx-background-color: #8474fa;
-    -fx-text-fill: #ecf0f1;
+  -fx-background-color: #8474fa;
+  background-color: #8474fa;
+  -fx-text-fill: #ecf0f1;
+  color: #ecf0f1;
 }
-.sidebar-button:focused, .sidebar-button.active {
-    -fx-background-color: #4838d1;
-    -fx-text-fill: white;
-    -fx-effect: dropshadow(gaussian, rgba(72, 56, 209, 0.3), 10, 0.5, 0, 0);
+.sidebar-button:focused,
+.sidebar-button.active {
+  -fx-background-color: #4838d1;
+  background-color: #4838d1;
+  -fx-text-fill: white;
+  color: white;
+  -fx-effect: dropshadow(gaussian, rgba(72, 56, 209, 0.3), 10, 0.5, 0, 0);
+  /* No standard CSS equivalent for JavaFX dropshadow */
 }
 /* icons management */
-.sidebar-button FontAwesomeIconView , .sidebar-label FontAwesomeIconView{
-    -fx-fill: #4838d1;
+.sidebar-button FontAwesomeIconView,
+.sidebar-label FontAwesomeIconView {
+  -fx-fill: #4838d1;
+  fill: #4838d1;
+  color: #4838d1;
 }
-.sidebar-button:hover FontAwesomeIconView{
-    -fx-fill: white;
+.sidebar-button:hover FontAwesomeIconView {
+  -fx-fill: white;
+  fill: white;
+  color: white;
 }
-.sidebar-button:focused FontAwesomeIconView, .sidebar-button.active FontAwesomeIconView {
-    -fx-fill: white;
+.sidebar-button:focused FontAwesomeIconView,
+.sidebar-button.active FontAwesomeIconView {
+  -fx-fill: white;
+  fill: white;
+  color: white;
 }
-

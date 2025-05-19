@@ -20,6 +20,33 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * JavaFX controller for managing and displaying the list of book loans
+ * (borrows).
+ *
+ * This controller handles:
+ * - Displaying all current loans in a grid layout.
+ * - Listening for updates to the loan list and refreshing the UI accordingly.
+ * - Handling the return of borrowed books, updating the database and UI.
+ *
+ * Main features:
+ * - Loads all loans from the database and displays them as cards in a grid.
+ * - Each card shows book title, borrower, loan date, return date, status, and a
+ * return button.
+ * - When a book is returned, updates the loan status and removes the card from
+ * the grid.
+ * - Provides a static method to trigger a refresh of the loan list from other
+ * parts of the application.
+ *
+ * Dependencies:
+ * - LoanTable: for loan database operations.
+ * - BorrowsCardController: for displaying each loan as a card.
+ * - Alertmessage: for user feedback.
+ * - CurrentUser: for accessing the current user's information.
+ *
+ * FXML requirements:
+ * - GridPane: loanGrid
+ */
 public class BorrowsController {
 
     @FXML
@@ -27,22 +54,32 @@ public class BorrowsController {
 
     private LoanTable loanTable = new LoanTable();
 
+    /**
+     * Property used to trigger updates of the loan list.
+     */
     private static BooleanProperty listIsUpdate = new SimpleBooleanProperty(false);
 
-     @SuppressWarnings("unused")
+    /**
+     * Initializes the controller, sets up the update listener, and loads the
+     * initial loan list.
+     */
+    @SuppressWarnings("unused")
     public void initialize() {
-        // Ajouter le listener pour la mise à jour
+        // Add a listener to refresh the list when triggered
         listIsUpdate.addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 updateBorrowsList();
-                listIsUpdate.set(false); // Réinitialiser après la mise à jour
+                listIsUpdate.set(false); // Reset after update
             }
         });
 
-        updateBorrowsList(); // Chargement initial
+        updateBorrowsList(); // Initial load
     }
 
-    // Déplacer le code existant de initialize() dans cette nouvelle méthode
+    /**
+     * Loads all loans from the database and displays them as cards in the grid.
+     * Sets up the return button for each loan card.
+     */
     @SuppressWarnings("unused")
     private void updateBorrowsList() {
         loanGrid.getChildren().clear();
@@ -124,7 +161,8 @@ public class BorrowsController {
     }
 
     /**
-     * Méthode publique pour déclencher la mise à jour de la liste lors d'une modification des emprunts
+     * Public static method to trigger the update of the loan list from other parts
+     * of the application.
      */
     public static void triggerUpdate() {
         listIsUpdate.set(true);

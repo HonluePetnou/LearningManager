@@ -1,0 +1,334 @@
+.main {
+  -fx-background-color: #efefef;
+  background-color: #efefef;
+}
+.main-label {
+  -fx-font-size: 20px;
+  font-size: 20px;
+  -fx-font-weight: bold;
+  font-weight: bold;
+}
+.main-date {
+  -fx-font-size: 16px;
+  font-size: 16px;
+}
+/* Statistics Cards */
+.stat-card {
+  -fx-background-color: #ffffff;
+  background-color: #ffffff;
+  -fx-border-radius: 10;
+  border-radius: 10px;
+  -fx-background-radius: 10;
+  -fx-padding: 15;
+  padding: 15px;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 8, 0, 2, 2);
+  /* No standard CSS equivalent for JavaFX dropshadow */
+  -fx-cursor: hand;
+  cursor: pointer;
+  /* -fx-transition is not supported in JavaFX */
+}
+
+.stat-card:hover {
+  -fx-scale-x: 1.02;
+  -fx-scale-y: 1.02;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 8, 0, 0, 3);
+}
+
+.stat-title {
+  -fx-font-size: 18px;
+  font-size: 18px;
+  -fx-font-weight: bold;
+  font-weight: bold;
+  /*-fx-text-fill: #ffffff;*/
+  /*color: #ffffff;*/
+}
+
+.stat-value {
+  -fx-font-size: 24px;
+  font-size: 24px;
+  -fx-font-weight: bold;
+  font-weight: bold;
+  /*-fx-text-fill: #ffffff;*/
+  /*color: #ffffff;*/
+}
+.stat-icon {
+  -fx-font-size: 48px;
+  font-size: 48px;
+  -fx-fill: #4838d1;
+  fill: #4838d1;
+  color: #4838d1;
+}
+.date-Label {
+  -fx-font-size: 24px;
+  font-size: 24px;
+  -fx-font-weight: bold;
+  font-weight: bold;
+}
+.date-picker {
+  -fx-font-size: 14px;
+  font-size: 14px;
+  -fx-min-width: 200px;
+  min-width: 200px;
+  -fx-background-color: #ffffff;
+  background-color: #ffffff;
+  -fx-border-color: #cccccc;
+  border-color: #cccccc;
+  -fx-border-radius: 5px;
+  border-radius: 5px;
+  -fx-background-radius: 5px;
+}
+.date-picker .arrow-button {
+  -fx-background-color: transparent;
+  background-color: transparent;
+  -fx-border-color: transparent;
+  border-color: transparent;
+}
+.date-picker .text-field {
+  -fx-background-color: transparent;
+  background-color: transparent;
+  -fx-border-width: 0;
+  border-width: 0;
+  -fx-padding: 5 8 5 8;
+  padding: 5px 8px 5px 8px;
+  -fx-font-size: 14px;
+  font-size: 14px;
+}
+.date-picker-popup {
+  -fx-background-color: #ffffff;
+  background-color: #ffffff;
+  -fx-border-color: #cccccc;
+  border-color: #cccccc;
+  -fx-border-radius: 5px;
+  border-radius: 5px;
+}
+.date-picker-popup .month-year-pane {
+  -fx-background-color: #f8f8f8;
+  background-color: #f8f8f8;
+  -fx-padding: 5;
+  padding: 5px;
+}
+.date-picker-popup .month-year-pane .label {
+  -fx-font-size: 14px;
+  font-size: 14px;
+  -fx-text-fill: #333333;
+  color: #333333;
+}
+.date-picker-popup .calendar-grid {
+  -fx-background-color: #00a1f8;
+  background-color: #00a1f8;
+  -fx-text-fill: white;
+  color: white;
+}
+.date-picker-popup .day-cell {
+  -fx-font-size: 13px;
+  font-size: 13px;
+}
+.date-picker-popup .day-cell:hover {
+  -fx-background-color: #4838d1;
+  background-color: #4838d1;
+}
+.date-picker-popup .day-cell:selected {
+  -fx-background-color: #4838d1;
+  background-color: #4838d1;
+  -fx-text-fill: black;
+  color: black;
+}
+/* Main Container */
+.table-container {
+  -fx-background-color: #f5f7fa;
+  background-color: #f5f7fa;
+  -fx-padding: 20px;
+  padding: 20px;
+  -fx-border-color: #d1d5db;
+  border-color: #d1d5db;
+  -fx-border-width: 1px;
+  border-width: 1px;
+  -fx-border-radius: 5px;
+  border-radius: 5px;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 1);
+}
+.table-header {
+  -fx-font-size: 24px;
+  font-size: 24px;
+  -fx-font-weight: bold;
+  font-weight: bold;
+  -fx-text-fill: #2c3e50;
+  color: #2c3e50;
+}
+.table-button {
+  -fx-background-color: #ffd700;
+  background-color: #ffd700;
+  -fx-text-fill: black;
+  color: black;
+  -fx-font-weight: bold;
+  font-weight: bold;
+  -fx-padding: 10px;
+  padding: 10px;
+  -fx-border-radius: 5px;
+  border-radius: 5px;
+  -fx-background-radius: 5px;
+  -fx-cursor: hand;
+  cursor: pointer;
+}
+.table-button:hover {
+  -fx-background-color: #776701;
+  background-color: #776701;
+  -fx-text-fill: white;
+  color: white;
+}
+/* Header row styling */
+.header-row {
+  -fx-background-color: #ffd700;
+  background-color: #ffd700;
+  -fx-text-fill: black;
+  color: black;
+  -fx-alignment: center-left;
+  -fx-padding: 5px;
+  padding: 5px;
+}
+.header-cell {
+  -fx-font-weight: bold;
+  font-weight: bold;
+  -fx-padding: 5px;
+  padding: 5px;
+}
+/* Data row styling */
+.data-row {
+  -fx-alignment: center-left;
+  -fx-padding: 5px;
+  padding: 5px;
+}
+.odd-row {
+  -fx-background-color: #f9fafb;
+  background-color: #f9fafb;
+}
+.even-row {
+  -fx-background-color: #ffffff;
+  background-color: #ffffff;
+}
+.data-cell {
+  -fx-padding: 5px;
+  padding: 5px;
+}
+/* Status specific styling */
+.status-active {
+  -fx-text-fill: #10b981;
+  color: #10b981;
+  -fx-font-weight: bold;
+  font-weight: bold;
+}
+.status-inactive {
+  -fx-text-fill: #ef4444;
+  color: #ef4444;
+  -fx-font-weight: bold;
+  font-weight: bold;
+}
+/* Hover effect */
+.data-row:hover {
+  -fx-background-color: #eff6ff;
+  background-color: #eff6ff;
+  -fx-cursor: hand;
+  cursor: pointer;
+}
+/* Main HBox container */
+.books-hbox {
+  -fx-background-color: #f5f7fa;
+  background-color: #f5f7fa;
+  -fx-padding: 15px;
+  padding: 15px;
+  -fx-alignment: center;
+  /* No direct CSS equivalent for -fx-alignment */
+}
+/* Book card styling */
+.book-card {
+  -fx-background-color: white;
+  background-color: white;
+  -fx-background-radius: 8px;
+  border-radius: 8px;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 2);
+  /*-fx-padding: 15px;*/
+  /*padding: 15px;*/
+  -fx-spacing: 10px;
+  gap: 10px;
+  -fx-alignment: center;
+  /*-fx-min-width: 150px;*/
+}
+.book-card:hover {
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 8, 0, 0, 3);
+  -fx-cursor: hand;
+  cursor: pointer;
+}
+/* Book image styling */
+.book-card ImageView {
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 3, 0, 0, 1);
+  -fx-pref-width: 200px;
+  width: 200px;
+}
+/* Text styling */
+.book-title {
+  -fx-font-size: 14px;
+  font-size: 14px;
+  -fx-font-weight: bold;
+  font-weight: bold;
+  -fx-text-fill: #2c3e50;
+  color: #2c3e50;
+  -fx-wrap-text: true;
+  /* No direct CSS equivalent for -fx-wrap-text */
+  -fx-max-width: 120px;
+  max-width: 120px;
+  -fx-alignment: center;
+  text-align: center;
+}
+.book-author {
+  -fx-font-size: 12px;
+  font-size: 12px;
+  -fx-text-fill: #7f8c8d;
+  color: #7f8c8d;
+  -fx-wrap-text: true;
+  /* No direct CSS equivalent for -fx-wrap-text */
+  -fx-max-width: 120px;
+  max-width: 120px;
+  -fx-alignment: center;
+  text-align: center;
+}
+/* Button styling */
+.book-button {
+  -fx-background-color: #4838d1;
+  background-color: #4838d1;
+  -fx-text-fill: white;
+  color: white;
+  -fx-background-radius: 4px;
+  border-radius: 4px;
+  -fx-padding: 5px 15px;
+  padding: 5px 15px;
+  -fx-font-size: 12px;
+  font-size: 12px;
+  -fx-cursor: hand;
+  cursor: pointer;
+}
+.outlined-button {
+  -fx-background-color: transparent;
+  background-color: transparent;
+  -fx-border-color: #4838d1;
+  border-color: #4838d1;
+  -fx-text-fill: #4838d1;
+  color: #4838d1;
+  -fx-border-radius: 4px;
+  border-radius: 4px;
+  -fx-padding: 5px 15px;
+  padding: 5px 15px;
+  -fx-font-size: 12px;
+  font-size: 12px;
+  -fx-cursor: hand;
+  cursor: pointer;
+}
+.outlined-button:hover {
+  -fx-background-color: #4838d1;
+  background-color: #4838d1;
+  -fx-text-fill: white;
+  color: white;
+}
+.book-button:hover {
+  -fx-background-color: #2400a1;
+  background-color: #2400a1;
+}

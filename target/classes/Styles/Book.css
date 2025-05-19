@@ -1,103 +1,149 @@
 .root {
-    -fx-font-family: "Segoe UI", sans-serif;
-    -fx-background-color: #f0f2f5;
+  -fx-font-family: "Segoe UI", sans-serif;
+  font-family: "Segoe UI", sans-serif;
+  -fx-background-color: #f0f2f5;
+  background-color: #f0f2f5;
 }
 .form-title {
-    -fx-font-size: 24px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #333;
+  -fx-font-size: 24px;
+  font-size: 24px;
+  -fx-font-weight: bold;
+  font-weight: bold;
+  -fx-text-fill: #333;
+  color: #333;
 }
-.labeled{
-    -fx-font-size: 12px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #333;
+.labeled {
+  -fx-font-size: 12px;
+  font-size: 12px;
+  -fx-font-weight: bold;
+  font-weight: bold;
+  -fx-text-fill: #333;
+  color: #333;
 }
-.text-field, .password-field {
-    -fx-background-color: #f7f7f7;
-    -fx-background-radius: 6px;
-    -fx-border-radius: 6px;
-    -fx-border-color: #ccc;
-    -fx-padding: 8px 12px;
-    -fx-font-size: 13px;
-    -fx-text-fill: #333;
-    -fx-prompt-text-fill: #999;
+.text-field,
+.password-field {
+  -fx-background-color: #f7f7f7;
+  background-color: #f7f7f7;
+  -fx-background-radius: 6px;
+  border-radius: 6px;
+  -fx-border-radius: 6px;
+  -fx-border-color: #ccc;
+  border-color: #ccc;
+  -fx-padding: 8px 12px;
+  padding: 8px 12px;
+  -fx-font-size: 13px;
+  font-size: 13px;
+  -fx-text-fill: #333;
+  color: #333;
+  -fx-prompt-text-fill: #999;
 }
-.text-field:focused, .password-field:focused {
-    -fx-border-color: #4838d1;
-    -fx-background-color: #ffffff;
+.text-field:focused,
+.password-field:focused {
+  -fx-border-color: #4838d1;
+  border-color: #4838d1;
+  -fx-background-color: #ffffff;
+  background-color: #ffffff;
 }
 .primary-button {
-    -fx-background-color: #1b00ff;
-    -fx-text-fill: white;
-    -fx-background-radius: 5;
-    -fx-padding: 8 15;
+  -fx-background-color: #1b00ff;
+  background-color: #1b00ff;
+  -fx-text-fill: white;
+  color: white;
+  -fx-background-radius: 5;
+  border-radius: 5px;
+  -fx-padding: 8 15;
+  padding: 8px 15px;
 }
 .final-button {
-    -fx-background-color: #4838d1;
-    -fx-text-fill: white;
-    -fx-font-size: 13px;
-    -fx-padding: 6px 12px;
-    -fx-background-radius: 6px;
+  -fx-background-color: #4838d1;
+  background-color: #4838d1;
+  -fx-text-fill: white;
+  color: white;
+  -fx-font-size: 13px;
+  font-size: 13px;
+  -fx-padding: 6px 12px;
+  padding: 6px 12px;
+  -fx-background-radius: 6px;
+  border-radius: 6px;
 }
-
 .final-button:hover {
-    -fx-background-color: #2e238e;
+  -fx-background-color: #2e238e;
+  background-color: #2e238e;
 }
-
 .tile-pane {
-    -fx-background-color: #f5f5f5;
+  -fx-background-color: #f5f5f5;
+  background-color: #f5f5f5;
 }
-
 .book-card {
-    -fx-background-color: #ffffff;
-    -fx-padding: 10;
-    -fx-border-color: #ddd;
-    -fx-border-width: 1;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
-    -fx-spacing: 8;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
+  -fx-background-color: #ffffff;
+  background-color: #ffffff;
+  -fx-padding: 10;
+  padding: 10px;
+  -fx-border-color: #ddd;
+  border-color: #ddd;
+  -fx-border-width: 1;
+  border-width: 1px;
+  -fx-border-radius: 8;
+  border-radius: 8px;
+  -fx-background-radius: 8;
+  -fx-spacing: 8;
+  gap: 8px;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0, 0, 2);
+  /* No direct CSS equivalent for JavaFX dropshadow */
 }
 .book-card:hover {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0, 0, 3);
-    -fx-background-color: #fdfdfd;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 8, 0, 0, 3);
+  -fx-background-color: #fdfdfd;
+  background-color: #fdfdfd;
 }
 .book-image {
-    -fx-fit-width: 200px;
-    -fx-fit-height: 180px;
-    -fx-preserve-ratio: true;
-    -fx-background-radius: 10px;
-    -fx-border-radius: 10px;
-    -fx-margin-bottom: 8px;
+  /* JavaFX only: -fx-fit-width, -fx-fit-height, -fx-preserve-ratio */
+  -fx-fit-width: 200px;
+  -fx-fit-height: 180px;
+  -fx-preserve-ratio: true;
+  -fx-background-radius: 10px;
+  border-radius: 10px;
+  -fx-border-radius: 10px;
+  /* Use VBox.setMargin in FXML/controller for margin-bottom */
 }
 .book-title {
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-    -fx-text-alignment: center;
+  -fx-font-size: 14px;
+  font-size: 14px;
+  -fx-font-weight: bold;
+  font-weight: bold;
+  -fx-text-alignment: center;
+  text-align: center;
 }
-
 .book-author {
-    -fx-font-size: 12px;
-    -fx-text-fill: #555;
-    -fx-font-style: italic;
+  -fx-font-size: 12px;
+  font-size: 12px;
+  -fx-text-fill: #555;
+  color: #555;
+  -fx-font-style: italic;
+  font-style: italic;
 }
-.book-button{
-    -fx-background-color: #4838d1;
-    -fx-text-fill: white;
-    -fx-font-size: 13px;
-    -fx-padding: 8px 24px;
-    -fx-background-radius: 6px;
+.book-button {
+  -fx-background-color: #4838d1;
+  background-color: #4838d1;
+  -fx-text-fill: white;
+  color: white;
+  -fx-font-size: 13px;
+  font-size: 13px;
+  -fx-padding: 8px 24px;
+  padding: 8px 24px;
+  -fx-background-radius: 6px;
+  border-radius: 6px;
 }
-.book-button:hover{
-    -fx-background-color: #241c63;
+.book-button:hover {
+  -fx-background-color: #241c63;
+  background-color: #241c63;
 }
-
 /* Grid container */
 .grid-container {
-    -fx-padding: 20px;
-    -fx-hgap: 18px;
-    -fx-vgap: 18px;
+  -fx-padding: 20px;
+  padding: 20px;
+  -fx-hgap: 18px;
+  column-gap: 18px;
+  -fx-vgap: 18px;
+  row-gap: 18px;
 }
-
-/* Buttons */
-

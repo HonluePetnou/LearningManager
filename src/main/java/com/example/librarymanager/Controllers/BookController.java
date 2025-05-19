@@ -27,40 +27,139 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * JavaFX controller for managing the book grid and the book addition form.
+ *
+ * This controller handles:
+ * - Displaying all books in a grid layout.
+ * - Adding new books via a form.
+ * - Creating categories on the fly if they do not exist.
+ * - Validating user input before adding a book.
+ * - Refreshing the grid after any change (add, edit, delete).
+ *
+ * Main features:
+ * - Reads and displays books from the database.
+ * - Allows users to add a new book, including category management.
+ * - Ensures available copies do not exceed total copies.
+ * - Handles image paths and default images.
+ * - Provides feedback to the user via alerts.
+ *
+ * Dependencies:
+ * - BooksTable: for book database operations.
+ * - CategoryTable: for category database operations.
+ * - BookCardController: for displaying each book in the grid.
+ * - Alertmessage & FormValidation: for user feedback and input validation.
+ *
+ * Usage:
+ * - The controller is initialized automatically by JavaFX.
+ * - Call handleAddBook(ActionEvent) when the user submits the add book form.
+ * - The grid is refreshed automatically after any change.
+ *
+ * FXML requirements:
+ * - TextFields: titleField, authorField, categoryField, isbnField, yearField,
+ * totalCopiesField, availableCopiesField, imageNameField
+ * - TextArea: bookDescriptionArea
+ * - Button: addBookButton, chooseImageButton
+ * - GridPane: bookGrid
+ */
 public class BookController implements Initializable {
+
+    /**
+     * Button to add a new book.
+     */
     @FXML
     private Button addBookButton;
+
+    /**
+     * Text field for the author's name.
+     */
     @FXML
     private TextField authorField;
+
+    /**
+     * Text field for the number of available copies.
+     */
     @FXML
     private TextField availableCopiesField;
+
+    /**
+     * Text field for the book's category.
+     */
     @FXML
     private TextField categoryField;
+
+    /**
+     * Button to choose an image for the book.
+     */
     @FXML
     private Button chooseImageButton;
+
+    /**
+     * Text field for the book's ISBN.
+     */
     @FXML
     private TextField isbnField;
+
+    /**
+     * Text field for the book's title.
+     */
     @FXML
     private TextField titleField;
+
+    /**
+     * Text field for the total number of copies.
+     */
     @FXML
     private TextField totalCopiesField;
+
+    /**
+     * Text field for the book's publication year.
+     */
     @FXML
     private TextField yearField;
+
+    /**
+     * GridPane displaying all book cards.
+     */
     @FXML
     private GridPane bookGrid;
+
+    /**
+     * Text field for the image file name.
+     */
     @FXML
     private TextField imageNameField;
+
+    /**
+     * Text area for the book's description.
+     */
     @FXML
     private TextArea bookDescriptionArea;
 
+    /**
+     * List of all books displayed in the grid.
+     */
     private List<Books> books;
 
+    /**
+     * List of all categories.
+     */
     private List<Category> categories;
 
+    /**
+     * Table handler for category operations.
+     */
     private CategoryTable categoryTable = new CategoryTable();
 
+    /**
+     * Table handler for book operations.
+     */
     private BooksTable booksTable = new BooksTable();
 
+    /**
+     * Initializes the controller, loads categories and books, and populates the
+     * grid.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         categories = getCategories();
@@ -86,6 +185,11 @@ public class BookController implements Initializable {
         }
     }
 
+    /**
+     * Loads all books from the database and ensures image paths are valid.
+     * 
+     * @return list of books
+     */
     private List<Books> data() {
         List<Books> books = new ArrayList<>();
         try {
@@ -112,14 +216,27 @@ public class BookController implements Initializable {
         return books;
     }
 
+    /**
+     * Returns the list of books currently managed by the controller.
+     * 
+     * @return list of books
+     */
     public List<Books> getBooks() {
         return books;
     }
 
+    /**
+     * Handles the add book button click event.
+     * Validates input, creates the book and category if needed, and refreshes the
+     * grid.
+     * 
+     * @param event the action event
+     */
     @FXML
     void handleAddBook(ActionEvent event) {
         // Validate input fields
-        if (!FormValidation.isValidInput(titleField, authorField, isbnField, yearField, categoryField, totalCopiesField, availableCopiesField, imageNameField, bookDescriptionArea)) {
+        if (!FormValidation.isValidInput(titleField, authorField, isbnField, yearField, categoryField, totalCopiesField,
+                availableCopiesField, imageNameField, bookDescriptionArea)) {
             return; // Stop submission if validation fails
         }
 
@@ -132,21 +249,20 @@ public class BookController implements Initializable {
         String availableCopies = availableCopiesField.getText();
         String imageName = imageNameField.getText();
         String description = bookDescriptionArea.getText();
-        int totalCopies_parseInt ;
-        int availableCopies_parseInt ;
+        int totalCopies_parseInt;
+        int availableCopies_parseInt;
         try {
-           totalCopies_parseInt = Integer.parseInt(totalCopies);
-          availableCopies_parseInt = Integer.parseInt(availableCopies);
+            totalCopies_parseInt = Integer.parseInt(totalCopies);
+            availableCopies_parseInt = Integer.parseInt(availableCopies);
         } catch (NumberFormatException e) {
-            Alertmessage.showAlert(AlertType.ERROR, "error","Invalid copies format : Must be numbers");
-            return ;
+            Alertmessage.showAlert(AlertType.ERROR, "error", "Invalid copies format : Must be numbers");
+            return;
         }
 
-
-       if( availableCopies_parseInt > totalCopies_parseInt){
-        Alertmessage.showAlert(AlertType.ERROR, "Error", "available Copies should be less than total Copies");
-        return ;
-       }
+        if (availableCopies_parseInt > totalCopies_parseInt) {
+            Alertmessage.showAlert(AlertType.ERROR, "Error", "available Copies should be less than total Copies");
+            return;
+        }
 
         Books newBook = new Books();
         newBook.setTitle(title);
@@ -179,14 +295,17 @@ public class BookController implements Initializable {
         } catch (SQLException e) {
             System.err.println("Error adding book to database: " + e.getMessage());
             Alertmessage.showAlert(AlertType.ERROR, "Error", "Failed to add book to database" + e.getMessage());
-            return ;
+            return;
         } catch (Exception e) {
             System.err.println("Error adding book to database: " + e.getMessage());
             Alertmessage.showAlert(AlertType.ERROR, "Error", "Failed to add book to database" + e.getMessage());
-            return ;
+            return;
         }
     }
 
+    /**
+     * Refreshes the book grid with the current list of books.
+     */
     public void refreshBookGrid() {
         bookGrid.getChildren().clear();
         int columns = 0;
@@ -239,6 +358,11 @@ public class BookController implements Initializable {
         }
     }
 
+    /**
+     * Loads all categories from the database.
+     * 
+     * @return list of categories
+     */
     private List<Category> getCategories() {
         List<Category> categories = new ArrayList<>();
         try {
@@ -251,6 +375,12 @@ public class BookController implements Initializable {
         return categories;
     }
 
+    /**
+     * Gets the category ID by name, creating the category if it does not exist.
+     * 
+     * @param name the category name
+     * @return the category ID
+     */
     private int getCategoryIdByName(String name) {
         for (Category category : categories) {
             if (category.getName().equalsIgnoreCase(name)) {
@@ -270,7 +400,10 @@ public class BookController implements Initializable {
         return getCategoryIdByName(name);
     }
 
-    public void clearForm () {
+    /**
+     * Clears all fields in the add book form.
+     */
+    public void clearForm() {
         titleField.clear();
         authorField.clear();
         categoryField.clear();
@@ -281,5 +414,4 @@ public class BookController implements Initializable {
         imageNameField.clear();
         bookDescriptionArea.clear();
     }
-
 }

@@ -5,6 +5,38 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
+<!--
+    BorrowsCard.fxml
+    FXML layout for displaying a single loan (borrow) card in the library application.
+
+    This component represents a visual card for a loan, showing the book title,
+    borrower's name, loan and return dates, number of books borrowed, loan status,
+    and a button to return the book.
+
+    Main features:
+    - Displays the book's title, borrower's name, and loan/return dates.
+    - Shows the number of books borrowed in this loan.
+    - Indicates the loan status (e.g., in time, overdue) with color styling.
+    - Provides a "Return" button to process the return of the borrowed book.
+    - Uses style classes and the external Borrows.css stylesheet for consistent appearance.
+
+    FXML elements:
+    - VBox (fx:id="loanCard"): Container for the loan card layout.
+    - Label (fx:id="bookTitleLabel"): Displays the book's title.
+    - Label (fx:id="borrowerLabel"): Displays the borrower's name.
+    - Label (fx:id="loanDateLabel"): Shows the loan start date.
+    - Label (fx:id="returnDateLabel"): Shows the expected return date.
+    - Label (fx:id="numberofbookLabel"): Shows the number of books borrowed.
+    - Label (fx:id="statusLabel"): Indicates the loan status with color.
+    - Button (fx:id="returnButton"): Button to return the book.
+
+    Controller:
+    - com.example.librarymanager.Controllers.BorrowsCardController
+
+    Styles:
+    - Uses style classes and the external Borrows.css stylesheet for consistent appearance.
+-->
+
 <VBox fx:id="loanCard" alignment="CENTER_LEFT" spacing="8.0" styleClass="loan-card" stylesheets="@../Styles/Borrows.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.BorrowsCardController">
     <Label fx:id="bookTitleLabel" styleClass="loan-card-label" text="📖 Book Title" />
     <Label fx:id="borrowerLabel" styleClass="loan-card-label-italic" text="👤 Borrower name" />

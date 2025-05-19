@@ -12,7 +12,36 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="800.0" styleClass="root" stylesheets="@../Styles/Book.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.BookController">
+<!--
+    Books.fxml
+    FXML layout for the main books management view in the library application.
+
+    This component provides a user interface for displaying all books in a grid,
+    as well as a form for adding new books to the library.
+
+    Main features:
+    - Displays all books in a scrollable GridPane at the center of the layout.
+    - Provides a form on the left side for adding a new book, including fields for
+      title, author, ISBN, category, publication year, total copies, available copies,
+      image file name, and description.
+    - Uses a styled "Add Book" button to submit the form.
+    - Layout and appearance are managed using JavaFX BorderPane, VBox, GridPane, HBox, and CSS.
+
+    FXML elements:
+    - BorderPane (root): Main container for the view.
+    - ScrollPane (center): Contains the GridPane (fx:id="bookGrid") for displaying book cards.
+    - VBox (left): Contains the add book form with Labels, TextFields, TextArea, and Button.
+
+    Controller:
+    - com.example.librarymanager.Controllers.BookController
+
+    Styles:
+    - Uses style classes and the external Book.css stylesheet for consistent appearance.
+-->
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="800.0" styleClass="root" stylesheets="@../Styles/Book.css"
+   xmlns="http://javafx.com/javafx/23.0.1"
+   xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.BookController">
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="600.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <content>
@@ -27,49 +56,50 @@
    <left>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="400.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-             <Label styleClass="form-title" text="ADD A BOOK" />
+            <Label styleClass="form-title" text="ADD A BOOK" />
 
-             <Label styleClass="labeled" text="Title" />
-             <TextField fx:id="titleField" promptText="Book title" />
+            <Label styleClass="labeled" text="Title" />
+            <TextField fx:id="titleField" promptText="Book title" />
 
-             <Label styleClass="labeled" text="Author" />
-             <TextField fx:id="authorField" promptText="Author name" />
+            <Label styleClass="labeled" text="Author" />
+            <TextField fx:id="authorField" promptText="Author name" />
 
-             <Label styleClass="labeled" text="ISBN" />
-             <TextField fx:id="isbnField" promptText="Book unique identifier" />
+            <Label styleClass="labeled" text="ISBN" />
+            <TextField fx:id="isbnField" promptText="Book unique identifier" />
 
-             <Label styleClass="labeled" text="Category" />
-             <TextField fx:id="categoryField" promptText="Book category" />
+            <Label styleClass="labeled" text="Category" />
+            <TextField fx:id="categoryField" promptText="Book category" />
 
-             <Label styleClass="labeled" text="Publish year" />
-             <TextField fx:id="yearField" promptText="Year the book was published" />
+            <Label styleClass="labeled" text="Publish year" />
+            <TextField fx:id="yearField" promptText="Year the book was published" />
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
                   <VBox spacing="10.0">
                      <children>
-            
-                         <Label styleClass="labeled" text="Total copies" />
-                         <TextField fx:id="totalCopiesField" promptText="Total number of copies" />
+
+                        <Label styleClass="labeled" text="Total copies" />
+                        <TextField fx:id="totalCopiesField" promptText="Total number of copies" />
                      </children>
                   </VBox>
                   <VBox spacing="10.0">
                      <children>
-            
-                         <Label styleClass="labeled" text="Total copies available" />
-                         <TextField fx:id="availableCopiesField" promptText="Total number available" />
+
+                        <Label styleClass="labeled" text="Total copies available" />
+                        <TextField fx:id="availableCopiesField" promptText="Total number available" />
                      </children>
                   </VBox>
                </children>
             </HBox>
-             <Label styleClass="labeled" text="Image Name" />
-             <TextField fx:id="imageNameField" promptText="Enter image file name (e.g. book1.jpg)" />
+            <Label styleClass="labeled" text="Image Name" />
+            <TextField fx:id="imageNameField" promptText="Enter image file name (e.g. book1.jpg)" />
             <Label styleClass="labeled" text="Description" />
             <TextArea fx:id="bookDescriptionArea" prefHeight="200.0" prefWidth="200.0" promptText="Book description...">
                <font>
                   <Font size="14.0" />
-               </font></TextArea>
+               </font>
+            </TextArea>
 
-                   <Button fx:id="addBookButton" alignment="CENTER" maxWidth="1.7976931348623157E308" onAction="#handleAddBook" prefHeight="35.0" prefWidth="280.0" styleClass="final-button" text="Add Book" />
+            <Button fx:id="addBookButton" alignment="CENTER" maxWidth="1.7976931348623157E308" onAction="#handleAddBook" prefHeight="35.0" prefWidth="280.0" styleClass="final-button" text="Add Book" />
             <HBox>
                <VBox.margin>
                   <Insets top="20.0" />

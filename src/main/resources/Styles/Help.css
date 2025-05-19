@@ -1,100 +1,147 @@
-/* Style général pour le conteneur principal */
+/* General style for the main container */
 .root {
-    -fx-background-color: #f5f5f5;
-    -fx-font-family: "Segoe UI", Arial, sans-serif;
-    -fx-padding: 15px;
+  -fx-background-color: #f5f5f5;
+  background-color: #f5f5f5;
+  -fx-font-family: "Segoe UI", Arial, sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif;
+  -fx-padding: 15px;
+  padding: 15px;
 }
 
-/* Style pour le conteneur des cartes */
+/* Style for the cards container */
 .cards-container {
-    -fx-spacing: 20px;
-    -fx-alignment: center;
-    -fx-padding: 10px;
+  -fx-spacing: 20px;
+  gap: 20px;
+  -fx-alignment: center;
+  /* No direct CSS equivalent for -fx-alignment */
+  -fx-padding: 10px;
+  padding: 10px;
 }
 
-/* Style commun pour toutes les cartes */
+/* Common style for all cards */
 .card {
-    -fx-background-color: white;
-    -fx-background-radius: 10px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);
-    -fx-padding: 15px;
-    -fx-pref-width: 250px;
-    -fx-pref-height: 300px;
-    -fx-cursor: hand;
+  -fx-background-color: white;
+  background-color: white;
+  -fx-background-radius: 10px;
+  border-radius: 10px;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);
+  /* No standard CSS equivalent for JavaFX dropshadow */
+  -fx-padding: 15px;
+  padding: 15px;
+  -fx-pref-width: 250px;
+  width: 250px;
+  -fx-pref-height: 300px;
+  height: 300px;
+  -fx-cursor: hand;
+  cursor: pointer;
 }
 
-/* Style pour la première carte */
+/* Style for the first card */
 .card-1 {
-    -fx-background-color: linear-gradient(to bottom right, #AED6F1, #5DADE2);
-    -fx-border-color: #3498DB;
-    -fx-border-width: 0 0 4 0;
+  -fx-background-color: linear-gradient(to bottom right, #aed6f1, #5dade2);
+  background: linear-gradient(to bottom right, #aed6f1, #5dade2);
+  background-color: #aed6f1;
+  -fx-border-color: #3498db;
+  border-color: #3498db;
+  -fx-border-width: 0 0 4 0;
+  border-width: 0 0 4px 0;
 }
 
-/* Style pour la deuxième carte */
+/* Style for the second card */
 .card-2 {
-    -fx-background-color: linear-gradient(to bottom right, #D5F5E3, #82E0AA);
-    -fx-border-color: #2ECC71;
-    -fx-border-width: 0 0 4 0;
+  -fx-background-color: linear-gradient(to bottom right, #d5f5e3, #82e0aa);
+  background: linear-gradient(to bottom right, #d5f5e3, #82e0aa);
+  background-color: #d5f5e3;
+  -fx-border-color: #2ecc71;
+  border-color: #2ecc71;
+  -fx-border-width: 0 0 4 0;
+  border-width: 0 0 4px 0;
 }
 
-/* Style pour la troisième carte */
+/* Style for the third card */
 .card-3 {
-    -fx-background-color: linear-gradient(to bottom right, #FADBD8, #F1948A);
-    -fx-border-color: #E74C3C;
-    -fx-border-width: 0 0 4 0;
+  -fx-background-color: linear-gradient(to bottom right, #fadbd8, #f1948a);
+  background: linear-gradient(to bottom right, #fadbd8, #f1948a);
+  background-color: #fadbd8;
+  -fx-border-color: #e74c3c;
+  border-color: #e74c3c;
+  -fx-border-width: 0 0 4 0;
+  border-width: 0 0 4px 0;
 }
 
-/* Style pour les titres des cartes */
+/* Style for card titles */
 .card-title {
-    -fx-font-size: 18px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #2C3E50;
-    -fx-padding: 0 0 10px 0;
+  -fx-font-size: 18px;
+  font-size: 18px;
+  -fx-font-weight: bold;
+  font-weight: bold;
+  -fx-text-fill: #2c3e50;
+  color: #2c3e50;
+  -fx-padding: 0 0 10px 0;
+  padding: 0 0 10px 0;
 }
 
-/* Style pour le contenu des cartes */
+/* Style for card content */
 .card-content {
-    -fx-font-size: 14px;
-    -fx-text-fill: #34495E;
-    -fx-wrap-text: true;
+  -fx-font-size: 14px;
+  font-size: 14px;
+  -fx-text-fill: #34495e;
+  color: #34495e;
+  -fx-wrap-text: true;
+  /* No direct CSS equivalent for -fx-wrap-text */
 }
 
-/* Style pour les images dans les cartes */
+/* Style for images in cards */
 .card-image {
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
-    -fx-background-radius: 5px;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
+  /* No standard CSS equivalent for JavaFX dropshadow */
+  -fx-background-radius: 5px;
+  border-radius: 5px;
 }
 
-/* Animation de survol pour les cartes */
+/* Hover animation for cards */
 .card:hover {
-    -fx-scale-x: 1.05;
-    -fx-scale-y: 1.05;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 15, 0, 0, 7);
-    -fx-transition: all 0.3s ease;
+  -fx-scale-x: 1.05;
+  -fx-scale-y: 1.05;
+  /* No direct CSS equivalent for scale in standard CSS */
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 15, 0, 0, 7);
+  /* No standard CSS equivalent for JavaFX dropshadow */
+  -fx-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-/* Style pour les boutons dans les cartes */
+/* Style for buttons in cards */
 .card-button {
-    -fx-background-color: #3498DB;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-background-radius: 20px;
-    -fx-padding: 8px 16px;
-    -fx-cursor: hand;
+  -fx-background-color: #3498db;
+  background-color: #3498db;
+  -fx-text-fill: white;
+  color: white;
+  -fx-font-weight: bold;
+  font-weight: bold;
+  -fx-background-radius: 20px;
+  border-radius: 20px;
+  -fx-padding: 8px 16px;
+  padding: 8px 16px;
+  -fx-cursor: hand;
+  cursor: pointer;
 }
 
 .card-1 .card-button {
-    -fx-background-color: #3498DB;
+  -fx-background-color: #3498db;
+  background-color: #3498db;
 }
 
 .card-2 .card-button {
-    -fx-background-color: #2ECC71;
+  -fx-background-color: #2ecc71;
+  background-color: #2ecc71;
 }
 
 .card-3 .card-button {
-    -fx-background-color: #E74C3C;
+  -fx-background-color: #e74c3c;
+  background-color: #e74c3c;
 }
 
 .card-button:hover {
-    -fx-opacity: 0.8;
+  -fx-opacity: 0.8;
+  opacity: 0.8;
 }

@@ -9,7 +9,25 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
+/**
+ * JavaFX controller for the sidebar navigation of the application.
+ *
+ * This controller manages the sidebar menu, allowing users to navigate between
+ * different sections of the application (Dashboard, Books, Users, Borrows, Settings, Help).
+ * It also handles the logout action and updates the visual state of the sidebar buttons.
+ *
+ * Main features:
+ * - Handles navigation button clicks and updates the selected menu item.
+ * - Listens for changes in the selected menu item and updates button styles accordingly.
+ * - Handles logout by closing the current window and opening the login window.
+ *
+ * Dependencies:
+ * - Model & ViewFactory: for managing navigation and window transitions.
+ *
+ * FXML requirements:
+ * - Buttons: dashboardBtn, bookBtn, userBtn, borrowBtn, settingsBtn, helpBtn, logoutBtn
+ * - Label: copyrigthBtn
+ */
 public class SideController implements Initializable {
     public Button dashboardBtn;
     public Button bookBtn;
@@ -24,8 +42,12 @@ public class SideController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addListener();
     }
+
+    /**
+     * Sets up event listeners for sidebar buttons and menu item selection.
+     */
     @SuppressWarnings("unused")
-    private void addListener(){
+    private void addListener() {
         dashboardBtn.setOnAction(event -> onDashboard());
         bookBtn.setOnAction(event -> onBooking());
         userBtn.setOnAction(event -> onUsers());
@@ -42,25 +64,53 @@ public class SideController implements Initializable {
         // Set initial active state
         updateButtonStyles("Dashboard");
     }
-    private void onDashboard(){
+
+    /**
+     * Handles navigation to the Dashboard view.
+     */
+    private void onDashboard() {
         Model.getModel().getViewFactory().getSidebarSelectedMenuItem().set("Dashboard");
     }
-    private void onUsers(){
+
+    /**
+     * Handles navigation to the Users view.
+     */
+    private void onUsers() {
         Model.getModel().getViewFactory().getSidebarSelectedMenuItem().set("Users");
     }
-    private void onBooking(){
+
+    /**
+     * Handles navigation to the Books view.
+     */
+    private void onBooking() {
         Model.getModel().getViewFactory().getSidebarSelectedMenuItem().set("Books");
     }
-    private void onBorrows(){
+
+    /**
+     * Handles navigation to the Borrows view.
+     */
+    private void onBorrows() {
         Model.getModel().getViewFactory().getSidebarSelectedMenuItem().set("Borrows");
     }
-    private void onSettings(){
+
+    /**
+     * Handles navigation to the Settings view.
+     */
+    private void onSettings() {
         Model.getModel().getViewFactory().getSidebarSelectedMenuItem().set("Settings");
     }
-    private void onHelp(){
+
+    /**
+     * Handles navigation to the Help view.
+     */
+    private void onHelp() {
         Model.getModel().getViewFactory().getSidebarSelectedMenuItem().set("Help");
     }
-    private void onLogout(){
+
+    /**
+     * Handles the logout action: closes the current window and opens the login window.
+     */
+    private void onLogout() {
         // Get the current stage from any button
         Stage currentStage = (Stage) logoutBtn.getScene().getWindow();
         // Close the current stage
@@ -69,6 +119,10 @@ public class SideController implements Initializable {
         Model.getModel().getViewFactory().showLoginWindow();
     }
 
+    /**
+     * Updates the visual style of sidebar buttons based on the selected menu item.
+     * @param selectedItem the currently selected menu item
+     */
     private void updateButtonStyles(String selectedItem) {
         // Remove active class from all buttons
         dashboardBtn.getStyleClass().remove("active");

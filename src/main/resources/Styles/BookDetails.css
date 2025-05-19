@@ -1,76 +1,102 @@
-/* styles.css */
-
 /* AnchorPane style */
 .root {
-    -fx-background-color: #f4f4f4;
+  -fx-background-color: #f4f4f4;
+  background-color: #f4f4f4;
 }
 
 /* ImageView styling */
 .image-view {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0.5, 0, 0);
-    -fx-background-radius: 10;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0, 0);
+  /* No standard CSS equivalent for JavaFX dropshadow */
+  -fx-background-radius: 10;
+  border-radius: 10px;
 }
 
 /* Labels */
 .label {
-    -fx-font-size: 14px;
-    -fx-text-fill: #333333;
-    -fx-font-weight: bold;
+  -fx-font-size: 14px;
+  font-size: 14px;
+  -fx-text-fill: #333333;
+  color: #333333;
+  -fx-font-weight: bold;
+  font-weight: bold;
 }
 
 /* TextFields */
 .text-field {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #cccccc;
-    -fx-border-radius: 4;
-    -fx-background-radius: 4;
-    -fx-padding: 5 10 5 10;
+  -fx-background-color: #ffffff;
+  background-color: #ffffff;
+  -fx-border-color: #cccccc;
+  border-color: #cccccc;
+  -fx-border-radius: 4;
+  border-radius: 4px;
+  -fx-background-radius: 4;
+  -fx-padding: 5 10 5 10;
+  padding: 5px 10px 5px 10px;
 }
 
 /* TextArea */
 .text-area {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #cccccc;
-    -fx-border-radius: 4;
-    -fx-background-radius: 4;
-    -fx-padding: 5 10 5 10;
+  -fx-background-color: #ffffff;
+  background-color: #ffffff;
+  -fx-border-color: #cccccc;
+  border-color: #cccccc;
+  -fx-border-radius: 4;
+  border-radius: 4px;
+  -fx-background-radius: 4;
+  -fx-padding: 5 10 5 10;
+  padding: 5px 10px 5px 10px;
 }
 
 /* Buttons */
 .button {
-    -fx-background-color: #4838d1;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-background-radius: 5;
-    -fx-cursor: hand;
-    -fx-padding: 8 16 8 16;
+  -fx-background-color: #4838d1;
+  background-color: #4838d1;
+  -fx-text-fill: white;
+  color: white;
+  -fx-font-weight: bold;
+  font-weight: bold;
+  -fx-background-radius: 5;
+  border-radius: 5px;
+  -fx-cursor: hand;
+  cursor: pointer;
+  -fx-padding: 8 16 8 16;
+  padding: 8px 16px 8px 16px;
 }
 
 .button:hover {
-    -fx-background-color: #150053;
+  -fx-background-color: #150053;
+  background-color: #150053;
 }
 
 .button:pressed {
-    -fx-background-color: #2912df;
+  -fx-background-color: #2912df;
+  background-color: #2912df;
 }
 
 /* ButtonBar spacing and alignment */
 .button-bar {
-    -fx-spacing: 10;
+  -fx-spacing: 10;
+  gap: 10px;
 }
 
 /* GridPane spacing */
 .grid-pane {
-    -fx-hgap: 10;
-    -fx-vgap: 10;
+  -fx-hgap: 10;
+  column-gap: 10px;
+  -fx-vgap: 10;
+  row-gap: 10px;
 }
 
 /* VBox spacing */
 .v-box {
-    -fx-spacing: 10;
+  -fx-spacing: 10;
+  gap: 10px;
 }
 
 /* TextArea prompt text style */
 .text-area .text {
-    -fx-fill: #888888;
+  -fx-fill: #888888;
+  fill: #888888;
+  color: #888888;
 }
