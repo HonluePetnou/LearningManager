@@ -33,16 +33,7 @@ public class FormValidation {
         }
         if (categoryTextField.getText() == null || categoryTextField.getText().trim().isEmpty()) {
             errorMessage.append("Category is required.\n");
-        } else {
-            try {
-                int categoryId = Integer.parseInt(categoryTextField.getText());
-                if (categoryId <= 0) {
-                    errorMessage.append("Category ID must be a positive number.\n");
-                }
-            } catch (NumberFormatException e) {
-                errorMessage.append("Category ID must be a valid number.\n");
-            }
-        }
+        } 
         if (totalCopiesTextField.getText() == null || totalCopiesTextField.getText().trim().isEmpty()) {
             errorMessage.append("Total copies are required.\n");
         } else {

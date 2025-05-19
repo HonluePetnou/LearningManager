@@ -75,6 +75,11 @@ public class ConfirmBorrowController implements Initializable {
       loan.setDueAt(returndate.getValue().atStartOfDay());
       loan.setBookId(book.getBook_id());
       loan.setNumberOfBook(Integer.parseInt(numberOfBook.getText()));
+     
+      if( loanTable.getLoanId(Integer.parseInt(userId.getText()), book.getBook_id() ) != 0 ){
+          Alertmessage.showAlert(AlertType.INFORMATION, "INFO", "vous avez deja emprunter ce livre"); 
+          return false ;
+      }
       loanTable.create(loan);
       booksTable.Update(book);
       Alertmessage.showAlert(AlertType.INFORMATION, "INFO", "livre emprunte avec success");    
