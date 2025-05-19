@@ -142,11 +142,6 @@ public class BookController implements Initializable {
             return ;
         }
 
-        // if (title.isEmpty() || author.isEmpty() || category.isEmpty() || isbn.isEmpty() || year.isEmpty()
-        //         || totalCopies.isEmpty() || availableCopies.isEmpty() || imageName.isEmpty() || description.isEmpty()) {
-        //     Alertmessage.showAlert(AlertType.ERROR, "Error", "All field are required");
-        //     return ;
-        // }
 
        if( availableCopies_parseInt > totalCopies_parseInt){
         Alertmessage.showAlert(AlertType.ERROR, "Error", "available Copies should be less than total Copies");
