@@ -25,26 +25,26 @@ public class ViewFactory {
 
     public ViewFactory() {
         this.sidebarSelectedMenuItem = new SimpleStringProperty();
-//        sidebarSelectedMenuItem = new SimpleStringProperty();
+        // sidebarSelectedMenuItem = new SimpleStringProperty();
     }
-
 
     public StringProperty getSidebarSelectedMenuItem() {
         return sidebarSelectedMenuItem;
     }
 
-    public ScrollPane  getDashboardView() {
+    public ScrollPane getDashboardView() {
         if (dashboardView == null) {
             try {
                 dashboardView = new FXMLLoader(getClass().getResource("/Fxml/Dash.fxml")).load();
             } catch (Exception e) {
-//                throw new RuntimeException(e);
+                // throw new RuntimeException(e);
                 e.printStackTrace();
             }
         }
         return dashboardView;
 
     }
+
     public BorderPane getBooksView() {
         if (booksView == null) {
             try {
@@ -65,7 +65,8 @@ public class ViewFactory {
         }
         return booksView;
     }
-    public BorderPane getUsersView() {  // Changed return type to BorderPane
+
+    public BorderPane getUsersView() { // Changed return type to BorderPane
         if (usersView == null) {
             try {
                 usersView = new FXMLLoader(getClass().getResource("/Fxml/Users.fxml")).load();
@@ -75,7 +76,7 @@ public class ViewFactory {
         }
         return usersView;
     }
-    
+
     public BorderPane getBorrowsView() {
         if (borrowsView == null) {
             try {
@@ -123,6 +124,7 @@ public class ViewFactory {
         wrapper.setCenter(helpView);
         return wrapper;
     }
+
     public void showLoginWindow() {
         try {
             URL resourceUrl = getClass().getResource("/Fxml/Login.fxml");
@@ -138,6 +140,7 @@ public class ViewFactory {
             showErrorDialog("Login Error", "Failed to load login window", e.getMessage());
         }
     }
+
     public void showRegistrationWindow() {
         try {
             URL resourceUrl = getClass().getResource("/Fxml/Registration.fxml");
@@ -153,6 +156,7 @@ public class ViewFactory {
             showErrorDialog("Registration Error", "Failed to load Registration window", e.getMessage());
         }
     }
+
     public void showDashboardWindow() {
         try {
             URL resourceUrl = getClass().getResource("/Fxml/Dashboard.fxml");
@@ -168,6 +172,7 @@ public class ViewFactory {
             showErrorDialog("Dashboard Error", "Failed to load dashboard window", e.getMessage());
         }
     }
+
     public void showBooksWindow() {
         try {
             URL resourceUrl = getClass().getResource("/Fxml/Books.fxml");
@@ -183,6 +188,7 @@ public class ViewFactory {
             showErrorDialog("Books Error", "Failed to load books window", e.getMessage());
         }
     }
+
     public void showConfirmBorrowWindow() {
         try {
             URL resourceUrl = getClass().getResource("/Fxml/ConfirmBorrow.fxml");
@@ -191,9 +197,17 @@ public class ViewFactory {
                 throw new IOException("ConfirmBorrow.fxml resource not found");
             }
             FXMLLoader loader = new FXMLLoader(resourceUrl);
-            createStage(loader);
+
+            // Créer la scène et obtenir le controller avant de l'afficher
+            Scene scene = new Scene(loader.load());
+           
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("BOOKER");
+            stage.show();
+
         } catch (Exception e) {
-            System.err.println("Error showing books window: " + e.getMessage());
+            System.err.println("Error showing confirm borrow window: " + e.getMessage());
             e.printStackTrace();
             showErrorDialog("ConfirmBorrow Error", "Failed to load ConfirmBorrow window", e.getMessage());
         }
@@ -215,12 +229,12 @@ public class ViewFactory {
     public void closeStage(Stage stage) {
         stage.close();
     }
-    
+
     /**
      * Shows an error dialog with the specified information
      * 
-     * @param title The title of the error dialog
-     * @param header The header text of the error dialog
+     * @param title   The title of the error dialog
+     * @param header  The header text of the error dialog
      * @param content The content text of the error dialog
      */
     private void showErrorDialog(String title, String header, String content) {

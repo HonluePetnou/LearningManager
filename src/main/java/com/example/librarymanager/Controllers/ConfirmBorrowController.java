@@ -20,71 +20,75 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
-public class ConfirmBorrowController implements Initializable{
+public class ConfirmBorrowController implements Initializable {
 
-    @FXML
-    private Button confirmbutton;
+  @FXML
+  private Button confirmbutton;
 
-    @FXML
-    private TextField numberOfBook;
+  @FXML
+  private TextField numberOfBook;
 
-    @FXML
-    private DatePicker returndate;
+  @FXML
+  private DatePicker returndate;
 
-    @FXML
-    private TextField userId;
+  @FXML
+  private TextField userId;
 
-    private LoanTable loanTable = new LoanTable() ;
+  private LoanTable loanTable = new LoanTable();
 
-    private Loan loan = new Loan() ;
+  private Loan loan = new Loan();
 
-    private Books book = new Books() ;
+  private Books book = new Books();
 
-    private BooksTable booksTable = new BooksTable();
+  private BooksTable booksTable = new BooksTable();
 
   @SuppressWarnings("unused")
-@Override
-   public void initialize(URL url, ResourceBundle resourceBundle){
-      confirmbutton.setOnAction( event ->{
-           if( confirmBorrow()){
-             closeStage();
-           }
-      });
-   }
-
- private boolean confirmBorrow(){
-    loan = CurrentUser.getLoan() ;
-    book = CurrentUser.getBook() ;
-    if(userId.getText().isEmpty() || numberOfBook.getText().isEmpty() || returndate.getValue() == null){
-        Alertmessage.showAlert(AlertType.ERROR, "ERROR", "All fields are required.");
-        return false;
-    }
-    if(returndate.getValue().isBefore(LocalDateTime.now().toLocalDate())){
-        Alertmessage.showAlert(AlertType.ERROR, "ERROR", "The return date must be in the future.");
-        return false;
-    }
-    if(Integer.parseInt(numberOfBook.getText()) > book.getCopies_available()){
-        Alertmessage.showAlert(AlertType.ERROR, "ERROR", "The number of books requested exceeds the available copies.(available:"+book.getCopies_available()+")");
-        return false;
-    }
- 
-    try {
-        book.setAvailable_copies(book.getCopies_available() - Integer.parseInt(numberOfBook.getText()));
-        loan.setUserId(Integer.parseInt(userId.getText()));
-        loan.setDueAt(returndate.getValue().atStartOfDay());
-        loanTable.create(loan);
-        booksTable.Update(book);
-        Alertmessage.showAlert(AlertType.INFORMATION, "INFO", "livre emprunte avec success");
-      } catch (Exception e) {
-        System.err.println("fail to create loan:"+e);
-        Alertmessage.showAlert(AlertType.ERROR , "ERROR", "internal error");
+  @Override
+  public void initialize(URL url, ResourceBundle resourceBundle) {
+    confirmbutton.setOnAction(event -> {
+      if (confirmBorrow()) {
+        closeStage();
       }
-    return true ;
-   }
+    });
+  }
 
-    private void closeStage(){
+  private boolean confirmBorrow() {
+    loan = CurrentUser.getLoan();
+    book = CurrentUser.getBook();
+    if (userId.getText().isEmpty() || numberOfBook.getText().isEmpty() || returndate.getValue() == null) {
+      Alertmessage.showAlert(AlertType.ERROR, "ERROR", "All fields are required.");
+      return false;
+    }
+    if (returndate.getValue().isBefore(LocalDateTime.now().toLocalDate())) {
+      Alertmessage.showAlert(AlertType.ERROR, "ERROR", "The return date must be in the future.");
+      return false;
+    }
+    if (Integer.parseInt(numberOfBook.getText()) > book.getCopies_available()) {
+      Alertmessage.showAlert(AlertType.ERROR, "ERROR",
+          "The number of books requested exceeds the available copies.(available:" + book.getCopies_available() + ")");
+      return false;
+    }
+
+    try {
+      book.setAvailable_copies(book.getCopies_available() - Integer.parseInt(numberOfBook.getText()));
+      loan.setUserId(Integer.parseInt(userId.getText()));
+      loan.setDueAt(returndate.getValue().atStartOfDay());
+      loan.setBookId(book.getBook_id());
+      loan.setNumberOfBook(Integer.parseInt(numberOfBook.getText()));
+      loanTable.create(loan);
+      booksTable.Update(book);
+      Alertmessage.showAlert(AlertType.INFORMATION, "INFO", "livre emprunte avec success");    
+      BorrowsController.triggerUpdate();
+      return true;
+    } catch (Exception e) {
+      System.err.println("fail to create loan:" + e);
+      Alertmessage.showAlert(AlertType.ERROR, "ERROR", "internal error");
+    }
+    return false;
+  }
+
+  private void closeStage() {
     Stage stage = (Stage) numberOfBook.getScene().getWindow();
     Model.getModel().getViewFactory().closeStage(stage);
-   }
+  }
 }
-  

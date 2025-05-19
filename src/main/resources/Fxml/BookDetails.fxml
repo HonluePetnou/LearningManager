@@ -37,6 +37,9 @@
                     <Label text="Title" />
               <Label text="Author" GridPane.rowIndex="1" />
               <Label alignment="TOP_LEFT" text="Total Copies" GridPane.rowIndex="5" />
+                    <Label text="Title" />
+              <Label text="Author" GridPane.rowIndex="1" />
+              <Label alignment="TOP_LEFT" text="Total Copies" GridPane.rowIndex="5" />
               <Label text="Category" GridPane.rowIndex="4" />
               <Label text="Publish Year" GridPane.rowIndex="3" />
               <Label text="ISBN" GridPane.rowIndex="2" />

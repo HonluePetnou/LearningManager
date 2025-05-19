@@ -177,6 +177,7 @@ public class BookController implements Initializable {
                 books = new ArrayList<>();
             }
             books.add(newBook);
+            books = new ArrayList<>(data());
             refreshBookGrid();
             clearForm();
 

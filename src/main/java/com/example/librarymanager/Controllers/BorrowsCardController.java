@@ -17,24 +17,29 @@ public class BorrowsCardController {
     private Label statusLabel;
     @FXML
     private Button returnButton;
+    @FXML
+    private Label numberofbookLabel;
     
     private String bookTitle;
     private String borrowerName;
     private String loanDate;
     private String returnDate;
     private boolean onTime;
-    
+    private int numberOfBook;
+
+   
+
     public void initialize() {
         // Initialize controller
     }
     
-    public void setLoanData(String bookTitle, String borrowerName, String loanDate, String returnDate, boolean onTime) {
+    public void setLoanData(String bookTitle, String borrowerName, String loanDate, String returnDate, boolean onTime , int numberOfBook) {
         this.bookTitle = bookTitle;
         this.borrowerName = borrowerName;
         this.loanDate = loanDate;
         this.returnDate = returnDate;
         this.onTime = onTime;
-        
+        this.numberOfBook = numberOfBook;
         updateUI();
     }
     
@@ -43,6 +48,7 @@ public class BorrowsCardController {
         borrowerLabel.setText("👤 " + borrowerName);
         loanDateLabel.setText("📅 Borrowed at : " + loanDate);
         returnDateLabel.setText("🕑 Returned at : " + returnDate);
+        numberofbookLabel.setText("📚 Nombre de livre : " + numberOfBook);
         
         if (onTime) {
             statusLabel.setText("🟢 In time");
@@ -58,4 +64,7 @@ public class BorrowsCardController {
     public String getLoanDate() { return loanDate; }
     public String getReturnDate() { return returnDate; }
     public boolean isOnTime() { return onTime; }
+    public int getNumberOfBook() {
+        return numberOfBook;
+    }
 }

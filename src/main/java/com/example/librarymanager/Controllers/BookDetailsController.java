@@ -16,9 +16,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class BookDetailsController implements Initializable{
-    @FXML
-    private TextField bookTitleTextField;
+public class BookDetailsController implements Initializable {
+  @FXML
+  private TextField bookTitleTextField;
 
     @FXML
     private TextField bookAuthorTextField;
@@ -38,17 +38,17 @@ public class BookDetailsController implements Initializable{
     @FXML
     private TextField availableCopiesTextField;
 
-    @FXML
-    private TextArea bookDescriptionArea;
+  @FXML
+  private TextArea bookDescriptionArea;
 
-    @FXML
-    private ImageView bookImageView;
+  @FXML
+  private ImageView bookImageView;
 
-    @FXML
-    private Button borrowButton;
+  @FXML
+  private Button borrowButton;
 
-    @FXML
-    private Button returnButton;
+  @FXML
+  private Button returnButton;
 
     private Loan loan = new Loan();
 
