@@ -13,7 +13,7 @@ public class Loan {
     private String status; 
     private String book_name ;
     private String user_name ;
-
+    private int numberOfBook;
 
     public Loan() {
     }
@@ -94,4 +94,12 @@ public class Loan {
         this.user_name = user_name;
     }
 
+    public int getNumberOfBook() {
+        return numberOfBook;
+    }
+
+
+    public void setNumberOfBook(int numberOfBook) {
+        this.numberOfBook = numberOfBook;
+    }
 }
