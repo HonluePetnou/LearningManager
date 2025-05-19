@@ -67,12 +67,12 @@
                <graphic>
                   <FontAwesomeIconView glyphName="SIGN_OUT" />
                </graphic>
-            </Button>   
-            <Button fx:id="copyrigthBtn" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="sidebar-button" text="Copyrigth . 2025">
-               <graphic>
-                  <FontAwesomeIconView glyphName="COPYRIGHT" />
-               </graphic>
             </Button>
+            <Label maxWidth="1.7976931348623157E308" styleClass="sidebar-label" text="Copyrigth . 2025" VBox.vgrow="ALWAYS">
+               <graphic>
+                  <FontAwesomeIconView glyphName="COPYRIGHT" text="" />
+               </graphic>
+            </Label>
          </children>
          <padding>
             <Insets bottom="30.0" />
