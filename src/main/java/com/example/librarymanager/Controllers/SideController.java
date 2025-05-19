@@ -34,6 +34,13 @@ public class SideController implements Initializable {
         logoutBtn.setOnAction(event -> onLogout());
         copyrigthBtn.setOnAction(event -> onCopyright());
 
+        // Add listener for sidebar item selection
+        Model.getModel().getViewFactory().getSidebarSelectedMenuItem().addListener((observable, oldValue, newValue) -> {
+            updateButtonStyles(newValue);
+        });
+
+        // Set initial active state
+        updateButtonStyles("Dashboard");
     }
     private void onDashboard(){
         Model.getModel().getViewFactory().getSidebarSelectedMenuItem().set("Dashboard");
@@ -63,5 +70,27 @@ public class SideController implements Initializable {
     }
     private void onCopyright(){
         Model.getModel().getViewFactory().getSidebarSelectedMenuItem().set("Copyright");
+    }
+
+    private void updateButtonStyles(String selectedItem) {
+        // Remove active class from all buttons
+        dashboardBtn.getStyleClass().remove("active");
+        bookBtn.getStyleClass().remove("active");
+        userBtn.getStyleClass().remove("active");
+        borrowBtn.getStyleClass().remove("active");
+        settingsBtn.getStyleClass().remove("active");
+        helpBtn.getStyleClass().remove("active");
+        copyrigthBtn.getStyleClass().remove("active");
+
+        // Add active class to selected button
+        switch (selectedItem) {
+            case "Dashboard" -> dashboardBtn.getStyleClass().add("active");
+            case "Books" -> bookBtn.getStyleClass().add("active");
+            case "Users" -> userBtn.getStyleClass().add("active");
+            case "Borrows" -> borrowBtn.getStyleClass().add("active");
+            case "Settings" -> settingsBtn.getStyleClass().add("active");
+            case "Help" -> helpBtn.getStyleClass().add("active");
+            case "Copyright" -> copyrigthBtn.getStyleClass().add("active");
+        }
     }
 }

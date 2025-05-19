@@ -158,56 +158,68 @@
                         <children>
                            <HBox HBox.hgrow="ALWAYS">
                               <children>
-                                 <Label styleClass="table-header" text="New Users" />
+                                 <Label prefHeight="35.0" prefWidth="167.0" styleClass="table-header" text="Golden Users" />
                               </children>
                            </HBox>
                            <HBox alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">
                               <children>
-                                 <Button mnemonicParsing="false" styleClass="table-button" text="See All" />
+                                 <Button fx:id="seeAllButton" mnemonicParsing="false" styleClass="table-button" text="See All" />
                               </children>
                            </HBox>
                         </children>
                      </HBox>
                      <HBox styleClass="header-row">
                         <children>
-                           <Label prefWidth="50" styleClass="header-cell" text="ID" />
-                           <Label prefWidth="250.0" styleClass="header-cell" text="Name" />
-                           <Label prefWidth="100" styleClass="header-cell" text="Status" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="100.0" styleClass="header-cell" text="ID" HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="200.0" styleClass="header-cell" text="Fullname" HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="250.0" styleClass="header-cell" text="Email" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="316.0" layoutY="15.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="header-cell" text="Location" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="398.0" layoutY="15.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="header-cell" text="Sex" HBox.hgrow="ALWAYS" />
                         </children>
                      </HBox>
                      <HBox fx:id="row1" styleClass="data-row odd-row">
                         <children>
-                           <Label prefWidth="50" styleClass="data-cell" text="001" />
-                           <Label prefWidth="250" styleClass="data-cell" text="Ramoliya Kumai P." />
-                           <Label prefWidth="100" styleClass="data-cell status-active" text="Active" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="100.0" styleClass="data-cell" text="001" HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="200.0" styleClass="data-cell" text="Djifack Daril" HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="250.0" styleClass="data-cell status-active" text="RamoliyaKumai@gmail.com" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="311.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="data-cell status-active" text="Douala" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="408.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="data-cell status-active" text="Male" HBox.hgrow="ALWAYS" />
                         </children>
                      </HBox>
-                     <HBox fx:id="row2" styleClass="data-row even-row">
+                     <HBox fx:id="row11" layoutX="31.0" layoutY="151.0" styleClass="data-row odd-row">
                         <children>
-                           <Label prefWidth="50" styleClass="data-cell" text="002" />
-                           <Label prefWidth="250" styleClass="data-cell" text="Vasant Chauhan" />
-                           <Label prefWidth="100" styleClass="data-cell status-active" text="Active" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="100.0" styleClass="data-cell" text="002" HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="200.0" styleClass="data-cell" text="Petnou Honlue A." HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="250.0" styleClass="data-cell status-active" text="petnouhonlue@gmail.com" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="311.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="data-cell status-active" text="Bangangte" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="408.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="data-cell status-active" text="Male" HBox.hgrow="ALWAYS" />
                         </children>
                      </HBox>
-                     <HBox fx:id="row3" styleClass="data-row odd-row">
+                     <HBox fx:id="row111" layoutX="31.0" layoutY="164.0" styleClass="data-row odd-row">
                         <children>
-                           <Label prefWidth="50" styleClass="data-cell" text="003" />
-                           <Label prefWidth="250" styleClass="data-cell" text="Dilip Radadiya" />
-                           <Label prefWidth="100" styleClass="data-cell status-inactive" text="Inactive" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="100.0" styleClass="data-cell" text="003" HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="200.0" styleClass="data-cell" text="Jane Doe" HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="250.0" styleClass="data-cell status-active" text="janedoe@gmail.com" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="311.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="data-cell status-active" text="Paris" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="408.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="data-cell status-active" text="Female" HBox.hgrow="ALWAYS" />
                         </children>
                      </HBox>
-                     <HBox fx:id="row31" layoutX="31.0" layoutY="199.0" styleClass="data-row odd-row">
+                     <HBox fx:id="row1111" layoutX="31.0" layoutY="202.0" styleClass="data-row odd-row">
                         <children>
-                           <Label prefWidth="50" styleClass="data-cell" text="003" />
-                           <Label prefWidth="250" styleClass="data-cell" text="Dilip Radadiya" />
-                           <Label prefWidth="100" styleClass="data-cell status-inactive" text="Inactive" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="100.0" styleClass="data-cell" text="004" HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="200.0" styleClass="data-cell" text="Julia Smith" HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="250.0" styleClass="data-cell status-active" text="Juliasmith@gmail.com" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="311.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="data-cell status-active" text="Montreal" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="408.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="data-cell status-active" text="Female" HBox.hgrow="ALWAYS" />
                         </children>
                      </HBox>
-                     <HBox fx:id="row311" layoutX="31.0" layoutY="236.0" styleClass="data-row odd-row">
+                     <HBox fx:id="row11111" layoutX="31.0" layoutY="240.0" styleClass="data-row odd-row">
                         <children>
-                           <Label prefWidth="50" styleClass="data-cell" text="003" />
-                           <Label prefWidth="250" styleClass="data-cell" text="Dilip Radadiya" />
-                           <Label prefWidth="100" styleClass="data-cell status-inactive" text="Inactive" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="100.0" styleClass="data-cell" text="005" HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="200.0" styleClass="data-cell" text="Kamdeu Chret" HBox.hgrow="ALWAYS" />
+                           <Label maxWidth="1.7976931348623157E308" prefWidth="250.0" styleClass="data-cell status-active" text="kamdeuchret@gmail.com" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="311.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="data-cell status-active" text="yaounde" HBox.hgrow="ALWAYS" />
+                           <Label layoutX="408.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="100" styleClass="data-cell status-active" text="Male" HBox.hgrow="ALWAYS" />
                         </children>
                      </HBox>
                   </children>
@@ -218,6 +230,11 @@
             <children>
                <VBox alignment="CENTER" spacing="20.0" HBox.hgrow="ALWAYS">
                   <children>
+                     <HBox>
+                        <children>
+                           <Label prefHeight="35.0" prefWidth="167.0" styleClass="table-header" text="Main Books" />
+                        </children>
+                     </HBox>
                      <HBox alignment="CENTER" spacing="20.0" VBox.vgrow="ALWAYS">
                         <children>
                            <VBox prefHeight="300.0" prefWidth="200.0" styleClass="book-card">
@@ -282,11 +299,28 @@
                                  <Button styleClass="book-button" text="Borrow" />
                               </children>
                            </VBox>
+                           <VBox layoutX="678.0" layoutY="10.0" prefHeight="300.0" prefWidth="200.0" styleClass="book-card">
+                              <padding>
+                                 <Insets bottom="20.0" />
+                              </padding>
+                              <children>
+                                 <ImageView fitHeight="180" fitWidth="200.0">
+                                    <image>
+                                       <Image url="@../Images/book3.jpg" />
+                                    </image>
+                                    <viewport>
+                                       <Rectangle2D />
+                                    </viewport>
+                                 </ImageView>
+                                 <Label styleClass="book-title" text="JavaFX Essentials" />
+                                 <Button styleClass="book-button" text="Borrow" />
+                              </children>
+                           </VBox>
                         </children>
                      </HBox>
                      <HBox alignment="CENTER">
                         <children>
-                           <Button mnemonicParsing="false" styleClass="outlined-button" text="More +" />
+                           <Button fx:id="moreButton" mnemonicParsing="false" styleClass="outlined-button" text="More +" />
                         </children>
                      </HBox>
                   </children>

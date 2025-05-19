@@ -114,8 +114,8 @@
     -fx-text-fill: #2c3e50;
 }
 .table-button {
-    -fx-background-color: #4838d1;
-    -fx-text-fill: white;
+    -fx-background-color: #FFD700;
+    -fx-text-fill: black;
     -fx-font-weight: bold;
     -fx-padding: 10px;
     -fx-border-radius: 5px;
@@ -123,17 +123,18 @@
     -fx-cursor: hand;
 }
 .table-button:hover{
-    -fx-background-color: #2400a1;
+    -fx-background-color: #776701;
+    -fx-text-fill: white;
 }
 /* Header row styling */
 .header-row {
-    -fx-background-color: #4838d1;
+    -fx-background-color: #FFD700;
+    -fx-text-fill: black;
     -fx-alignment: center-left;
     -fx-padding: 5px;
 }
 
 .header-cell {
-    -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-padding: 5px;
 }

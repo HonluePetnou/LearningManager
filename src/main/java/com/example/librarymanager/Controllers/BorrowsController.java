@@ -137,7 +137,7 @@ public class BorrowsController {
                 
                 // Move to the next column, and if needed, to the next row
                 column++;
-                if (column == 5) {
+                if (column == 4) {
                     column = 0;
                     row++;
                 }

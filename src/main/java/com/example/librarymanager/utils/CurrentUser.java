@@ -1,14 +1,36 @@
 package com.example.librarymanager.utils;
 
+import com.example.librarymanager.Models.Books;
+import com.example.librarymanager.Models.Loan;
 import com.example.librarymanager.Models.User;
 
 /**
  * Cette classe est utilisée pour stocker et gérer les données de l'utilisateur
  * actuellement connecté à l'application. Elle permet de définir et de récupérer
- * l'utilisateur actif via des méthodes statiques.
+ * l'utilisateur actif via des méthodes statiques ainsi que les transactions entre controller.
  */
 public class CurrentUser {
     private static User user ;
+
+    private static Loan loan;
+
+    private static Books book ;
+
+    public static Books getBook() {
+        return book;
+    }
+
+    public static void setBook(Books book) {
+        CurrentUser.book = book;
+    }
+
+    public static Loan getLoan() {
+        return loan;
+    }
+
+    public static void setLoan(Loan loan) {
+        CurrentUser.loan = loan;
+    }
 
     public static User getUser() {
         return user;
@@ -17,4 +39,6 @@ public class CurrentUser {
     public static void setUser(User user) {
         CurrentUser.user = user;
     }
+
+
 }
