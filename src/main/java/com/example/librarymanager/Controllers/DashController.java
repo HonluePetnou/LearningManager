@@ -8,6 +8,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
@@ -24,6 +25,7 @@ import java.util.ResourceBundle;
 import com.example.librarymanager.Database.BooksTable;
 import com.example.librarymanager.Database.LoanTable;
 import com.example.librarymanager.Database.UserTable;
+import com.example.librarymanager.Models.Model;
 import com.example.librarymanager.Models.User;
 import com.example.librarymanager.utils.Alertmessage;
 import com.example.librarymanager.utils.CurrentUser;
@@ -44,6 +46,10 @@ public class DashController implements Initializable {
     private Label username;
     @FXML
     private Label localdate;
+    @FXML
+    private Button seeAllButton;
+    @FXML
+    private Button moreButton;
 
     private BooksTable booksTable = new BooksTable();
     private LoanTable loanTable = new LoanTable();
@@ -53,6 +59,9 @@ public class DashController implements Initializable {
     @SuppressWarnings({ "rawtypes", "unchecked" })
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Initialize navigation buttons
+        seeAllButton.setOnAction(event -> onSeeAllUsers());
+        moreButton.setOnAction(event -> onMoreBooks());
 
         User user = CurrentUser.getUser();
         String name;
@@ -149,6 +158,14 @@ public class DashController implements Initializable {
             System.err.println("fail to list loans:"+e);
         }
         return ageByCategory ;
+    }
+
+    private void onSeeAllUsers() {
+        Model.getModel().getViewFactory().getSidebarSelectedMenuItem().set("Users");
+    }
+
+    private void onMoreBooks() {
+        Model.getModel().getViewFactory().getSidebarSelectedMenuItem().set("Books");
     }
 
     private static int[] getBorrowbymonth(){

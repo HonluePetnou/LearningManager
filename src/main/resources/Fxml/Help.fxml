@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" styleClass="root" stylesheets="@../Styles/Help.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.HelpController">
+
+    <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="240.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2C3E50; -fx-padding: 10 0 20 0;" text="CONTACT DEVELLOPER" VBox.vgrow="ALWAYS">
+        <VBox.margin>
+            <Insets bottom="20" top="10" />
+        </VBox.margin>
+    </Label>
+
+    <HBox alignment="CENTER" spacing="20" styleClass="cards-container">
+
+        <!-- Première carte -->
+        <VBox alignment="TOP_CENTER" spacing="15.0" styleClass="card, card-1" HBox.hgrow="ALWAYS">
+            <ImageView fitHeight="120" fitWidth="200" preserveRatio="true" styleClass="card-image">
+                <Image url="@../Images/dev1.jpg" />
+            <VBox.margin>
+               <Insets bottom="10.0" />
+            </VBox.margin>
+            </ImageView>
+
+            <Label styleClass="card-title" text="HONLUE PETNOU" />
+         <Label styleClass="card-content" text="Number : +237 6 75 71 21 03" wrapText="true" />
+         <Label styleClass="card-content" text="Email : honluepetnou@gmail.com" wrapText="true" />
+
+                        <Button styleClass="card-button" text="CONTACT" />
+        </VBox>
+
+        <!-- Deuxième carte -->
+        <VBox alignment="TOP_CENTER" spacing="15.0" styleClass="card, card-2" HBox.hgrow="ALWAYS">
+            <ImageView fitHeight="120" fitWidth="124.0" preserveRatio="true" styleClass="card-image">
+                <Image url="@../Images/dev2.jpg" />
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
+            </ImageView>
+
+            <Label styleClass="card-title" text="DJIFACK DARIL" />
+
+            <Label styleClass="card-content" text="Number : +237 6 76 83 67 53" wrapText="true" VBox.vgrow="ALWAYS">
+            <VBox.margin>
+               <Insets />
+            </VBox.margin></Label>
+         <Label styleClass="card-content" text="Email : viany3514@gmail.com" wrapText="true" VBox.vgrow="ALWAYS" />
+
+            <Button styleClass="card-button" text="CONTACT" />
+        </VBox>
+
+        <!-- Troisième carte -->
+        <VBox alignment="TOP_CENTER" spacing="15.0" styleClass="card, card-3" HBox.hgrow="ALWAYS">
+            <ImageView fitHeight="120" fitWidth="200" preserveRatio="true" styleClass="card-image">
+                <Image url="@../Images/dev3.jpg" />
+            <VBox.margin>
+               <Insets bottom="10.0" />
+            </VBox.margin>
+            </ImageView>
+
+            <Label styleClass="card-title" text="KAMDEU CHRETIEN" />
+         <Label styleClass="card-content" text="Number :  +237 6 72 43 11 50" wrapText="true" />
+         <Label styleClass="card-content" text="Email : kamdeuchretien@gmail.com" wrapText="true" />
+
+            <Button styleClass="card-button" text="CONTACT" />
+        </VBox>
+
+    </HBox>
+
+</VBox>

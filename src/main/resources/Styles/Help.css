@@ -1,0 +1,100 @@
+/* Style général pour le conteneur principal */
+.root {
+    -fx-background-color: #f5f5f5;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-padding: 15px;
+}
+
+/* Style pour le conteneur des cartes */
+.cards-container {
+    -fx-spacing: 20px;
+    -fx-alignment: center;
+    -fx-padding: 10px;
+}
+
+/* Style commun pour toutes les cartes */
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);
+    -fx-padding: 15px;
+    -fx-pref-width: 250px;
+    -fx-pref-height: 300px;
+    -fx-cursor: hand;
+}
+
+/* Style pour la première carte */
+.card-1 {
+    -fx-background-color: linear-gradient(to bottom right, #AED6F1, #5DADE2);
+    -fx-border-color: #3498DB;
+    -fx-border-width: 0 0 4 0;
+}
+
+/* Style pour la deuxième carte */
+.card-2 {
+    -fx-background-color: linear-gradient(to bottom right, #D5F5E3, #82E0AA);
+    -fx-border-color: #2ECC71;
+    -fx-border-width: 0 0 4 0;
+}
+
+/* Style pour la troisième carte */
+.card-3 {
+    -fx-background-color: linear-gradient(to bottom right, #FADBD8, #F1948A);
+    -fx-border-color: #E74C3C;
+    -fx-border-width: 0 0 4 0;
+}
+
+/* Style pour les titres des cartes */
+.card-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+    -fx-padding: 0 0 10px 0;
+}
+
+/* Style pour le contenu des cartes */
+.card-content {
+    -fx-font-size: 14px;
+    -fx-text-fill: #34495E;
+    -fx-wrap-text: true;
+}
+
+/* Style pour les images dans les cartes */
+.card-image {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
+    -fx-background-radius: 5px;
+}
+
+/* Animation de survol pour les cartes */
+.card:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 15, 0, 0, 7);
+    -fx-transition: all 0.3s ease;
+}
+
+/* Style pour les boutons dans les cartes */
+.card-button {
+    -fx-background-color: #3498DB;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20px;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+}
+
+.card-1 .card-button {
+    -fx-background-color: #3498DB;
+}
+
+.card-2 .card-button {
+    -fx-background-color: #2ECC71;
+}
+
+.card-3 .card-button {
+    -fx-background-color: #E74C3C;
+}
+
+.card-button:hover {
+    -fx-opacity: 0.8;
+}

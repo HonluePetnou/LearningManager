@@ -26,9 +26,10 @@
     -fx-background-color: #8474fa;
     -fx-text-fill: #ecf0f1;
 }
-.sidebar-button:focused {
+.sidebar-button:focused, .sidebar-button.active {
     -fx-background-color: #4838d1;
     -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(72, 56, 209, 0.3), 10, 0.5, 0, 0);
 }
 /* icons management */
 .sidebar-button FontAwesomeIconView{
@@ -37,7 +38,7 @@
 .sidebar-button:hover FontAwesomeIconView{
     -fx-fill: white;
 }
-.sidebar-button:focused FontAwesomeIconView{
+.sidebar-button:focused FontAwesomeIconView, .sidebar-button.active FontAwesomeIconView {
     -fx-fill: white;
 }
 

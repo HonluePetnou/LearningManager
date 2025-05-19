@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,6 +21,7 @@ public class ViewFactory {
     private BorderPane usersView;
     private BorderPane booksView;
     private AnchorPane borrowsView;
+    private VBox helpView;
 
     public ViewFactory() {
         this.sidebarSelectedMenuItem = new SimpleStringProperty();
@@ -95,6 +97,30 @@ public class ViewFactory {
         // Wrap AnchorPane in BorderPane to maintain consistency with other views
         BorderPane wrapper = new BorderPane();
         wrapper.setCenter(borrowsView);
+        return wrapper;
+    }
+
+    public BorderPane getHelpView() {
+        if (helpView == null) {
+            try {
+                URL resourceUrl = getClass().getResource("/Fxml/Help.fxml");
+                if (resourceUrl == null) {
+                    System.err.println("Error: Could not find Help.fxml resource");
+                    throw new IOException("Help.fxml resource not found");
+                }
+                FXMLLoader loader = new FXMLLoader(resourceUrl);
+                helpView = loader.load();
+            } catch (Exception e) {
+                System.err.println("Error loading Help view: " + e.getMessage());
+                e.printStackTrace();
+                // Create a fallback view to avoid returning null
+                helpView = new VBox();
+                helpView.getChildren().add(new Label("Error loading Help view: " + e.getMessage()));
+            }
+        }
+        // Wrap VBox in BorderPane to maintain consistency with other views
+        BorderPane wrapper = new BorderPane();
+        wrapper.setCenter(helpView);
         return wrapper;
     }
     public void showLoginWindow() {
