@@ -72,14 +72,14 @@ public class BorrowsController {
                         loan.setReturnedAt(LocalDateTime.now());
                         loan.setStatus("RETURNED");
                         loanTable.Update(loan);
-                       Alertmessage.showAlert(AlertType.INFORMATION, "Success", "rendu !");
+                       Alertmessage.showAlert(AlertType.INFORMATION, "Success", "returned!");
                     } catch (SQLException e) {
                        Alertmessage.showAlert(AlertType.ERROR, "Error", "internal error");
                        System.err.println("fail to Update  the loan :"+e);
                     }
                     return ;
                   }
-                  Alertmessage.showAlert(AlertType.ERROR, "Error", "deja rendu");
+                  Alertmessage.showAlert(AlertType.ERROR, "Error", "already returned");
                 });
 
                 loanGrid.add(card, column, row);

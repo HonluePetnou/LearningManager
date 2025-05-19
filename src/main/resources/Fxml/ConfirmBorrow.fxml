@@ -27,9 +27,9 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
       
-                    <Label text="identifiant utilisateur" />
-              <Label text="quantite" GridPane.rowIndex="1" />
-              <Label text="date de retour" GridPane.rowIndex="2" />
+                    <Label text="User ID" />
+              <Label text="Quantity" GridPane.rowIndex="1" />
+              <Label text="Return Date" GridPane.rowIndex="2" />
               <TextField fx:id="userId" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" />
               <TextField fx:id="numberOfBook" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <DatePicker fx:id="returndate" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -42,7 +42,7 @@
 
     <ButtonBar layoutX="67.0" layoutY="182.0" prefHeight="40.0" prefWidth="218.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="20.0">
       <buttons>
-          <Button fx:id="confirmbutton" mnemonicParsing="false" text="Confirmer" />
+          <Button fx:id="confirmbutton" mnemonicParsing="false" text="Confirm" />
       </buttons>
     </ButtonBar>
 </AnchorPane>

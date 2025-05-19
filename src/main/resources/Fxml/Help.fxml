@@ -10,7 +10,7 @@
 
 <VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" styleClass="root" stylesheets="@../Styles/Help.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.HelpController">
 
-    <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="240.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2C3E50; -fx-padding: 10 0 20 0;" text="CONTACT DEVELLOPER" VBox.vgrow="ALWAYS">
+    <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="240.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2C3E50; -fx-padding: 10 0 20 0;" text="CONTACT DEVELOPER" VBox.vgrow="ALWAYS">
         <VBox.margin>
             <Insets bottom="20" top="10" />
         </VBox.margin>

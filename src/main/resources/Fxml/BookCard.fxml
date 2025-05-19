@@ -28,13 +28,13 @@
                </graphic>
             </Button>
             
-            <Button fx:id="editBookButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="book-button" text="Modifier">
+            <Button fx:id="editBookButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="book-button" text="Edit">
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="PENCIL" />
                </graphic>
             </Button>
             
-            <Button fx:id="deleteBookButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="book-button" text="Supprimer">
+            <Button fx:id="deleteBookButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="book-button" text="Delete">
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="TRASH" />
                </graphic>

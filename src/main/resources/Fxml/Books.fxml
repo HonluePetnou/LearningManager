@@ -25,34 +25,34 @@
    <left>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="400.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-             <Label styleClass="form-title" text="Ajouter un Livre" />
+             <Label styleClass="form-title" text="Add a Book" />
 
-             <Label styleClass="labeled" text="Titre:" />
-             <TextField fx:id="titleField" promptText="Titre du livre" />
+             <Label styleClass="labeled" text="Title:" />
+             <TextField fx:id="titleField" promptText="Book Title" />
 
-             <Label styleClass="labeled" text="Auteur:" />
-             <TextField fx:id="authorField" promptText="Auteur" />
+             <Label styleClass="labeled" text="Author:" />
+             <TextField fx:id="authorField" promptText="Author" />
 
              <Label styleClass="labeled" text="ISBN:" />
              <TextField fx:id="isbnField" promptText="ISBN" />
 
-             <Label styleClass="labeled" text="Catégorie ID:" />
-             <TextField fx:id="categoryField" promptText="ID Catégorie" />
+             <Label styleClass="labeled" text="Category ID:" />
+             <TextField fx:id="categoryField" promptText="Category ID" />
 
-             <Label styleClass="labeled" text="Année de publication:" />
-             <TextField fx:id="yearField" promptText="Année" />
+             <Label styleClass="labeled" text="Publication Year:" />
+             <TextField fx:id="yearField" promptText="Year" />
 
-             <Label styleClass="labeled" text="Copies totales:" />
-             <TextField fx:id="totalCopiesField" promptText="Nombre total" />
+             <Label styleClass="labeled" text="Total Copies:" />
+             <TextField fx:id="totalCopiesField" promptText="Total Number" />
 
-             <Label styleClass="labeled" text="Copies disponibles:" />
-             <TextField fx:id="availableCopiesField" promptText="Disponibles" />
+             <Label styleClass="labeled" text="Available Copies:" />
+             <TextField fx:id="availableCopiesField" promptText="Available" />
              <Label styleClass="labeled" text="Image Name:" />
              <TextField fx:id="imageNameField" promptText="Enter image file name (e.g. book1.jpg)" />
             <HBox>
                <children>
       
-                   <Button fx:id="addBookButton" alignment="CENTER" maxWidth="1.7976931348623157E308" onAction="#handleAddBook" prefHeight="35.0" prefWidth="280.0" styleClass="final-button" text="Ajouter Livre" HBox.hgrow="ALWAYS" />
+                   <Button fx:id="addBookButton" alignment="CENTER" maxWidth="1.7976931348623157E308" onAction="#handleAddBook" prefHeight="35.0" prefWidth="280.0" styleClass="final-button" text="Add Book" HBox.hgrow="ALWAYS" />
                </children>
                <VBox.margin>
                   <Insets top="20.0" />
