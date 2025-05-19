@@ -56,7 +56,7 @@ public class DashController implements Initializable {
     private UserTable userTable = new UserTable();
     
 
-    @SuppressWarnings({ "rawtypes", "unchecked","unused" })
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Initialize navigation buttons

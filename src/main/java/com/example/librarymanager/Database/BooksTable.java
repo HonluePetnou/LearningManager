@@ -28,6 +28,7 @@ public class BooksTable implements Repository<Books> {
             stmt.setInt(6, book.getCopies_total());
             stmt.setInt(7, book.getCopies_available());
             stmt.setString(8, book.getImage_path()); 
+            stmt.setString(9, book.getDescription());
             stmt.executeUpdate();
             stmt.close();
             conn.close();

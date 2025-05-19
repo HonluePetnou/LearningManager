@@ -7,7 +7,7 @@ PRAGMA foreign_keys = off;
 BEGIN TRANSACTION;
 
 -- Tableau : books
-CREATE TABLE IF NOT EXISTS books (book_id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, author TEXT NOT NULL, isbn TEXT UNIQUE, description TEXT NOT NULL DEFAULT "pas de description", category_id INTEGER, published_year INTEGER, copies_total INTEGER NOT NULL DEFAULT 1 CHECK (copies_total > 0), copies_available INTEGER NOT NULL DEFAULT 1 CHECK (copies_available >= 0), created_at DATE DEFAULT (datetime('now')), image_path TEXT, FOREIGN KEY (category_id) REFERENCES category (category_id) ON UPDATE CASCADE ON DELETE RESTRICT);
+CREATE TABLE IF NOT EXISTS books (book_id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, author TEXT NOT NULL, isbn TEXT UNIQUE, description TEXT NOT NULL, category_id INTEGER, published_year INTEGER, copies_total INTEGER NOT NULL DEFAULT 1 CHECK (copies_total > 0), copies_available INTEGER NOT NULL DEFAULT 0 CHECK (copies_available >= 0), created_at DATE DEFAULT (datetime('now')), image_path TEXT, FOREIGN KEY (category_id) REFERENCES category (category_id) ON UPDATE CASCADE ON DELETE RESTRICT);
 
 -- Tableau : category
 CREATE TABLE IF NOT EXISTS category (

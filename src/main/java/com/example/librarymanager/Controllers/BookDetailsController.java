@@ -69,7 +69,7 @@ public class BookDetailsController implements Initializable {
             yearTextField.setText(String.valueOf(book.getPublished_year()));
             categoryTextField.setText(String.valueOf(book.getCategory_id()));
             totalCopiesTextField.setText(String.valueOf(book.getCopies_total()));
-            totalCopiesTextField.setText(String.valueOf(book.getCopies_available()));
+            availableCopiesTextField.setText(String.valueOf(book.getCopies_available()));
             bookDescriptionArea.setText(book.getDescription());
             if (book.getImage_path() != null && !book.getImage_path().isEmpty()) {
                 bookImageView.setImage(new Image(getClass().getResourceAsStream(book.getImage_path())));
