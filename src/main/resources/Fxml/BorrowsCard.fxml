@@ -8,6 +8,7 @@
 <VBox fx:id="loanCard" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="253.0" prefWidth="250.0" spacing="8.0" styleClass="loan-card" stylesheets="@../Styles/Borrows.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.BorrowsCardController">
     <Label fx:id="bookTitleLabel" styleClass="loan-card-label" text="📖 Book Title" />
     <Label fx:id="borrowerLabel" styleClass="loan-card-label-italic" text="👤 Borrower" />
+   <Label fx:id="numberofbookLabel" layoutX="26.0" layoutY="66.0" styleClass="loan-card-label-italic" text="number of book" />
     <Label fx:id="loanDateLabel" styleClass="loan-card-label" text="📅 Loan Date: 01/05/2025" />
     <Label fx:id="returnDateLabel" styleClass="loan-card-label" text="🕑 Return Date: 15/05/2025" />
     <Label fx:id="statusLabel" styleClass="loan-status green" text="🟢 On Time" />
