@@ -55,6 +55,7 @@ public class ConfirmBorrowController implements Initializable{
  private boolean confirmBorrow(){
     loan = CurrentUser.getLoan() ;
     book = CurrentUser.getBook() ;
+    System.out.println("bookid:"+book.getBook_id());
     if(userId.getText().isEmpty() || numberOfBook.getText().isEmpty() || returndate.getValue() == null){
         Alertmessage.showAlert(AlertType.ERROR, "ERROR", "All fields are required.");
         return false;
