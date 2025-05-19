@@ -2,12 +2,12 @@ package com.example.librarymanager.Controllers;
 
 import java.net.URL;
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.ResourceBundle;
 
 import com.example.librarymanager.Database.LoanTable;
 import com.example.librarymanager.Models.Books;
 import com.example.librarymanager.Models.Loan;
+import com.example.librarymanager.Models.Model;
 import com.example.librarymanager.utils.Alertmessage;
 import com.example.librarymanager.utils.CurrentUser;
 
@@ -66,20 +66,13 @@ public class BookDetailsController implements Initializable{
             } else {
                 bookImageView.setImage(new Image(getClass().getResourceAsStream("/Images/test1.jpg"))); // Image par défaut
             }
+             CurrentUser.setBook(book);
+             CurrentUser.setLoan(loan);
         }
     }
 
     private void  handleBorrowBook(){
-      try {
-        loan.setUserId(CurrentUser.getUser().getUser_id());
-        System.out.println("user_id"+CurrentUser.getUser().getUser_id()); 
-        loan.setDueAt(LocalDateTime.now().plus(1 , ChronoUnit.MONTHS)); // date de remise 
-        loanTable.create(loan);
-        Alertmessage.showAlert(AlertType.INFORMATION, "INFO", "livre emprunte avec success");
-      } catch (Exception e) {
-        System.err.println("fail to create loan:"+e);
-        Alertmessage.showAlert(AlertType.ERROR , "ERROR", "internal error");
-      }
+      Model.getModel().getViewFactory().showConfirmBorrowWindow();
     } 
 
     private void handleReturnBook(){

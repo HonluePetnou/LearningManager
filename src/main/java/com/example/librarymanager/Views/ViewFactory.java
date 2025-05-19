@@ -157,6 +157,21 @@ public class ViewFactory {
             showErrorDialog("Books Error", "Failed to load books window", e.getMessage());
         }
     }
+    public void showConfirmBorrowWindow() {
+        try {
+            URL resourceUrl = getClass().getResource("/Fxml/ConfirmBorrow.fxml");
+            if (resourceUrl == null) {
+                System.err.println("Error: Could not find ConfirmBorrow.fxml resource");
+                throw new IOException("ConfirmBorrow.fxml resource not found");
+            }
+            FXMLLoader loader = new FXMLLoader(resourceUrl);
+            createStage(loader);
+        } catch (Exception e) {
+            System.err.println("Error showing books window: " + e.getMessage());
+            e.printStackTrace();
+            showErrorDialog("ConfirmBorrow Error", "Failed to load ConfirmBorrow window", e.getMessage());
+        }
+    }
 
     private void createStage(FXMLLoader fxmlLoader) {
         Scene scene = null;
