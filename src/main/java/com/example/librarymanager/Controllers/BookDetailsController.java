@@ -98,14 +98,15 @@ public class BookDetailsController implements Initializable {
     try {
       int loan_id = loanTable.getLoanId(CurrentUser.getUser().getUser_id(), loan.getBookId());
       if (loan_id == 0) {
-        Alertmessage.showAlert(AlertType.INFORMATION, "INFO", "not borrowed");
+        Alertmessage.showAlert(AlertType.INFORMATION, "INFO", "pas emprunte");
         return;
       }
       loan.setLoanId(loan_id);
       loan.setReturnedAt(LocalDateTime.now());
       loan.setStatus("RETURNED");
       loanTable.Update(loan);
-      Alertmessage.showAlert(AlertType.INFORMATION, "INFO", "book returned");
+      BorrowsController.triggerUpdate();
+      Alertmessage.showAlert(AlertType.INFORMATION, "INFO", "livre rendu");
     } catch (Exception e) {
       Alertmessage.showAlert(AlertType.ERROR, "Error", "internal error");
       System.err.println("fail to Update  the loan :" + e);

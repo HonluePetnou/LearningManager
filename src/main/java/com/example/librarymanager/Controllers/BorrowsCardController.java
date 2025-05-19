@@ -17,38 +17,44 @@ public class BorrowsCardController {
     private Label statusLabel;
     @FXML
     private Button returnButton;
+    @FXML
+    private Label numberofbookLabel;
     
     private String bookTitle;
     private String borrowerName;
     private String loanDate;
     private String returnDate;
     private boolean onTime;
-    
+    private int numberOfBook;
+
+   
+
     public void initialize() {
         // Initialize controller
     }
     
-    public void setLoanData(String bookTitle, String borrowerName, String loanDate, String returnDate, boolean onTime) {
+    public void setLoanData(String bookTitle, String borrowerName, String loanDate, String returnDate, boolean onTime , int numberOfBook) {
         this.bookTitle = bookTitle;
         this.borrowerName = borrowerName;
         this.loanDate = loanDate;
         this.returnDate = returnDate;
         this.onTime = onTime;
-        
+        this.numberOfBook = numberOfBook;
         updateUI();
     }
     
     private void updateUI() {
         bookTitleLabel.setText("📖 " + bookTitle);
         borrowerLabel.setText("👤 " + borrowerName);
-        loanDateLabel.setText("📅 Loan: " + loanDate);
-        returnDateLabel.setText("🕑 Return: " + returnDate);
+        loanDateLabel.setText("📅 Emprunt : " + loanDate);
+        returnDateLabel.setText("🕑 Retour : " + returnDate);
+        numberofbookLabel.setText("📚 Nombre de livre : " + numberOfBook);
         
         if (onTime) {
-            statusLabel.setText("🟢 On time");
+            statusLabel.setText("🟢 À temps");
             statusLabel.getStyleClass().add("green");
         } else {
-            statusLabel.setText("🔴 Late");
+            statusLabel.setText("🔴 En retard");
             statusLabel.getStyleClass().add("red");
         }
     }
@@ -58,4 +64,7 @@ public class BorrowsCardController {
     public String getLoanDate() { return loanDate; }
     public String getReturnDate() { return returnDate; }
     public boolean isOnTime() { return onTime; }
+    public int getNumberOfBook() {
+        return numberOfBook;
+    }
 }
