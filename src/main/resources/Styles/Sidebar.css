@@ -13,7 +13,7 @@
     -fx-font-weight: bold;
     -fx-text-fill: #4838d1;
 }
-.sidebar-button {
+.sidebar-button , .sidebar-label{
     -fx-background-color: transparent;
     -fx-text-fill: #bdc3c7;
     -fx-font-size: 16px;
@@ -32,7 +32,7 @@
     -fx-effect: dropshadow(gaussian, rgba(72, 56, 209, 0.3), 10, 0.5, 0, 0);
 }
 /* icons management */
-.sidebar-button FontAwesomeIconView{
+.sidebar-button FontAwesomeIconView , .sidebar-label FontAwesomeIconView{
     -fx-fill: #4838d1;
 }
 .sidebar-button:hover FontAwesomeIconView{

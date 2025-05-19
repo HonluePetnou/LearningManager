@@ -3,6 +3,7 @@ package com.example.librarymanager.Controllers;
 import com.example.librarymanager.Models.Model;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -17,7 +18,7 @@ public class SideController implements Initializable {
     public Button settingsBtn;
     public Button helpBtn;
     public Button logoutBtn;
-    public Button copyrigthBtn;
+    public Label copyrigthBtn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -32,7 +33,6 @@ public class SideController implements Initializable {
         settingsBtn.setOnAction(event -> onSettings());
         helpBtn.setOnAction(event -> onHelp());
         logoutBtn.setOnAction(event -> onLogout());
-        copyrigthBtn.setOnAction(event -> onCopyright());
 
         // Add listener for sidebar item selection
         Model.getModel().getViewFactory().getSidebarSelectedMenuItem().addListener((observable, oldValue, newValue) -> {
@@ -68,9 +68,6 @@ public class SideController implements Initializable {
         // Show the login window
         Model.getModel().getViewFactory().showLoginWindow();
     }
-    private void onCopyright(){
-        Model.getModel().getViewFactory().getSidebarSelectedMenuItem().set("Copyright");
-    }
 
     private void updateButtonStyles(String selectedItem) {
         // Remove active class from all buttons
@@ -80,7 +77,6 @@ public class SideController implements Initializable {
         borrowBtn.getStyleClass().remove("active");
         settingsBtn.getStyleClass().remove("active");
         helpBtn.getStyleClass().remove("active");
-        copyrigthBtn.getStyleClass().remove("active");
 
         // Add active class to selected button
         switch (selectedItem) {
@@ -90,7 +86,6 @@ public class SideController implements Initializable {
             case "Borrows" -> borrowBtn.getStyleClass().add("active");
             case "Settings" -> settingsBtn.getStyleClass().add("active");
             case "Help" -> helpBtn.getStyleClass().add("active");
-            case "Copyright" -> copyrigthBtn.getStyleClass().add("active");
         }
     }
 }

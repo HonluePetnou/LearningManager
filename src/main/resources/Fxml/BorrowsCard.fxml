@@ -10,6 +10,7 @@
     <Label fx:id="borrowerLabel" styleClass="loan-card-label-italic" text="👤 Borrower name" />
     <Label fx:id="loanDateLabel" styleClass="loan-card-label" text="📅 Borrowed at : 01/05/2025" />
     <Label fx:id="returnDateLabel" styleClass="loan-card-label" text="🕑 Returned at : 15/05/2025" />
+    <Label fx:id="numberofbookLabel" styleClass="loan-card-label" text="📚 Nombre de livre : 12"/>
     <Label fx:id="statusLabel" styleClass="loan-status green" text="🟢 In time" />
     <Button fx:id="returnButton" maxWidth="1.7976931348623157E308" styleClass="loan-card-button" text="Return" VBox.vgrow="ALWAYS" />
    <padding>

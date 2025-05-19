@@ -49,7 +49,7 @@
             <VBox.margin>
                <Insets />
             </VBox.margin></Label>
-         <Label styleClass="card-content" text="Email : viany3514@gmail.com" wrapText="true" VBox.vgrow="ALWAYS" />
+         <Label styleClass="card-content" text="Email : darilvia64@gmail.com" wrapText="true" VBox.vgrow="ALWAYS" />
 
             <Button styleClass="card-button" text="CONTACT" />
         </VBox>
