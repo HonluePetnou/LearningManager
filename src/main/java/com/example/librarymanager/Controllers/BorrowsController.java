@@ -25,7 +25,7 @@ public class BorrowsController {
     private  LoanTable loanTable = new LoanTable();
 
     @SuppressWarnings("unused")
-    public void initialize() {
+    public  void  initialize() {
         // Exemple de données — remplace par ta base ou liste dynamique
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         
@@ -39,58 +39,7 @@ public class BorrowsController {
        return ;
      }
         
-          // Création d'exemples de prêts
-         Loan loan1 = new Loan();
-         loan1.setBookId(1); // Supposons que c'est l'ID pour "Les Misérables"
-         loan1.setUserId(1); // Supposons que c'est l'ID pour "Jean Dupont"
-         loan1.setBorrowedAt(LocalDateTime.now());
-         loan1.setDueAt(LocalDateTime.now().plusDays(14));
-         loan1.setStatus("active");
-         loans.add(loan1);
-        
-         Loan loan2 = new Loan();
-         loan2.setBookId(2); // Supposons que c'est l'ID pour "Le Petit Prince"
-         loan2.setUserId(2); // Supposons que c'est l'ID pour "Alice Nkoa"
-         loan2.setBorrowedAt(LocalDateTime.now().minusDays(1));
-         loan2.setDueAt(LocalDateTime.now().plusDays(13));
-         loan2.setStatus("overdue");
-         loans.add(loan2);
-        
-         Loan loan3 = new Loan();
-         loan3.setBookId(3); // Supposons que c'est l'ID pour "L'Alchimiste"
-         loan3.setUserId(3); // Supposons que c'est l'ID pour "Marc Njoya"
-         loan3.setBorrowedAt(LocalDateTime.now().minusDays(2));
-         loan3.setDueAt(LocalDateTime.now().plusDays(12));
-         loan3.setStatus("active");
-         loans.add(loan3);
-
-
-        Loan loan4 = new Loan();
-        loan3.setBookId(3); // Supposons que c'est l'ID pour "L'Alchimiste"
-        loan3.setUserId(3); // Supposons que c'est l'ID pour "Marc Njoya"
-        loan3.setBorrowedAt(LocalDateTime.now().minusDays(2));
-        loan3.setDueAt(LocalDateTime.now().plusDays(12));
-        loan3.setStatus("active");
-        loans.add(loan3);
-
-
-        Loan loan5 = new Loan();
-        loan3.setBookId(3); // Supposons que c'est l'ID pour "L'Alchimiste"
-        loan3.setUserId(3); // Supposons que c'est l'ID pour "Marc Njoya"
-        loan3.setBorrowedAt(LocalDateTime.now().minusDays(2));
-        loan3.setDueAt(LocalDateTime.now().plusDays(12));
-        loan3.setStatus("active");
-        loans.add(loan3);
-
-
-        Loan loan6 = new Loan();
-        loan3.setBookId(3); // Supposons que c'est l'ID pour "L'Alchimiste"
-        loan3.setUserId(3); // Supposons que c'est l'ID pour "Marc Njoya"
-        loan3.setBorrowedAt(LocalDateTime.now().minusDays(2));
-        loan3.setDueAt(LocalDateTime.now().plusDays(12));
-        loan3.setStatus("active");
-        loans.add(loan3);
-
+       
         int column = 0;
         int row = 0;
 
@@ -147,5 +96,6 @@ public class BorrowsController {
             }
         }
     }
+  
 
 }
