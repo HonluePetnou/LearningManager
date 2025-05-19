@@ -11,7 +11,7 @@ public class BooksTable implements Repository<Books> {
 
     private static final String QUERY_LIST_ALL_BOOKS = "SELECT b.* , c.name as category FROM books b  left join category c on b.category_id = c.category_id ;";
     private static final String QUERY_SEARCH_BOOKS = "SELECT b.*, c.name as category FROM books b LEFT JOIN category c ON b.category_id = c.category_id WHERE b.title LIKE ? AND c.name LIKE ? AND b.author LIKE ?;";
-    private static final String QUERY_ADD_BOOK = "INSERT INTO books (title, author, isbn, category_id, published_year, copies_total, copies_available,image_path) VALUES (?, ?, ?, ?, ?, ?, ?,?);";
+    private static final String QUERY_ADD_BOOK = "INSERT INTO books (title, author, isbn, category_id, published_year, copies_total, copies_available,image_path,description) VALUES (?, ?, ?, ?, ?, ?, ?,?,?);";
     private static final String QUERY_UPDATE_BOOK = "UPDATE books SET title = ?, author = ?, isbn = ?, category_id = ?, published_year = ?, copies_total = ?, copies_available = ? , image_path = ? WHERE book_id = ?;";
     private static final String QUERY_DELETE_BOOK = "DELETE FROM books WHERE book_id = ?;";
     private static final String COUNT_BOOKS = "SELECT COUNT(*) FROM books;";

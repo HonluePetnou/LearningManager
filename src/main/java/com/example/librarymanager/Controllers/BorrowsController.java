@@ -3,6 +3,7 @@ package com.example.librarymanager.Controllers;
 import com.example.librarymanager.Database.LoanTable;
 import com.example.librarymanager.Models.Loan;
 import com.example.librarymanager.utils.Alertmessage;
+import com.example.librarymanager.utils.CurrentUser;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -118,19 +119,24 @@ public class BorrowsController {
                 // Get the return button and set action
                 Button returnBtn = (Button) card.lookup("#returnButton");
                 returnBtn.setOnAction(event -> {
-                  if(!loan.getStatus().equals("RETURNED")){
                     try {
-                        loan.setReturnedAt(LocalDateTime.now());
-                        loan.setStatus("RETURNED");
-                        loanTable.Update(loan);
-                       Alertmessage.showAlert(AlertType.INFORMATION, "Success", "rendu !");
+                        int loan_id = loanTable.getLoanId(CurrentUser.getUser().getUser_id(), loan.getBookId());
+                        if (!loan.getStatus().equals("RETURNED") && loan_id == 0) {
+                            try {
+                                loan.setReturnedAt(LocalDateTime.now());
+                                loan.setStatus("RETURNED");
+                                loanTable.Update(loan);
+                                Alertmessage.showAlert(AlertType.INFORMATION, "Success", "Returned");
+                            } catch (SQLException e) {
+                                Alertmessage.showAlert(AlertType.ERROR, "Error", "Internal error");
+                                System.err.println("Fail to Update  the loan : " + e.getMessage());
+                            }
+                            return;
+                        }
+                        Alertmessage.showAlert(AlertType.ERROR, "Error", "Already returned");
                     } catch (SQLException e) {
-                       Alertmessage.showAlert(AlertType.ERROR, "Error", "internal error");
-                       System.err.println("fail to Update  the loan :"+e);
+                        e.printStackTrace();
                     }
-                    return ;
-                  }
-                  Alertmessage.showAlert(AlertType.ERROR, "Error", "deja rendu");
                 });
 
                 loanGrid.add(card, column, row);

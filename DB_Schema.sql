@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS books (
     title             TEXT    NOT NULL,
     author            TEXT    NOT NULL,
     isbn              TEXT    UNIQUE,
-    description       TEXT    NOT NULL,
+    description       TEXT    ,
     category_id       INTEGER,
     published_year    INTEGER,
     copies_total      INTEGER NOT NULL DEFAULT 1 CHECK (copies_total > 0),

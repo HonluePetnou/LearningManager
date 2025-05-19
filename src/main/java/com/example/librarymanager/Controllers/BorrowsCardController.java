@@ -41,14 +41,14 @@ public class BorrowsCardController {
     private void updateUI() {
         bookTitleLabel.setText("📖 " + bookTitle);
         borrowerLabel.setText("👤 " + borrowerName);
-        loanDateLabel.setText("📅 Emprunt : " + loanDate);
-        returnDateLabel.setText("🕑 Retour : " + returnDate);
+        loanDateLabel.setText("📅 Borrowed at : " + loanDate);
+        returnDateLabel.setText("🕑 Returned at : " + returnDate);
         
         if (onTime) {
-            statusLabel.setText("🟢 À temps");
+            statusLabel.setText("🟢 In time");
             statusLabel.getStyleClass().add("green");
         } else {
-            statusLabel.setText("🔴 En retard");
+            statusLabel.setText("🔴 Overdue");
             statusLabel.getStyleClass().add("red");
         }
     }

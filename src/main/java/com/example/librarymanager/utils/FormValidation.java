@@ -2,10 +2,11 @@ package com.example.librarymanager.utils;
 
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.TextArea;
 
 public class FormValidation {
 
-    public static boolean isValidInput(TextField bookTitleTextField, TextField bookAuthorTextField, TextField isbnTextField, TextField yearTextField, TextField categoryTextField, TextField totalCopiesTextField, TextField availableCopiesTextField, TextField imageTextField) 
+    public static boolean isValidInput(TextField bookTitleTextField, TextField bookAuthorTextField, TextField isbnTextField, TextField yearTextField, TextField categoryTextField, TextField totalCopiesTextField, TextField availableCopiesTextField, TextField imageTextField, TextArea bookDescriptionArea) 
     {
         StringBuilder errorMessage = new StringBuilder();
 
@@ -68,6 +69,10 @@ public class FormValidation {
         }
         if (imageTextField.getText() == null || imageTextField.getText().trim().isEmpty()) {
             errorMessage.append("Image name is required.\n");
+        }
+
+        if (bookDescriptionArea.getText() == null || bookDescriptionArea.getText().trim().isEmpty()) {
+            errorMessage.append("Description is required.\n");
         }
 
         if (errorMessage.length() > 0) {

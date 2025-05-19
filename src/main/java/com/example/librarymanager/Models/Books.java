@@ -63,9 +63,9 @@ public class Books {
     public void setDescription(String description) { this.description = description; }
 
 
-    public void setCategory(int id) {
-        this.category_id = id;
-    }
+    // public void setCategory(int id) {
+    //     this.category_id = id;
+    // }
 
     // Method to handle string year input
     public void setYear(String year) {

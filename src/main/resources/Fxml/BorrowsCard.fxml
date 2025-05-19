@@ -5,13 +5,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="loanCard" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="253.0" prefWidth="250.0" spacing="8.0" styleClass="loan-card" stylesheets="@../Styles/Borrows.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.BorrowsCardController">
-    <Label fx:id="bookTitleLabel" styleClass="loan-card-label" text="📖 Titre du Livre" />
-    <Label fx:id="borrowerLabel" styleClass="loan-card-label-italic" text="👤 Emprunteur" />
-    <Label fx:id="loanDateLabel" styleClass="loan-card-label" text="📅 Emprunt : 01/05/2025" />
-    <Label fx:id="returnDateLabel" styleClass="loan-card-label" text="🕑 Retour : 15/05/2025" />
-    <Label fx:id="statusLabel" styleClass="loan-status green" text="🟢 À temps" />
-    <Button fx:id="returnButton" maxWidth="1.7976931348623157E308" styleClass="loan-card-button" text="Rendre" VBox.vgrow="ALWAYS" />
+<VBox fx:id="loanCard" alignment="CENTER_LEFT" spacing="8.0" styleClass="loan-card" stylesheets="@../Styles/Borrows.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.BorrowsCardController">
+    <Label fx:id="bookTitleLabel" styleClass="loan-card-label" text="📖 Book Title" />
+    <Label fx:id="borrowerLabel" styleClass="loan-card-label-italic" text="👤 Borrower name" />
+    <Label fx:id="loanDateLabel" styleClass="loan-card-label" text="📅 Borrowed at : 01/05/2025" />
+    <Label fx:id="returnDateLabel" styleClass="loan-card-label" text="🕑 Returned at : 15/05/2025" />
+    <Label fx:id="statusLabel" styleClass="loan-status green" text="🟢 In time" />
+    <Button fx:id="returnButton" maxWidth="1.7976931348623157E308" styleClass="loan-card-button" text="Return" VBox.vgrow="ALWAYS" />
    <padding>
       <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
    </padding>

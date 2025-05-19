@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
@@ -49,6 +50,8 @@ public class BookController implements Initializable {
     private GridPane bookGrid;
     @FXML
     private TextField imageNameField;
+    @FXML
+    private TextArea bookDescriptionArea;
 
     private List<Books> books;
 
@@ -116,7 +119,7 @@ public class BookController implements Initializable {
     @FXML
     void handleAddBook(ActionEvent event) {
         // Validate input fields
-        if (!FormValidation.isValidInput(titleField, authorField, isbnField, yearField, categoryField, totalCopiesField, availableCopiesField, imageNameField)) {
+        if (!FormValidation.isValidInput(titleField, authorField, isbnField, yearField, categoryField, totalCopiesField, availableCopiesField, imageNameField, bookDescriptionArea)) {
             return; // Stop submission if validation fails
         }
 
@@ -128,21 +131,22 @@ public class BookController implements Initializable {
         String totalCopies = totalCopiesField.getText();
         String availableCopies = availableCopiesField.getText();
         String imageName = imageNameField.getText();
+        String description = bookDescriptionArea.getText();
         int totalCopies_parseInt ;
         int availableCopies_parseInt ;
         try {
            totalCopies_parseInt = Integer.parseInt(totalCopies);
           availableCopies_parseInt = Integer.parseInt(availableCopies);
         } catch (NumberFormatException e) {
-            Alertmessage.showAlert(AlertType.ERROR, "error","Invalid total copies format");
+            Alertmessage.showAlert(AlertType.ERROR, "error","Invalid copies format : Must be numbers");
             return ;
         }
 
-        if (title.isEmpty() || author.isEmpty() || category.isEmpty() || isbn.isEmpty() || year.isEmpty()
-                || totalCopies.isEmpty() || availableCopies.isEmpty() || imageName.isEmpty()) {
-            Alertmessage.showAlert(AlertType.ERROR, "Error", "All field are required");
-            return ;
-        }
+        // if (title.isEmpty() || author.isEmpty() || category.isEmpty() || isbn.isEmpty() || year.isEmpty()
+        //         || totalCopies.isEmpty() || availableCopies.isEmpty() || imageName.isEmpty() || description.isEmpty()) {
+        //     Alertmessage.showAlert(AlertType.ERROR, "Error", "All field are required");
+        //     return ;
+        // }
 
        if( availableCopies_parseInt > totalCopies_parseInt){
         Alertmessage.showAlert(AlertType.ERROR, "Error", "available Copies should be less than total Copies");
@@ -153,7 +157,7 @@ public class BookController implements Initializable {
         newBook.setTitle(title);
         newBook.setAuthor(author);
         int category_id = getCategoryIdByName(category);
-        newBook.setCategory(category_id);
+        newBook.setCategory_id(category_id);
         newBook.setIsbn(isbn);
         newBook.setYear(year);
         newBook.setTotal_copies(totalCopies_parseInt);
@@ -163,6 +167,8 @@ public class BookController implements Initializable {
         } else {
             newBook.setImage_path(""); // or set a default image path if desired
         }
+        newBook.setDescription(description);
+
         // Add the new book to the database
         try {
             booksTable.create(newBook);
@@ -262,10 +268,10 @@ public class BookController implements Initializable {
             return -1; // Return -1 in case of an error
         } catch (Exception e) {
             Alertmessage.showAlert(AlertType.ERROR, "Error", "Failed to create category");
-            return -1; 
+            return -1;
         }
         categories = getCategories();
-        return getCategoryIdByName(name); 
+        return getCategoryIdByName(name);
     }
 
     public void clearForm () {

@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="600.0" stylesheets="@../Styles/BookDetails.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.EditBookController">
    <ImageView fx:id="bookImageView" fitHeight="210.0" fitWidth="200.0" layoutX="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="14.0" />
@@ -35,11 +34,11 @@
                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
       
-                    <Label text="Titre" GridPane.rowIndex="1" />
-              <Label text="Autheur" GridPane.rowIndex="2" />
-              <Label alignment="TOP_LEFT" text="Copies totales" GridPane.rowIndex="6" />
+                    <Label text="Title" GridPane.rowIndex="1" />
+              <Label text="Author" GridPane.rowIndex="2" />
+              <Label alignment="TOP_LEFT" text="Total Copies" GridPane.rowIndex="6" />
               <Label text="Category" GridPane.rowIndex="5" />
-              <Label text="Année de publication" GridPane.rowIndex="4" />
+              <Label text="Publish Year" GridPane.rowIndex="4" />
               <Label text="ISBN" GridPane.rowIndex="3" />
               <TextField fx:id="bookTitleTextField" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
               <TextField fx:id="bookAuthorTextField" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -47,25 +46,25 @@
               <TextField fx:id="yearTextField" layoutX="290.0" layoutY="19.0" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
               <TextField fx:id="categoryTextField" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
               <TextField fx:id="totalCopiesTextField" prefHeight="26.0" prefWidth="222.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Label alignment="TOP_LEFT" layoutX="10.0" layoutY="209.0" text="Copies disponibles" GridPane.rowIndex="7" />
+            <Label alignment="TOP_LEFT" layoutX="10.0" layoutY="209.0" text="Available Copies" GridPane.rowIndex="7" />
             <TextField fx:id="availableCopiesTextField" layoutX="10.0" layoutY="242.0" prefHeight="26.0" prefWidth="270.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <TextField fx:id="imageTextField" layoutX="160.0" layoutY="237.0" prefHeight="26.0" prefWidth="270.0" promptText="(e.g. book1.jpg)" GridPane.columnIndex="1" />
             <Label alignment="TOP_LEFT" layoutX="10.0" layoutY="242.0" text="Image name" />
           </GridPane>
-         <VBox prefHeight="294.0" prefWidth="206.0">
+         <VBox prefHeight="325.0" prefWidth="226.0">
             <children>
                <Label text="Description">
                   <VBox.margin>
                      <Insets bottom="10.0" />
                   </VBox.margin>
+                  <padding>
+                     <Insets left="5.0" />
+                  </padding>
                </Label>
-               <TextArea fx:id="bookDescriptionArea" prefHeight="200.0" prefWidth="200.0" promptText="Description Ici..." wrapText="true" VBox.vgrow="ALWAYS">
+               <TextArea fx:id="bookDescriptionArea" prefHeight="275.0" prefWidth="194.0" promptText="Description here..." wrapText="true" VBox.vgrow="ALWAYS">
                   <VBox.margin>
                      <Insets bottom="10.0" />
                   </VBox.margin>
-                  <font>
-                     <Font name="System Italic" size="12.0" />
-                  </font>
                </TextArea>
             </children>
             <padding>
@@ -74,8 +73,8 @@
          </VBox>
       </children>
       <padding>
-         <Insets left="20.0" right="20.0" />
+         <Insets left="30.0" />
       </padding>
    </HBox>
-   <Button fx:id="validateBtn" layoutX="504.0" layoutY="569.0" mnemonicParsing="false" text="Valider" />
+   <Button fx:id="validateBtn" layoutX="442.0" layoutY="572.0" mnemonicParsing="false" text="Validate Changes" />
 </AnchorPane>

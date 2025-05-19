@@ -82,7 +82,7 @@ public class EditBookController {
 
     public void initialize() {
         validateBtn.setOnAction(_ -> {
-            if (!FormValidation.isValidInput(bookTitleTextField, bookAuthorTextField, isbnTextField, yearTextField, categoryTextField, totalCopiesTextField, availableCopiesTextField, imageTextField)) {
+            if (!FormValidation.isValidInput(bookTitleTextField, bookAuthorTextField, isbnTextField, yearTextField, categoryTextField, totalCopiesTextField, availableCopiesTextField, imageTextField, bookDescriptionArea)) {
                 return; // Stop submission if validation fails
             }
 

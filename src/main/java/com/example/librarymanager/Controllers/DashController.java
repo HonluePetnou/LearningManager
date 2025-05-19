@@ -60,8 +60,8 @@ public class DashController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Initialize navigation buttons
-        seeAllButton.setOnAction(event -> onSeeAllUsers());
-        moreButton.setOnAction(event -> onMoreBooks());
+        seeAllButton.setOnAction(_ -> onSeeAllUsers());
+        moreButton.setOnAction(_ -> onMoreBooks());
 
         User user = CurrentUser.getUser();
         String name;
