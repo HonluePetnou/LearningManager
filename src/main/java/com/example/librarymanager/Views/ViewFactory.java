@@ -55,6 +55,7 @@ public class ViewFactory {
     private BorderPane usersView;
     private BorderPane booksView;
     private AnchorPane borrowsView;
+    private AnchorPane settingsView;
     private VBox helpView;
 
     public ViewFactory() {
@@ -132,6 +133,21 @@ public class ViewFactory {
         // Wrap AnchorPane in BorderPane to maintain consistency with other views
         BorderPane wrapper = new BorderPane();
         wrapper.setCenter(borrowsView);
+        return wrapper;
+    }
+
+    public BorderPane getSettingsView() {
+        if (settingsView == null) {
+            try {
+                settingsView = new FXMLLoader(getClass().getResource("/Fxml/Settings.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+                settingsView = new AnchorPane();
+                settingsView.getChildren().add(new Label("Error loading Settings view: " + e.getMessage()));
+            }
+        }
+        BorderPane wrapper = new BorderPane();
+        wrapper.setCenter(settingsView);
         return wrapper;
     }
 

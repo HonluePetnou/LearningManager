@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" stylesheets="@../Styles/Borrows.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanager.Controllers.SettingsController">
+    <VBox spacing="20" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <padding>
+            <Insets bottom="20" left="20" right="20" top="20" />
+        </padding>
+        <Label styleClass="title-label" text="Settings" />
+        <ScrollPane fitToWidth="true" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+         <content>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nothing here for now" textAlignment="CENTER">
+                   <font>
+                      <Font name="System Italic" size="20.0" />
+                   </font>
+                </Text>
+            </VBox>
+         </content>
+        </ScrollPane>
+    </VBox>
+</AnchorPane>
